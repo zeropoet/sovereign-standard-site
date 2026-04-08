@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Standard Archive</title>
+  <meta name="description" content="Browse the deterministic Sovereign Standard artifact archive.">
+  <link rel="canonical" href="https://sovereignstandard.co/archive.html">
+  <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sovereign Standard">
+  <meta property="og:title" content="Sovereign Standard Archive">
+  <meta property="og:description" content="Browse the deterministic Sovereign Standard artifact archive.">
+  <meta property="og:url" content="https://sovereignstandard.co/archive.html">
+  <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sovereign Standard Archive">
+  <meta name="twitter:description" content="Browse the deterministic Sovereign Standard artifact archive.">
+  <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="archive-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header">
+      <h1 class="page-title">Archive</h1>
+      <div class="archive-search-row">
+        <label class="archive-search" for="unit-search">
+          <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a unit number" autocomplete="off">
+        </label>
+        <p class="archive-count" id="unit-count">/ 0 units created</p>
+      </div>
+      <div class="archive-filter-row" aria-label="Archive filters">
+        <nav class="archive-filter-links" aria-label="State">
+          <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
+          <a href="#claimable" data-state-filter="CLAIMABLE" class="archive-filter-link state-claimable">Claimable</a>
+          <a href="#claimed" data-state-filter="CLAIMED" class="archive-filter-link state-claimed">Claimed</a>
+          <a href="#partner" data-state-filter="PARTNER" class="archive-filter-link state-partner">Partner</a>
+        </nav>
+      </div>
+    </header>
+    <div id="gallery"></div>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="registry.js"></script>
+  <script>
+    async function loadUnits() {
+      const manifest = await window.SovereignRegistry.loadRegistry();
+      const publicUnits = manifest.units.filter((record) => record.state !== 'NODE');
+      const gallery = document.getElementById('gallery');
+      const unitCount = document.getElementById('unit-count');
+      const unitSearch = document.getElementById('unit-search');
+      const stateLinks = Array.from(document.querySelectorAll('[data-state-filter]'));
+      let selectedState = 'ALL';
+
+      unitCount.textContent = `/ ${publicUnits.length} units indexed`;
+
+      if (!publicUnits.length) {
+        gallery.innerHTML = '<p class="gallery-empty">No artifacts indexed yet.</p>';
+        return;
+      }
+
+      const syncFilterLinks = () => {
+        stateLinks.forEach((link) => {
+          const active = link.dataset.stateFilter === selectedState;
+          link.classList.toggle('is-active', active);
+          if (active) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const renderGallery = () => {
+        const query = unitSearch.value.trim();
+        const normalizedQuery = query.trim();
+        const filteredUnits = publicUnits.filter((record) => {
+          const unitID = Number(record.id ?? record.unit);
+          const matchesQuery = normalizedQuery ? `${unitID}`.includes(normalizedQuery) : true;
+          const matchesState = selectedState === 'ALL' || record.state === selectedState;
+
+          return matchesQuery && matchesState;
+        });
+
+        gallery.innerHTML = '';
+
+        if (!filteredUnits.length) {
+          gallery.innerHTML = '<p class="gallery-empty muted">No units match the active filters.</p>';
+          return;
+        }
+
+        for (const record of filteredUnits) {
+          const unitID = Number(record.id ?? record.unit);
+          const card = document.createElement('article');
+          card.className = `artifact-card panel state-${String(record.state || '').toLowerCase()}`;
+
+          const link = document.createElement('a');
+          link.href = `standardcontrol.html?unit=${unitID}`;
+          link.className = 'artifact-link';
+
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.width = 180;
+          img.height = 180;
+          img.src = `output/${unitID}/sigil.svg`;
+          img.alt = `Sigil for unit ${unitID}`;
+
+          const label = document.createElement('div');
+          label.className = 'artifact-card-meta';
+          label.innerHTML = `<code>${unitID}</code><span>${record.state}</span>`;
+
+          link.append(img, label);
+          card.append(link);
+          gallery.append(card);
+        }
+      };
+
+      unitSearch.addEventListener('input', renderGallery);
+      stateLinks.forEach((link) => link.addEventListener('click', (event) => {
+        event.preventDefault();
+        selectedState = link.dataset.stateFilter || 'ALL';
+        syncFilterLinks();
+        renderGallery();
+      }));
+
+      syncFilterLinks();
+      renderGallery();
+    }
+
+    loadUnits().catch(() => {
+      document.getElementById('gallery').innerHTML = '<p class="gallery-empty">Unable to load artifact index.</p>';
+    });
+  </script>
+</body>
+</html>

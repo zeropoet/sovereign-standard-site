@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Control</title>
+  <meta name="description" content="State record for a Sovereign Standard unit.">
+  <link id="canonical-link" rel="canonical" href="https://sovereignstandard.co/standardcontrol.html">
+  <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sovereign Standard">
+  <meta id="og-title" property="og:title" content="Standard Control · Sovereign Standard">
+  <meta id="og-description" property="og:description" content="State record for a Sovereign Standard unit.">
+  <meta id="og-url" property="og:url" content="https://sovereignstandard.co/standardcontrol.html">
+  <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta id="twitter-title" name="twitter:title" content="Standard Control · Sovereign Standard">
+  <meta id="twitter-description" name="twitter:description" content="State record for a Sovereign Standard unit.">
+  <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="sovereign-claim-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="artifact-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="archive.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header artifact-header">
+      <h1 class="page-title" id="unit-title">Unit</h1>
+      <p class="page-intro">Standard, held.</p>
+    </header>
+
+    <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
+      <a id="unit-prev" class="unit-pagination-link" href="archive.html">Previous</a>
+      <a id="unit-next" class="unit-pagination-link" href="archive.html">Next</a>
+    </nav>
+
+    <section class="panel section-stack artifact-section state-section">
+      <div id="state-panel" class="state-panel"></div>
+    </section>
+
+    <section class="panel section-stack artifact-section metadata-section">
+      <div class="section-head">
+        <h2>Registry</h2>
+      </div>
+      <div id="meta-list" class="meta-list"></div>
+    </section>
+
+    <section id="artifact-grid" class="artifact-grid artifact-section">
+      <article class="panel artifact-figure">
+        <h3>Material</h3>
+        <img id="material" alt="Material layout">
+      </article>
+      <article class="panel artifact-figure">
+        <h3>Logo</h3>
+        <img id="logo" alt="Logo lockup">
+      </article>
+      <article class="panel artifact-figure">
+        <h3>Sigil</h3>
+        <img id="sigil" alt="Sigil">
+      </article>
+    </section>
+
+    <section class="panel section-stack artifact-section standard-unit-section">
+      <div class="standard-unit-grid">
+        <article class="standard-unit-block">
+          <h3>Origin</h3>
+          <p>Shizuoka, Japan — spring harvest<br>Fukamushi sencha (deep steamed)</p>
+        </article>
+        <article class="standard-unit-block">
+          <h3>Substrate</h3>
+          <p>Yabukita cultivar.<br>Deep steaming produces a finer leaf structure and dense extraction.</p>
+          <p>Saturated green liquor.<br>Soft particulate body.<br>Elevated umami with controlled bitterness.</p>
+        </article>
+        <article class="standard-unit-block">
+          <h3>Profile</h3>
+          <p>Vegetal depth.<br>Broth-like body.<br>Soft sweetness that holds.</p>
+          <p>Not sharp.<br>Not fleeting.<br>It settles.</p>
+        </article>
+        <article class="standard-unit-block">
+          <h3>Preparation</h3>
+          <p>4g leaf<br>180ml water<br>140°F<br>90s</p>
+          <p>Repeatable. Stable.<br>Adjust only with intent.</p>
+        </article>
+        <article class="standard-unit-block">
+          <h3>Composition</h3>
+          <p>Sencha (primary)</p>
+          <p>Lemon Balm · Tulsi · Ginger Root</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="registry.js"></script>
+  <script>
+    function escapeHTML(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function formatTimestamp(value) {
+      if (!value) {
+        return 'Unavailable';
+      }
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return new Intl.DateTimeFormat(undefined, {
+        dateStyle: 'long',
+        timeStyle: 'short'
+      }).format(date);
+    }
+
+    function formatDateOnly(value) {
+      if (!value) {
+        return 'Unavailable';
+      }
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return new Intl.DateTimeFormat(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }).format(date);
+    }
+
+    function updateMeta(unitID) {
+      const unitURL = `https://sovereignstandard.co/standardcontrol.html?unit=${unitID}`;
+      const unitTitle = `Unit ${unitID} · Standard Control`;
+      const unitDescription = `State record for Sovereign Standard unit ${unitID}.`;
+
+      document.title = unitTitle;
+      document.getElementById('unit-title').textContent = `Unit ${unitID}`;
+      document.getElementById('canonical-link').href = unitURL;
+      document.querySelector('meta[name="description"]').content = unitDescription;
+      document.getElementById('og-title').content = unitTitle;
+      document.getElementById('og-description').content = unitDescription;
+      document.getElementById('og-url').content = unitURL;
+      document.getElementById('twitter-title').content = unitTitle;
+      document.getElementById('twitter-description').content = unitDescription;
+    }
+
+    let activePollToken = 0;
+    let activePartnerToken = '';
+    let activePartnerMode = false;
+
+    async function pollForCommittedClaim(unitID, pendingRecord, status) {
+      const pollToken = ++activePollToken;
+
+      try {
+        const committedRecord = await window.SovereignRegistry.waitForUnitRecord(
+          unitID,
+          (record) => record.state === 'CLAIMED' && !record.pending && record.claimed_at === pendingRecord.claimed_at,
+          { timeoutMs: 180000, intervalMs: 4000 }
+        );
+
+        if (pollToken !== activePollToken) {
+          return;
+        }
+
+        renderArtifactState(committedRecord);
+        renderStatePanel(committedRecord);
+        renderMetadata(committedRecord);
+      } catch {
+        if (pollToken !== activePollToken) {
+          return;
+        }
+
+        status.textContent = '';
+      }
+    }
+
+    async function activatePartnerUnit(unitID, partnerToken, status) {
+      await window.SovereignRegistry.claimPartnerUnit(unitID, {
+        partnerToken
+      });
+
+      if (status) {
+        status.textContent = '';
+      }
+
+      const partnerRecord = await window.SovereignRegistry.waitForUnitRecord(
+        unitID,
+        (entry) => entry.state === 'PARTNER',
+        { timeoutMs: 180000, intervalMs: 4000 }
+      );
+
+      renderArtifactState(partnerRecord);
+      renderStatePanel(partnerRecord);
+      renderMetadata(partnerRecord);
+      document.getElementById('sigil').src = partnerRecord.sigil || `output/${unitID}/sigil.svg`;
+    }
+
+    function renderStatePanel(record) {
+      const statePanel = document.getElementById('state-panel');
+      const signal = window.SovereignRegistry.getPublicClaimSignal(record);
+      const unitID = Number(record.id ?? record.unit);
+
+      if (record.state === 'CLAIMABLE') {
+        if (record.is_partner_reserved) {
+          statePanel.innerHTML = `
+            <div class="state-block">
+              <p class="state-label">STATE: UNCLAIMED</p>
+              ${activePartnerMode ? '<p class="state-detail">This unit is eligible for partner activation.</p>' : ''}
+              <form class="claim-form" id="partner-claim-form">
+                <label class="order-field">
+                  <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
+                </label>
+                <div class="claim-actions">
+                  <button class="order-submit" type="submit">Submit</button>
+                  <p class="muted claim-note" id="claim-status"></p>
+                </div>
+              </form>
+            </div>
+          `;
+
+          const form = document.getElementById('partner-claim-form');
+          const status = document.getElementById('claim-status');
+
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (!form.reportValidity()) {
+              return;
+            }
+
+            const data = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            status.textContent = '';
+
+            try {
+              await activatePartnerUnit(unitID, String(data.get('claim_code') || '').trim(), status);
+            } catch {
+              status.textContent = '';
+              submitButton.disabled = false;
+            }
+          });
+
+          return;
+        }
+
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">CLAIMABLE</p>
+            <form class="claim-form" id="claim-form">
+              <label class="order-field">
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
+              </label>
+              <div class="claim-actions">
+                <button class="order-submit" type="submit">Submit</button>
+                <p class="muted claim-note" id="claim-status"></p>
+              </div>
+            </form>
+          </div>
+        `;
+
+        const form = document.getElementById('claim-form');
+        const status = document.getElementById('claim-status');
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          if (!form.reportValidity()) {
+            return;
+          }
+
+          const data = new FormData(form);
+          const submitButton = form.querySelector('button[type="submit"]');
+          submitButton.disabled = true;
+          status.textContent = '';
+
+          const startedAt = Date.now();
+
+          try {
+            const claimedRecord = await window.SovereignRegistry.claimUnit(unitID, {
+              claimCode: String(data.get('claim_code') || '').trim()
+            });
+
+            const delay = 500 + Math.floor(Math.random() * 701);
+            const remaining = Math.max(0, delay - (Date.now() - startedAt));
+            await new Promise((resolve) => window.setTimeout(resolve, remaining));
+            status.textContent = 'Unit claimed. Awaiting registry publish...';
+            renderArtifactState(claimedRecord);
+            renderStatePanel(claimedRecord);
+            renderMetadata(claimedRecord);
+            const nextStatus = document.getElementById('claim-status');
+            if (nextStatus) {
+              nextStatus.textContent = 'Unit claimed. Awaiting registry publish...';
+              void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
+            }
+          } catch (error) {
+            const delay = 500 + Math.floor(Math.random() * 701);
+            const remaining = Math.max(0, delay - (Date.now() - startedAt));
+            await new Promise((resolve) => window.setTimeout(resolve, remaining));
+            status.textContent = error.message || 'Unable to claim this unit.';
+            submitButton.disabled = false;
+          }
+        });
+
+        return;
+      }
+
+      if (record.state === 'CLAIMED') {
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
+            <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
+            ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
+          </div>
+        `;
+
+        if (record.pending) {
+          const pendingStatus = document.getElementById('claim-status');
+          if (pendingStatus) {
+            void pollForCommittedClaim(unitID, record, pendingStatus);
+          }
+        }
+        return;
+      }
+
+      if (record.state === 'PARTNER') {
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">STATE: PARTNER</p>
+            ${record.partner_reference ? `<p class="state-detail">${escapeHTML(record.partner_reference)}</p>` : ''}
+          </div>
+        `;
+        return;
+      }
+
+      if (record.state === 'NODE') {
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">NODE</p>
+          </div>
+        `;
+        return;
+      }
+
+      statePanel.innerHTML = `
+        <div class="state-block">
+          <p class="state-label">${escapeHTML(record.state)}</p>
+        </div>
+      `;
+    }
+
+    function renderArtifactState(record) {
+      const grid = document.getElementById('artifact-grid');
+      if (!grid) {
+        return;
+      }
+
+      grid.style.display = 'grid';
+    }
+
+    function renderMetadata(record) {
+      const unitID = Number(record.id ?? record.unit);
+      document.getElementById('meta-list').innerHTML = `
+        <div class="meta-column">
+          <div class="meta-group">
+            <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
+            ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code">${escapeHTML(String(record.convergence_hash).slice(0, 12).toUpperCase())}</span></div>` : ''}
+            <div><span>State</span><br><span class="code">${escapeHTML(record.state)}</span></div>
+            ${record.state !== 'CLAIMABLE' && record.state !== 'CLAIMED' && record.state !== 'PARTNER' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+          </div>
+        </div>
+        <div class="meta-column">
+          <div class="meta-group">
+            ${record.state === 'CLAIMED' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+            ${record.state === 'CLAIMED' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
+            ${record.state === 'CLAIMED' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
+            ${record.state === 'PARTNER' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+            ${record.state === 'PARTNER' && record.partner_reference ? `<div><span>Reference</span><br><span class="code">${escapeHTML(record.partner_reference)}</span></div>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    async function loadUnit() {
+      const params = new URLSearchParams(window.location.search);
+      const rawUnitID = params.get('unit') || params.get('id');
+      activePartnerToken = String(params.get('token') || '').trim();
+      activePartnerMode = params.get('mode') === 'partner' || Boolean(activePartnerToken);
+
+      if (!rawUnitID) {
+        throw new Error('Missing unit id');
+      }
+
+      const unitID = Number(rawUnitID);
+
+      if (Number.isNaN(unitID)) {
+        throw new Error('Invalid unit id');
+      }
+
+      updateMeta(unitID);
+
+      const registry = await window.SovereignRegistry.loadRegistry();
+      const record = registry.units.find((entry) => Number(entry.id ?? entry.unit) === unitID);
+
+      if (!record) {
+        throw new Error(`Unit ${unitID} is not available`);
+      }
+
+      const isGatedPartnerUnit = record.is_partner_reserved && record.state !== 'PARTNER';
+
+      const unitList = registry.units
+        .filter((entry) => entry.state !== 'NODE')
+        .map((entry) => Number(entry.id ?? entry.unit));
+      const unitIndex = unitList.indexOf(unitID);
+      const previousUnit = unitIndex > 0 ? unitList[unitIndex - 1] : null;
+      const nextUnit = unitIndex >= 0 && unitIndex < unitList.length - 1 ? unitList[unitIndex + 1] : null;
+
+      const previousLink = document.getElementById('unit-prev');
+      const nextLink = document.getElementById('unit-next');
+
+      if (previousUnit !== null) {
+        previousLink.href = `standardcontrol.html?unit=${previousUnit}`;
+        previousLink.textContent = `Previous ${previousUnit}`;
+      } else {
+        previousLink.removeAttribute('href');
+        previousLink.setAttribute('aria-disabled', 'true');
+        previousLink.textContent = 'Previous';
+      }
+
+      if (nextUnit !== null) {
+        nextLink.href = `standardcontrol.html?unit=${nextUnit}`;
+        nextLink.textContent = `Next ${nextUnit}`;
+      } else {
+        nextLink.removeAttribute('href');
+        nextLink.setAttribute('aria-disabled', 'true');
+        nextLink.textContent = 'Next';
+      }
+
+      document.addEventListener('keydown', (event) => {
+        const activeTag = document.activeElement?.tagName;
+        const isTypingContext = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || document.activeElement?.isContentEditable;
+
+        if (isTypingContext) {
+          return;
+        }
+
+        if (event.key === 'ArrowLeft' && previousLink.hasAttribute('href')) {
+          window.location.href = previousLink.href;
+        }
+
+        if (event.key === 'ArrowRight' && nextLink.hasAttribute('href')) {
+          window.location.href = nextLink.href;
+        }
+      });
+
+      document.getElementById('material').src = `output/${unitID}/material.svg`;
+      document.getElementById('logo').src = `output/${unitID}/logo.svg`;
+      document.getElementById('sigil').src = record.sigil || `output/${unitID}/sigil.svg`;
+
+      renderArtifactState(record);
+      renderStatePanel(record);
+      renderMetadata(record);
+
+      if (isGatedPartnerUnit && activePartnerToken) {
+        const status = document.getElementById('claim-status');
+        try {
+          await activatePartnerUnit(unitID, activePartnerToken, status);
+        } catch {
+          if (status) {
+            status.textContent = '';
+          }
+        }
+      }
+    }
+
+    loadUnit().catch((error) => {
+      document.getElementById('state-panel').innerHTML = `<p>${escapeHTML(error.message || 'Unable to load unit record.')}</p>`;
+    });
+  </script>
+</body>
+</html>
