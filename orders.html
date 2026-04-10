@@ -81,10 +81,9 @@
       }
 
       const orders = Array.isArray(payload.orders) ? payload.orders : [];
-      const paidCount = orders.filter((order) => order.status === 'paid').length;
       const totalUnits = orders.reduce((sum, order) => sum + Number(order.quantity || 0), 0);
 
-      summary.textContent = `${orders.length} orders recorded. ${paidCount} paid. ${totalUnits} total units allocated or requested through the ledger.`;
+      summary.textContent = `${orders.length} orders recorded. ${totalUnits} total units allocated or requested through the ledger.`;
 
       if (!orders.length) {
         list.innerHTML = '<p class="muted">No committed orders yet.</p>';
@@ -105,7 +104,6 @@
               <div class="invoice-list">
                 <div class="invoice-row"><span class="invoice-label">Ledger Sequence:</span><span class="code">${escapeHTML(order.sequence)}</span></div>
                 <div class="invoice-row"><span class="invoice-label">Order ID:</span><span class="code code-wrap">${escapeHTML(order.order_id || '')}</span></div>
-                <div class="invoice-row"><span class="invoice-label">Status:</span><span class="code">${escapeHTML(order.status || 'unknown')}</span></div>
                 <div class="invoice-row"><span class="invoice-label">Quantity:</span><span class="code">${escapeHTML(order.quantity || 0)}</span></div>
                 <div class="invoice-row"><span class="invoice-label">Assigned Units:</span><span class="code code-wrap">${escapeHTML(units)}</span></div>
               </div>

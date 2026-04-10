@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-04-10T23:00:34Z",
+  "generated_at" : "2026-04-10T23:02:06Z",
   "orders" : [
     {
       "amount_total" : 20400,
@@ -13,8 +13,7 @@
       "order_id" : "ord_7cd2c67cc83f4fa883a081c447a1305c",
       "paid_at" : "2026-04-10T20:45:08.717Z",
       "quantity" : 3,
-      "sequence" : 1,
-      "status" : "paid"
+      "sequence" : 1
     },
     {
       "amount_total" : 20400,
@@ -28,8 +27,7 @@
       "order_id" : "ord_123d1e0d8e8547d4b3df91eb4d1404a8",
       "paid_at" : "2026-04-10T20:41:11.509Z",
       "quantity" : 3,
-      "sequence" : 2,
-      "status" : "paid"
+      "sequence" : 2
     },
     {
       "amount_total" : 68000,
@@ -50,8 +48,7 @@
       "order_id" : "ord_c8c34c9dad3e44058f385e5c8487a6cf",
       "paid_at" : "2026-04-10T20:24:51.072Z",
       "quantity" : 10,
-      "sequence" : 3,
-      "status" : "paid"
+      "sequence" : 3
     },
     {
       "amount_total" : 6800,
@@ -63,8 +60,7 @@
       "order_id" : "ord_6f55c02cb004481e8408671135c98467",
       "paid_at" : "2026-04-10T20:38:07.556Z",
       "quantity" : 1,
-      "sequence" : 4,
-      "status" : "paid"
+      "sequence" : 4
     },
     {
       "amount_total" : 13600,
@@ -77,8 +73,7 @@
       "order_id" : "ord_cc948ff828ba4790a2a70cb1ea7a73d0",
       "paid_at" : "2026-04-10T20:29:18.483Z",
       "quantity" : 2,
-      "sequence" : 5,
-      "status" : "paid"
+      "sequence" : 5
     }
   ]
 }
