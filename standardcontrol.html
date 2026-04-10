@@ -163,9 +163,42 @@
     let activePollToken = 0;
     let activePartnerToken = '';
     let activePartnerMode = false;
+    let activeStatusTimer = 0;
+
+    function stopClaimStatusUpdates() {
+      if (activeStatusTimer) {
+        window.clearInterval(activeStatusTimer);
+        activeStatusTimer = 0;
+      }
+    }
+
+    function startClaimStatusUpdates(status, messages, intervalMs = 2200) {
+      stopClaimStatusUpdates();
+
+      if (!status || !Array.isArray(messages) || messages.length === 0) {
+        return;
+      }
+
+      let index = 0;
+      status.textContent = messages[index];
+
+      if (messages.length === 1) {
+        return;
+      }
+
+      activeStatusTimer = window.setInterval(() => {
+        index = (index + 1) % messages.length;
+        status.textContent = messages[index];
+      }, intervalMs);
+    }
 
     async function pollForCommittedClaim(unitID, pendingRecord, status) {
       const pollToken = ++activePollToken;
+      startClaimStatusUpdates(status, [
+        'Claim accepted. Publishing to registry...',
+        'Still working in the background. Registry updates can take a moment...',
+        'Almost there. Waiting for the public registry to refresh...'
+      ], 3000);
 
       try {
         const committedRecord = await window.SovereignRegistry.waitForUnitRecord(
@@ -178,6 +211,7 @@
           return;
         }
 
+        stopClaimStatusUpdates();
         renderArtifactState(committedRecord);
         renderStatePanel(committedRecord);
         renderMetadata(committedRecord);
@@ -186,18 +220,21 @@
           return;
         }
 
-        status.textContent = '';
+        stopClaimStatusUpdates();
+        status.textContent = 'Claim request was sent. The registry is still catching up. Refresh this page in a moment.';
       }
     }
 
     async function activatePartnerUnit(unitID, partnerToken, status) {
+      startClaimStatusUpdates(status, [
+        'Submitting partner activation...',
+        'Partner activation is being processed...',
+        'Waiting for the registry to confirm activation...'
+      ], 2800);
+
       await window.SovereignRegistry.claimPartnerUnit(unitID, {
         partnerToken
       });
-
-      if (status) {
-        status.textContent = '';
-      }
 
       const partnerRecord = await window.SovereignRegistry.waitForUnitRecord(
         unitID,
@@ -205,6 +242,7 @@
         { timeoutMs: 180000, intervalMs: 4000 }
       );
 
+      stopClaimStatusUpdates();
       renderArtifactState(partnerRecord);
       renderStatePanel(partnerRecord);
       renderMetadata(partnerRecord);
@@ -213,7 +251,6 @@
 
     function renderStatePanel(record) {
       const statePanel = document.getElementById('state-panel');
-      const signal = window.SovereignRegistry.getPublicClaimSignal(record);
       const unitID = Number(record.id ?? record.unit);
 
       if (record.state === 'CLAIMABLE') {
@@ -247,12 +284,17 @@
             const data = new FormData(form);
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            status.textContent = '';
+            startClaimStatusUpdates(status, [
+              'Submitting partner activation...',
+              'Activation request sent. Waiting for confirmation...',
+              'Still working in the background...'
+            ], 2600);
 
             try {
               await activatePartnerUnit(unitID, String(data.get('claim_code') || '').trim(), status);
-            } catch {
-              status.textContent = '';
+            } catch (error) {
+              stopClaimStatusUpdates();
+              status.textContent = error.message || 'Unable to activate this unit right now.';
               submitButton.disabled = false;
             }
           });
@@ -288,7 +330,11 @@
           const data = new FormData(form);
           const submitButton = form.querySelector('button[type="submit"]');
           submitButton.disabled = true;
-          status.textContent = '';
+          startClaimStatusUpdates(status, [
+            'Submitting claim...',
+            'Claim request sent. Waiting for confirmation...',
+            'Still working in the background...'
+          ], 2600);
 
           const startedAt = Date.now();
 
@@ -300,19 +346,20 @@
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
             await new Promise((resolve) => window.setTimeout(resolve, remaining));
-            status.textContent = 'Unit claimed. Awaiting registry publish...';
+            stopClaimStatusUpdates();
+            status.textContent = 'Claim accepted. Awaiting registry publish...';
             renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
             renderMetadata(claimedRecord);
             const nextStatus = document.getElementById('claim-status');
             if (nextStatus) {
-              nextStatus.textContent = 'Unit claimed. Awaiting registry publish...';
               void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
             }
           } catch (error) {
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
             await new Promise((resolve) => window.setTimeout(resolve, remaining));
+            stopClaimStatusUpdates();
             status.textContent = error.message || 'Unable to claim this unit.';
             submitButton.disabled = false;
           }
@@ -380,7 +427,7 @@
         <div class="meta-column">
           <div class="meta-group">
             <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
-            ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code">${escapeHTML(String(record.convergence_hash).slice(0, 12).toUpperCase())}</span></div>` : ''}
+            ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.convergence_hash).toUpperCase())}</span></div>` : ''}
             <div><span>State</span><br><span class="code">${escapeHTML(record.state)}</span></div>
             ${record.state !== 'CLAIMABLE' && record.state !== 'CLAIMED' && record.state !== 'PARTNER' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
           </div>
@@ -481,9 +528,10 @@
         const status = document.getElementById('claim-status');
         try {
           await activatePartnerUnit(unitID, activePartnerToken, status);
-        } catch {
+        } catch (error) {
+          stopClaimStatusUpdates();
           if (status) {
-            status.textContent = '';
+            status.textContent = error.message || 'Unable to activate this unit right now.';
           }
         }
       }

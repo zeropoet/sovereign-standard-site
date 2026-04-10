@@ -714,6 +714,11 @@ h3 {
   max-width: 56ch;
 }
 
+.code-wrap {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .unit-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
