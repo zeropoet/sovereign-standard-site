@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Status | Sovereign Standard</title>
+  <meta name="description" content="Track a Sovereign Standard order.">
+  <link rel="canonical" href="https://sovereignstandard.co/order.html">
+  <meta name="theme-color" content="#000000">
+  <meta name="sovereign-commerce-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="artifact-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header artifact-header">
+      <h1 class="page-title">Order Status</h1>
+      <p class="page-intro">Paid orders are assigned sequentially after the reserved partner range.</p>
+    </header>
+
+    <section class="panel section-stack artifact-section state-section">
+      <div class="section-head">
+        <h2>Status</h2>
+      </div>
+      <p id="order-status" class="muted order-status"></p>
+      <div class="meta-list" id="order-meta"></div>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script>
+    const endpoint = document
+      .querySelector('meta[name="sovereign-commerce-endpoint"]')
+      ?.getAttribute('content')
+      ?.trim()
+      ?.replace(/\/$/, '');
+
+    function escapeHTML(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function formatTimestamp(value) {
+      if (!value) {
+        return 'Pending';
+      }
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return new Intl.DateTimeFormat(undefined, {
+        dateStyle: 'long',
+        timeStyle: 'short'
+      }).format(date);
+    }
+
+    async function loadOrder(attempt = 0) {
+      const params = new URLSearchParams(window.location.search);
+      const orderID = String(params.get('order_id') || '').trim();
+      const token = String(params.get('token') || '').trim();
+      const checkoutSessionID = String(params.get('checkout_session_id') || '').trim();
+      const meta = document.getElementById('order-meta');
+      const status = document.getElementById('order-status');
+
+      if (!orderID || !token) {
+        status.textContent = 'Missing order link details.';
+        return;
+      }
+
+      status.textContent = 'Loading order state...';
+
+      const response = await fetch(`${endpoint}/orders/${encodeURIComponent(orderID)}?token=${encodeURIComponent(token)}`);
+      const payload = await response.json();
+
+      if (response.status === 404 && checkoutSessionID && attempt < 8) {
+        status.textContent = 'Finalizing your order...';
+        window.setTimeout(() => {
+          void loadOrder(attempt + 1);
+        }, 3000);
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error(payload.error || 'Unable to load order.');
+      }
+
+      const units = Array.isArray(payload.assigned_units) ? payload.assigned_units : [];
+      meta.innerHTML = `
+        <div class="meta-column">
+          <div class="meta-group">
+            <div><span>Order</span><br><span class="code code-wrap">${escapeHTML(payload.order_id)}</span></div>
+            <div><span>Status</span><br><span class="code">${escapeHTML(payload.status)}</span></div>
+            <div><span>Email</span><br><span class="code code-wrap">${escapeHTML(payload.customer_email || '')}</span></div>
+          </div>
+        </div>
+        <div class="meta-column">
+          <div class="meta-group">
+            <div><span>Created</span><br><span class="code">${escapeHTML(formatTimestamp(payload.created_at))}</span></div>
+            <div><span>Paid</span><br><span class="code">${escapeHTML(formatTimestamp(payload.paid_at))}</span></div>
+            <div><span>Assigned Units</span><br><span class="code code-wrap">${escapeHTML(units.length ? units.join(', ') : 'Pending')}</span></div>
+          </div>
+        </div>
+      `;
+
+      if (payload.status === 'checkout_pending') {
+        status.textContent = checkoutSessionID
+          ? 'Payment is processing. Refreshing order state...'
+          : 'Payment has not completed yet. Refresh after checkout completes.';
+        if (checkoutSessionID && attempt < 8) {
+          window.setTimeout(() => {
+            void loadOrder(attempt + 1);
+          }, 5000);
+        }
+        return;
+      }
+
+      if (payload.status === 'paid' && units.length === 0) {
+        status.textContent = 'Payment received. Assigning units in the background...';
+        window.setTimeout(() => window.location.reload(), 5000);
+        return;
+      }
+
+      status.textContent = units.length
+        ? 'Order is confirmed and units are assigned.'
+        : 'Order is confirmed.';
+    }
+
+    loadOrder().catch((error) => {
+      document.getElementById('order-status').textContent = error.message || 'Unable to load order.';
+    });
+  </script>
+</body>
+</html>

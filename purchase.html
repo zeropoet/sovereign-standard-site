@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Units | Sovereign Standard</title>
+  <meta name="description" content="Purchase sequential Sovereign Standard units.">
+  <link rel="canonical" href="https://sovereignstandard.co/purchase.html">
+  <meta name="theme-color" content="#000000">
+  <meta name="sovereign-commerce-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="artifact-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header artifact-header">
+      <h1 class="page-title">Purchase</h1>
+      <p class="page-intro">Units 34 and above are assigned sequentially after payment.</p>
+    </header>
+
+    <section class="panel section-stack artifact-section">
+      <div class="section-head">
+        <h2>Order</h2>
+      </div>
+      <form id="purchase-form" class="order-panel">
+        <div class="order-grid">
+          <label class="order-field">
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label class="order-field">
+            Quantity
+            <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
+          </label>
+        </div>
+        <label class="order-field">
+          Name
+          <input type="text" name="customer_name" autocomplete="name" placeholder="Optional">
+        </label>
+        <div class="order-actions">
+          <button class="order-submit" type="submit">Checkout</button>
+          <p id="purchase-status" class="muted order-status"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script>
+    const endpoint = document
+      .querySelector('meta[name="sovereign-commerce-endpoint"]')
+      ?.getAttribute('content')
+      ?.trim()
+      ?.replace(/\/$/, '');
+
+    const form = document.getElementById('purchase-form');
+    const status = document.getElementById('purchase-status');
+
+    if (new URLSearchParams(window.location.search).get('cancelled') === '1') {
+      status.textContent = 'Checkout was canceled. You can try again whenever you are ready.';
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      submitButton.disabled = true;
+      status.textContent = 'Opening secure checkout...';
+
+      try {
+        const response = await fetch(`${endpoint}/checkout`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: String(data.get('email') || '').trim(),
+            quantity: Number(data.get('quantity') || 0),
+            customer_name: String(data.get('customer_name') || '').trim()
+          })
+        });
+
+        const payload = await response.json();
+        if (!response.ok) {
+          throw new Error(payload.error || 'Unable to create checkout session.');
+        }
+
+        status.textContent = 'Redirecting to Stripe checkout...';
+        window.location.href = payload.checkout_url;
+      } catch (error) {
+        status.textContent = error.message || 'Unable to create checkout session.';
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
