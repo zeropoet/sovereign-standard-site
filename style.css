@@ -283,12 +283,14 @@ h3 {
 .invoice-list {
   display: grid;
   gap: var(--space-2);
+  align-content: start;
 }
 
 .invoice-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
+  align-items: start;
 }
 
 .invoice-row {
@@ -296,6 +298,8 @@ h3 {
   align-items: baseline;
   gap: var(--space-2);
   flex-wrap: wrap;
+  line-height: 1.85;
+  min-height: 1.85em;
 }
 
 .invoice-label {
