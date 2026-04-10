@@ -262,7 +262,6 @@ h3 {
 
 .ledger-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
 }
 
@@ -284,6 +283,12 @@ h3 {
 .invoice-list {
   display: grid;
   gap: var(--space-2);
+}
+
+.invoice-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
 }
 
 .invoice-row {
@@ -1111,6 +1116,10 @@ h3 {
   }
 
   .ledger-list {
+    grid-template-columns: 1fr;
+  }
+
+  .invoice-columns {
     grid-template-columns: 1fr;
   }
 
