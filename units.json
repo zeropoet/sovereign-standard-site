@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-04-10T17:40:58Z",
+  "generated_at" : "2026-04-10T17:44:27Z",
   "units" : [
     {
       "coin_id" : "coin_00",
@@ -28,10 +28,11 @@
       "convergence_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
       "created_at" : "2026-04-10T16:31:28Z",
       "id" : 2,
-      "is_partner" : false,
+      "is_partner" : true,
       "is_partner_reserved" : true,
+      "partner_reference" : "coin_02",
       "sigil" : "output\/2\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "PARTNER"
     },
     {
       "coin_id" : "coin_03",
