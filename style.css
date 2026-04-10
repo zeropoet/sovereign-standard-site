@@ -280,6 +280,23 @@ h3 {
   flex-wrap: wrap;
 }
 
+.invoice-list {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.invoice-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.invoice-label {
+  color: var(--muted);
+  min-width: 9rem;
+}
+
 .order-grid-three {
   grid-template-columns: minmax(0, 1.7fr) minmax(6.5rem, 0.8fr) minmax(8.5rem, 1fr);
 }
