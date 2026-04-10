@@ -260,6 +260,30 @@ h3 {
   color: var(--muted);
 }
 
+.ledger-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.ledger-card {
+  border: 1px solid var(--line);
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.ledger-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.order-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .lede {
   font-size: var(--step-1);
   line-height: 1.75;
@@ -1074,7 +1098,8 @@ h3 {
 
   .archive-range-row,
   .claim-grid,
-  .order-grid {
+  .order-grid,
+  .order-grid-three {
     grid-template-columns: 1fr;
   }
 

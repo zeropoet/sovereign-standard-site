@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Ledger | Sovereign Standard</title>
+  <meta name="description" content="Review the committed Sovereign Standard order ledger.">
+  <link rel="canonical" href="https://sovereignstandard.co/orders.html">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="artifact-page">
+    <nav class="top-links" aria-label="Primary">
+      <a href="index.html" class="nav">Back</a>
+    </nav>
+    <header class="page-header artifact-header">
+      <h1 class="page-title">Order Ledger</h1>
+      <p class="page-intro">Committed order state, organized by ledger sequence rather than customer account.</p>
+    </header>
+
+    <section class="panel section-stack artifact-section state-section">
+      <div class="section-head">
+        <h2>Overview</h2>
+      </div>
+      <p id="orders-summary" class="muted order-status">Loading committed order ledger...</p>
+    </section>
+
+    <section class="panel section-stack artifact-section">
+      <div class="section-head">
+        <h2>Orders</h2>
+      </div>
+      <div id="orders-list" class="ledger-list"></div>
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script>
+    function escapeHTML(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function formatTimestamp(value) {
+      if (!value) {
+        return 'Pending';
+      }
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return value;
+      }
+
+      return new Intl.DateTimeFormat(undefined, {
+        dateStyle: 'long',
+        timeStyle: 'short'
+      }).format(date);
+    }
+
+    function formatAmount(amountTotal, currency) {
+      if (typeof amountTotal !== 'number') {
+        return 'Pending';
+      }
+
+      const code = String(currency || 'USD').toUpperCase();
+      return `${code} ${(amountTotal / 100).toFixed(2)}`;
+    }
+
+    async function loadOrders() {
+      const summary = document.getElementById('orders-summary');
+      const list = document.getElementById('orders-list');
+      const response = await fetch('orders.json', { cache: 'no-store' });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || 'Unable to load order ledger.');
+      }
+
+      const orders = Array.isArray(payload.orders) ? payload.orders : [];
+      const paidCount = orders.filter((order) => order.status === 'paid').length;
+      const totalUnits = orders.reduce((sum, order) => sum + Number(order.quantity || 0), 0);
+
+      summary.textContent = `${orders.length} orders recorded. ${paidCount} paid. ${totalUnits} total units allocated or requested through the ledger.`;
+
+      if (!orders.length) {
+        list.innerHTML = '<p class="muted">No committed orders yet.</p>';
+        return;
+      }
+
+      list.innerHTML = orders.map((order) => {
+        const units = Array.isArray(order.assigned_units) && order.assigned_units.length
+          ? order.assigned_units.join(', ')
+          : 'Pending';
+
+        return `
+          <article class="ledger-card">
+            <div class="ledger-card-head">
+              <h3>Order ${escapeHTML(order.sequence)}</h3>
+              <span class="code">${escapeHTML(order.status || 'unknown')}</span>
+            </div>
+            <div class="meta-list">
+              <div class="meta-column">
+                <div class="meta-group">
+                  <div><span>Ledger Sequence</span><br><span class="code">${escapeHTML(order.sequence)}</span></div>
+                  <div><span>Order ID</span><br><span class="code code-wrap">${escapeHTML(order.order_id || '')}</span></div>
+                  <div><span>Quantity</span><br><span class="code">${escapeHTML(order.quantity || 0)}</span></div>
+                </div>
+              </div>
+              <div class="meta-column">
+                <div class="meta-group">
+                  <div><span>Assigned Units</span><br><span class="code code-wrap">${escapeHTML(units)}</span></div>
+                  <div><span>Created</span><br><span class="code">${escapeHTML(formatTimestamp(order.created_at))}</span></div>
+                  <div><span>Paid</span><br><span class="code">${escapeHTML(formatTimestamp(order.paid_at))}</span></div>
+                </div>
+              </div>
+              <div class="meta-column">
+                <div class="meta-group">
+                  <div><span>Amount</span><br><span class="code">${escapeHTML(formatAmount(order.amount_total, order.currency))}</span></div>
+                  <div><span>Updated</span><br><span class="code">${escapeHTML(formatTimestamp(order.updated_at))}</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    loadOrders().catch((error) => {
+      document.getElementById('orders-summary').textContent = error.message || 'Unable to load order ledger.';
+    });
+  </script>
+</body>
+</html>
