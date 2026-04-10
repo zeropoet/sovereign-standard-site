@@ -281,7 +281,7 @@ h3 {
 }
 
 .order-grid-three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.7fr) minmax(6.5rem, 0.8fr) minmax(8.5rem, 1fr);
 }
 
 .lede {
