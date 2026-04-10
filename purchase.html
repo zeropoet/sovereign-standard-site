@@ -39,16 +39,10 @@
           Name
           <input type="text" name="customer_name" autocomplete="name" placeholder="Optional">
         </label>
-        <div class="order-grid">
-          <label class="order-field">
-            Address Line 1
-            <input type="text" name="address_line1" autocomplete="address-line1" required>
-          </label>
-          <label class="order-field">
-            Address Line 2
-            <input type="text" name="address_line2" autocomplete="address-line2" placeholder="Optional">
-          </label>
-        </div>
+        <label class="order-field">
+          Street Address
+          <input type="text" name="address_line1" autocomplete="address-line1" required>
+        </label>
         <div class="order-grid order-grid-three">
           <label class="order-field">
             City
@@ -110,7 +104,6 @@
             customer_name: String(data.get('customer_name') || '').trim(),
             address: {
               line1: String(data.get('address_line1') || '').trim(),
-              line2: String(data.get('address_line2') || '').trim(),
               city: String(data.get('address_city') || '').trim(),
               state: String(data.get('address_state') || '').trim(),
               postal_code: String(data.get('address_postal_code') || '').trim(),
