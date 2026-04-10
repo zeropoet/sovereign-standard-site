@@ -1,49 +1,45 @@
 {
-  "generated_at" : "2026-04-10T17:56:41Z",
+  "generated_at" : "2026-04-10T18:54:18Z",
   "units" : [
     {
       "coin_id" : "coin_00",
       "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
       "created_at" : "2026-04-10T16:31:27Z",
       "id" : 0,
-      "is_partner" : true,
+      "is_partner" : false,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_00",
       "sigil" : "output\/0\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "CLAIMABLE"
     },
     {
       "coin_id" : "coin_01",
       "convergence_hash" : "67693a38c1b5946a2670af7c769a7c18ed80d01356266c687f5a19b7be235572",
       "created_at" : "2026-04-10T16:31:28Z",
       "id" : 1,
-      "is_partner" : true,
+      "is_partner" : false,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_01",
       "sigil" : "output\/1\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "CLAIMABLE"
     },
     {
       "coin_id" : "coin_02",
       "convergence_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
       "created_at" : "2026-04-10T16:31:28Z",
       "id" : 2,
-      "is_partner" : true,
+      "is_partner" : false,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_02",
       "sigil" : "output\/2\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "CLAIMABLE"
     },
     {
       "coin_id" : "coin_03",
       "convergence_hash" : "a1780977b51c4c13732486bda61130d9d4329667f7d444560ac2805380771d7c",
       "created_at" : "2026-04-10T16:31:29Z",
       "id" : 3,
-      "is_partner" : true,
+      "is_partner" : false,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_03",
       "sigil" : "output\/3\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "CLAIMABLE"
     },
     {
       "coin_id" : "coin_04",
@@ -60,11 +56,10 @@
       "convergence_hash" : "b5a645b0a8e51b47871194ec91f341c576fedb1097f4a880d1fed6febc323e2e",
       "created_at" : "2026-04-10T16:31:31Z",
       "id" : 5,
-      "is_partner" : true,
+      "is_partner" : false,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_05",
       "sigil" : "output\/5\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "CLAIMABLE"
     },
     {
       "coin_id" : "coin_06",
@@ -347,15 +342,13 @@
       "state" : "CLAIMABLE"
     },
     {
-      "claimed_at" : "2026-04-06T23:19:36.387Z",
       "convergence_hash" : "a4019cf807d11637ca93dd8443e464c3b61a8f34bc66155466fa4734cc95810a",
       "created_at" : "2026-04-10T16:31:53Z",
-      "holder_hash" : "dd477e88ac92582f75e9476d58e6f4e9280c7ec3557571e5c5387d2424a2cdb5",
       "id" : 34,
       "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/34\/sigil.svg",
-      "state" : "CLAIMED"
+      "state" : "CLAIMABLE"
     },
     {
       "convergence_hash" : "0095239164bf1949206ed798321a21915e7bb7e42c1ef976a344837fbfc20f8d",
