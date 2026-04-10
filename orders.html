@@ -100,11 +100,11 @@
           <article class="ledger-card">
             <div class="ledger-card-head">
               <h3>Order ${escapeHTML(order.sequence)}</h3>
-              <span class="code">${escapeHTML(order.status || 'unknown')}</span>
             </div>
             <div class="invoice-list">
               <div class="invoice-row"><span class="invoice-label">Ledger Sequence:</span><span class="code">${escapeHTML(order.sequence)}</span></div>
               <div class="invoice-row"><span class="invoice-label">Order ID:</span><span class="code code-wrap">${escapeHTML(order.order_id || '')}</span></div>
+              <div class="invoice-row"><span class="invoice-label">Status:</span><span class="code">${escapeHTML(order.status || 'unknown')}</span></div>
               <div class="invoice-row"><span class="invoice-label">Quantity:</span><span class="code">${escapeHTML(order.quantity || 0)}</span></div>
               <div class="invoice-row"><span class="invoice-label">Assigned Units:</span><span class="code code-wrap">${escapeHTML(units)}</span></div>
               <div class="invoice-row"><span class="invoice-label">Created:</span><span class="code">${escapeHTML(formatTimestamp(order.created_at))}</span></div>
