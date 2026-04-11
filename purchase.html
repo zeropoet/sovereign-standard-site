@@ -25,41 +25,49 @@
         <h2>Order</h2>
       </div>
       <form id="purchase-form" class="order-panel">
-        <div class="order-grid">
-          <label class="order-field">
-            Quantity
-            <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
-          </label>
+        <div class="order-columns">
+          <div class="order-column">
+            <label class="order-field">
+              Quantity
+              <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
+            </label>
+            <label class="order-field">
+              Partner Token
+              <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
+            </label>
+            <label class="order-field">
+              Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="order-column">
+            <label class="order-field">
+              Name
+              <input type="text" name="customer_name" autocomplete="name">
+            </label>
+            <label class="order-field">
+              Street Address
+              <input type="text" name="address_line1" autocomplete="address-line1" required>
+            </label>
+            <label class="order-field">
+              City
+              <input type="text" name="address_city" autocomplete="address-level2" required>
+            </label>
+            <label class="order-field">
+              State / Region
+              <input type="text" name="address_state" autocomplete="address-level1" required>
+            </label>
+            <label class="order-field">
+              Postal Code
+              <input type="text" name="address_postal_code" autocomplete="postal-code" required>
+            </label>
+          </div>
         </div>
-        <div class="order-grid">
-          <label class="order-field">
-            Name
-            <input type="text" name="customer_name" autocomplete="name" placeholder="Optional">
-          </label>
-          <label class="order-field">
-            Email
-            <input type="email" name="email" autocomplete="email" required>
-          </label>
+        <div class="section-head order-total-head">
+          <h2>Order total</h2>
         </div>
-        <div class="order-grid">
-          <label class="order-field">
-            Street Address
-            <input type="text" name="address_line1" autocomplete="address-line1" required>
-          </label>
-          <label class="order-field">
-            City
-            <input type="text" name="address_city" autocomplete="address-level2" required>
-          </label>
-        </div>
-        <div class="order-grid">
-          <label class="order-field">
-            State / Region
-            <input type="text" name="address_state" autocomplete="address-level1" required>
-          </label>
-          <label class="order-field">
-            Postal Code
-            <input type="text" name="address_postal_code" autocomplete="postal-code" required>
-          </label>
+        <div class="order-total">
+          <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 unit: $68</p>
         </div>
         <div class="order-actions">
           <button class="order-submit" type="submit">Checkout</button>
@@ -79,10 +87,32 @@
 
     const form = document.getElementById('purchase-form');
     const status = document.getElementById('purchase-status');
+    const pricing = document.getElementById('order-pricing');
+    const quantityInput = form.elements.quantity;
+    const partnerTokenInput = form.elements.partner_token;
+    const STANDARD_UNIT_PRICE = 68;
+    const WHOLESALE_UNIT_PRICE = 34;
+
+    function formatDollars(value) {
+      return `$${value.toFixed(0)}`;
+    }
+
+    function updatePricing() {
+      const quantity = Math.max(1, Number(quantityInput.value) || 1);
+      const unitsLabel = `${quantity} unit${quantity === 1 ? '' : 's'}`;
+      const hasPartnerToken = String(partnerTokenInput.value || '').trim().length > 0;
+      pricing.textContent = hasPartnerToken
+        ? `Partner pricing total for ${unitsLabel}: ${formatDollars(quantity * WHOLESALE_UNIT_PRICE)}`
+        : `Standard pricing total for ${unitsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
+    }
 
     if (new URLSearchParams(window.location.search).get('cancelled') === '1') {
       status.textContent = 'Checkout was canceled. You can try again whenever you are ready.';
     }
+
+    quantityInput.addEventListener('input', updatePricing);
+    partnerTokenInput.addEventListener('input', updatePricing);
+    updatePricing();
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -105,6 +135,7 @@
           body: JSON.stringify({
             email: String(data.get('email') || '').trim(),
             quantity: Number(data.get('quantity') || 0),
+            partner_token: String(data.get('partner_token') || '').trim(),
             customer_name: String(data.get('customer_name') || '').trim(),
             address: {
               line1: String(data.get('address_line1') || '').trim(),
