@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-12T18:10:33.041069Z",
+  "generated_at": "2026-04-12T18:22:25.739820Z",
   "orders": [
     {
-      "amount_total": 4000,
+      "amount_total": null,
       "assigned_units": [
         34
       ],
       "created_at": "2026-04-12T17:06:22.899Z",
-      "currency": "USD",
+      "currency": null,
       "order_id": "ord_04c0ca105a134f3e988ce6b5081a17b6",
       "paid_at": "2026-04-12T17:08:33.697Z",
       "quantity": 1,
