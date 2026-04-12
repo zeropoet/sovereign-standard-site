@@ -136,6 +136,14 @@
         return;
       }
 
+      if (payload.status === 'complete' || payload.status === 'fulfilled') {
+        statusLabel.textContent = units.length ? 'Complete' : 'Confirmed';
+        status.textContent = units.length
+          ? 'Order is complete and units are assigned.'
+          : 'Order is complete.';
+        return;
+      }
+
       statusLabel.textContent = units.length ? 'Confirmed' : 'Paid';
       status.textContent = units.length
         ? 'Order is confirmed and units are assigned.'
