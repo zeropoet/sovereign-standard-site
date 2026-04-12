@@ -25,44 +25,14 @@
         <h2>Order</h2>
       </div>
       <form id="purchase-form" class="order-panel">
-        <div class="order-columns">
-          <div class="order-column">
-            <label class="order-field">
-              Quantity
-              <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
-            </label>
-            <label class="order-field">
-              Partner Token
-              <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
-            </label>
-            <label class="order-field">
-              Email
-              <input type="email" name="email" autocomplete="email" required>
-            </label>
-          </div>
-          <div class="order-column">
-            <label class="order-field">
-              Name
-              <input type="text" name="customer_name" autocomplete="name">
-            </label>
-            <label class="order-field">
-              Street Address
-              <input type="text" name="address_line1" autocomplete="address-line1">
-            </label>
-            <label class="order-field">
-              City
-              <input type="text" name="address_city" autocomplete="address-level2">
-            </label>
-            <label class="order-field">
-              State / Region
-              <input type="text" name="address_state" autocomplete="address-level1">
-            </label>
-            <label class="order-field">
-              Postal Code
-              <input type="text" name="address_postal_code" autocomplete="postal-code">
-            </label>
-          </div>
-        </div>
+        <label class="order-field">
+          Quantity
+          <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
+        </label>
+        <label class="order-field">
+          Partner Token
+          <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        </label>
         <div class="section-head order-total-head">
           <h2>Order total</h2>
         </div>
@@ -133,17 +103,8 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            email: String(data.get('email') || '').trim(),
             quantity: Number(data.get('quantity') || 0),
-            partner_token: String(data.get('partner_token') || '').trim(),
-            customer_name: String(data.get('customer_name') || '').trim(),
-            address: {
-              line1: String(data.get('address_line1') || '').trim(),
-              city: String(data.get('address_city') || '').trim(),
-              state: String(data.get('address_state') || '').trim(),
-              postal_code: String(data.get('address_postal_code') || '').trim(),
-              country: 'US'
-            }
+            partner_token: String(data.get('partner_token') || '').trim()
           })
         });
 

@@ -631,19 +631,6 @@ h3 {
   gap: 1rem;
 }
 
-.order-columns {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: start;
-}
-
-.order-column {
-  display: grid;
-  gap: 1rem;
-  min-width: 0;
-}
-
 .order-field {
   display: grid;
   gap: var(--space-2);
@@ -1170,7 +1157,6 @@ h3 {
 
   .archive-range-row,
   .claim-grid,
-  .order-columns,
   .order-grid,
   .order-grid-three {
     grid-template-columns: 1fr;
