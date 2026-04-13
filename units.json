@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-04-13T15:25:27Z",
+  "generated_at" : "2026-04-13T15:42:32Z",
   "units" : [
     {
       "attested_event_count" : 8,
@@ -89,16 +89,19 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "d39333dc1b55704ebce2ec173ec6f585308ccafc5b1cca3e581b38b0bbbc5c8b",
+      "attested_event_count" : 8,
+      "attested_event_hash" : "f9be7dd18f006d3bfe50a05ad885c336a633be132aa8fa593a6886e1eb16ab37",
+      "claimed_at" : "2026-04-13T15:42:05.971Z",
       "coin_id" : "coin_07",
       "convergence_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
       "created_at" : "2026-04-10T16:31:32Z",
-      "display_state" : "CLAIMABLE",
+      "display_state" : "PARTNER",
+      "holder_hash" : "ab2e0a825816109e4ebbaf4a2b08f97faad7173f2ad88f7367351bca086619e0",
       "id" : 7,
       "is_partner_reserved" : true,
       "sigil" : "output\/7\/sigil.svg",
-      "state" : "claimable"
+      "state" : "claimed",
+      "wholesale_token" : "coin_07"
     },
     {
       "attested_event_count" : 5,
