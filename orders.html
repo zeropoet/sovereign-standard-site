@@ -83,7 +83,7 @@
       const orders = Array.isArray(payload.orders) ? payload.orders : [];
       const totalUnits = orders.reduce((sum, order) => sum + Number(order.quantity || 0), 0);
 
-      summary.textContent = `${orders.length} orders recorded. ${totalUnits} total units allocated or requested through the ledger.`;
+      summary.innerHTML = `${orders.length} orders recorded.<br>${totalUnits} total units allocated or requested through the ledger.`;
 
       if (!orders.length) {
         list.innerHTML = '<p class="muted">No committed orders yet.</p>';
