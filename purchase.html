@@ -20,33 +20,48 @@
       <p class="page-intro">Orders are assigned sequentially after the reserved partner range.</p>
     </header>
 
-    <section class="panel section-stack artifact-section">
-      <div class="section-head">
-        <h2>Order</h2>
-      </div>
-      <form id="purchase-form" class="order-panel">
-        <label class="order-field">
-          Quantity
-          <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
-        </label>
-        <label class="order-field">
-          Partner Token
-          <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
-        </label>
-        <div class="section-head order-total-head">
-          <h2>Order total</h2>
+    <section class="purchase-layout artifact-section">
+      <section class="panel section-stack purchase-order-column">
+        <div class="section-head">
+          <h2>Purchase</h2>
+          <p class="purchase-note">Select the number of units you want to claim. Sequence assignment happens after checkout confirmation.</p>
         </div>
-        <div class="order-total">
-          <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 unit: $68</p>
+        <form id="purchase-form" class="order-panel">
+          <label class="order-field">
+            Quantity
+            <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
+          </label>
+          <label class="order-field">
+            Partner Token
+            <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
+          </label>
+          <div class="section-head order-total-head">
+            <h2>Order total</h2>
+          </div>
+          <div class="order-total">
+            <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 unit: $68</p>
+          </div>
+          <div class="order-actions">
+            <button class="order-submit" type="submit">Checkout</button>
+            <p id="purchase-status" class="muted order-status"></p>
+          </div>
+        </form>
+      </section>
+
+      <section
+        class="section-stack purchase-sequence-column"
+        data-sigil-sequence
+        data-sequence-fps="8"
+        data-sequence-autoplay="true"
+      >
+        <div class="purchase-sequence-stage">
+          <img data-sequence-image alt="Sigil sequence frame">
         </div>
-        <div class="order-actions">
-          <button class="order-submit" type="submit">Checkout</button>
-          <p id="purchase-status" class="muted order-status"></p>
-        </div>
-      </form>
+      </section>
     </section>
   </main>
 
+  <script src="sigil-sequence.js"></script>
   <script src="site.js"></script>
   <script>
     const endpoint = document

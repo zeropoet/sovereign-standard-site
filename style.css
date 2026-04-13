@@ -580,6 +580,42 @@ h3 {
   display: block;
 }
 
+.purchase-layout {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: minmax(0, 50%) minmax(0, 420px);
+  gap: var(--space-5);
+  align-items: start;
+  justify-content: space-between;
+}
+
+.purchase-order-column,
+.purchase-sequence-column {
+  min-width: 0;
+}
+
+.purchase-note {
+  max-width: none;
+  color: var(--muted);
+}
+
+.purchase-sequence-stage {
+  width: min(100%, 420px);
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.purchase-sequence-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .order-form {
   max-width: none;
 }
@@ -1086,6 +1122,10 @@ h3 {
   .archive-page,
   .artifact-page {
     padding: 12px 12px 24px;
+  }
+
+  .purchase-layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .landing-mark {
