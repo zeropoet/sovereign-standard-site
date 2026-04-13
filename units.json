@@ -12,9 +12,9 @@
       "holder_hash" : "b5a77361f8ebb6bc48c071154e72867438d72ad87bc8f33145431add1d3180c4",
       "id" : 0,
       "is_partner_reserved" : true,
-      "partner_reference" : "coin_00",
       "sigil" : "output\/0\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimed",
+      "wholesale_token" : "coin_00"
     },
     {
       "attested_event_count" : 5,

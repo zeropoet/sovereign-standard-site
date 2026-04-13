@@ -412,7 +412,7 @@
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">STATE: CLAIMED</p>
-            ${record.partner_reference ? `<p class="state-detail">${escapeHTML(record.partner_reference)}</p>` : ''}
+            ${record.wholesale_token ? `<p class="state-detail">${escapeHTML(record.wholesale_token)}</p>` : ''}
           </div>
         `;
         return;
@@ -459,7 +459,7 @@
             ${record.state === 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
             ${record.state === 'claimed' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
             ${record.state === 'claimed' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
-            ${record.state === 'claimed' && record.partner_reference ? `<div><span>Reference</span><br><span class="code">${escapeHTML(record.partner_reference)}</span></div>` : ''}
+            ${record.state === 'claimed' && record.wholesale_token ? `<div><span>Wholesale Token</span><br><span class="code">${escapeHTML(record.wholesale_token)}</span></div>` : ''}
           </div>
         </div>
       `;

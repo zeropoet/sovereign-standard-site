@@ -29,7 +29,7 @@ The public site is exported from the main `sovereign-standard` repository root a
 
 - `units.json` publishes the attested registry state for each unit.
 - Standard claims publish claim metadata including `claimed_at` and `holder_hash`.
-- Partner-reserved units `0...33` still claim through the partner flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code.
+- Partner-reserved units `0...33` still claim through the partner flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned `wholesale_token`.
 - The public site does not expose internal claim codes, partner claim codes, or partner tokens.
 
 ## Source of truth
