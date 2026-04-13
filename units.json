@@ -1,14 +1,15 @@
 {
-  "generated_at" : "2026-04-13T03:02:28Z",
+  "generated_at" : "2026-04-13T14:43:19Z",
   "units" : [
     {
       "attested_event_count" : 8,
-      "attested_event_hash" : "af46c8270a6ca86491bb98bbb62ae330d9e4b645279f42eae604e5524c34f3e5",
+      "attested_event_hash" : "43efcb879838a96a200d3ca7d77a3f368f2b1ae15974791857e33f45049879bf",
       "claimed_at" : "2026-04-10T16:31:27Z",
       "coin_id" : "coin_00",
       "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
       "created_at" : "2026-04-10T16:31:27Z",
       "display_state" : "PARTNER",
+      "holder_hash" : "b5a77361f8ebb6bc48c071154e72867438d72ad87bc8f33145431add1d3180c4",
       "id" : 0,
       "is_partner_reserved" : true,
       "partner_reference" : "coin_00",
