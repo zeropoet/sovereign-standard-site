@@ -1,5 +1,5 @@
 {
-  "generated_at" : "2026-04-13T03:00:10Z",
+  "generated_at" : "2026-04-13T03:02:28Z",
   "units" : [
     {
       "attested_event_count" : 8,
@@ -8,7 +8,7 @@
       "coin_id" : "coin_00",
       "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
       "created_at" : "2026-04-10T16:31:27Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "PARTNER",
       "id" : 0,
       "is_partner_reserved" : true,
       "partner_reference" : "coin_00",

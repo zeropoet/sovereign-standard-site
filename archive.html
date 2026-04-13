@@ -105,7 +105,10 @@
         for (const record of filteredUnits) {
           const unitID = Number(record.id ?? record.unit);
           const isPartnerClaimed = Boolean(record.is_partner_reserved) && record.state === 'claimed';
-          const visualState = isPartnerClaimed ? 'partner' : 'default';
+          const isReservedUnclaimed = Boolean(record.is_partner_reserved) && record.state !== 'claimed';
+          const visualState = isPartnerClaimed
+            ? 'partner'
+            : (record.state === 'claimable' || isReservedUnclaimed ? 'claimable' : 'default');
           const labelText = Boolean(record.is_partner_reserved)
             ? (isPartnerClaimed ? 'PARTNER' : 'RESERVED')
             : (record.display_state || record.state);
