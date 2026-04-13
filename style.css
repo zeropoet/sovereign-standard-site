@@ -825,11 +825,17 @@ h3 {
 .claim-actions {
   display: grid;
   gap: var(--space-3);
-  justify-items: start;
+  justify-items: stretch;
 }
 
 .claim-note {
-  max-width: 56ch;
+  width: 100%;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.claim-actions .order-submit {
+  justify-self: start;
 }
 
 .code-wrap {
