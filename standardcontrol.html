@@ -26,12 +26,34 @@
   <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="sovereign-claim-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
   <meta name="theme-color" content="#000000">
+  <script>
+    (() => {
+      try {
+        const navState = sessionStorage.getItem('sovereign-standard.nav');
+        if (!navState) {
+          return;
+        }
+
+        const parsed = JSON.parse(navState);
+        if (!parsed || !parsed.to) {
+          return;
+        }
+
+        if (parsed.to.includes('standardcontrol.html')) {
+          document.documentElement.classList.add('has-pending-nav');
+          document.documentElement.dataset.navKind = parsed.kind || '';
+          document.documentElement.dataset.navFrom = parsed.fromPage || '';
+        }
+      } catch {
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="artifact-page">
+<body data-page="unit">
+  <main class="artifact-page" data-fluid-root>
     <nav class="top-links" aria-label="Primary">
-      <a href="archive.html" class="nav">Back</a>
+      <a href="archive.html" class="nav" data-nav-kind="return-archive">Back</a>
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title" id="unit-title">Unit</h1>
@@ -39,8 +61,8 @@
     </header>
 
     <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
-      <a id="unit-prev" class="unit-pagination-link" href="archive.html">Previous</a>
-      <a id="unit-next" class="unit-pagination-link" href="archive.html">Next</a>
+      <a id="unit-prev" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Previous</a>
+      <a id="unit-next" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Next</a>
     </nav>
 
     <section class="panel section-stack artifact-section state-section">

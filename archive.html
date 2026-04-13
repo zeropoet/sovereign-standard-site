@@ -25,12 +25,34 @@
   <meta name="twitter:description" content="Browse the deterministic Sovereign Standard artifact archive.">
   <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="theme-color" content="#000000">
+  <script>
+    (() => {
+      try {
+        const navState = sessionStorage.getItem('sovereign-standard.nav');
+        if (!navState) {
+          return;
+        }
+
+        const parsed = JSON.parse(navState);
+        if (!parsed || !parsed.to) {
+          return;
+        }
+
+        if (parsed.to.includes('archive.html')) {
+          document.documentElement.classList.add('has-pending-nav');
+          document.documentElement.dataset.navKind = parsed.kind || '';
+          document.documentElement.dataset.navFrom = parsed.fromPage || '';
+        }
+      } catch {
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="archive-page">
+<body data-page="archive">
+  <main class="archive-page" data-fluid-root>
     <nav class="top-links" aria-label="Primary">
-      <a href="index.html" class="nav">Back</a>
+      <a href="index.html" class="nav" data-nav-kind="return-index">Back</a>
     </nav>
     <header class="page-header">
       <h1 class="page-title">Archive</h1>
@@ -118,6 +140,7 @@
           const link = document.createElement('a');
           link.href = `standardcontrol.html?unit=${unitID}`;
           link.className = 'artifact-link';
+          link.dataset.navKind = 'focus-unit';
 
           const img = document.createElement('img');
           img.loading = 'lazy';

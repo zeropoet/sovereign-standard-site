@@ -25,10 +25,32 @@
   <meta name="twitter:description" content="A deterministic archive of sovereign artifacts generated from the FoldKernel instrument.">
   <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="theme-color" content="#000000">
+  <script>
+    (() => {
+      try {
+        const navState = sessionStorage.getItem('sovereign-standard.nav');
+        if (!navState) {
+          return;
+        }
+
+        const parsed = JSON.parse(navState);
+        if (!parsed || !parsed.to) {
+          return;
+        }
+
+        if (parsed.to.includes('index.html') || parsed.to === '/' || parsed.to.endsWith('/')) {
+          document.documentElement.classList.add('has-pending-nav');
+          document.documentElement.dataset.navKind = parsed.kind || '';
+          document.documentElement.dataset.navFrom = parsed.fromPage || '';
+        }
+      } catch {
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="landing-page" aria-label="Sovereign Standard">
+<body data-page="index">
+  <main class="landing-page" aria-label="Sovereign Standard" data-fluid-root>
     <section class="landing-shell">
       <img
         src="assets/sovereign-standard-lockup.png"
@@ -50,7 +72,7 @@
         </div>
       </section>
       <nav class="top-links landing-links" aria-label="Primary">
-        <a href="archive.html" class="landing-link">Enter Archive</a>
+        <a href="archive.html" class="landing-link" data-nav-kind="enter-archive">Enter Archive</a>
       </nav>
       <nav class="landing-secondary-links" aria-label="Secondary">
         <a href="purchase.html" class="landing-link">Purchase Units</a>

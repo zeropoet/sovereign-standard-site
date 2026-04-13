@@ -41,6 +41,67 @@ body {
   min-height: 100vh;
 }
 
+html.has-pending-nav body {
+  overflow: hidden;
+}
+
+[data-fluid-root] {
+  transition: opacity 220ms ease, transform 260ms ease, filter 260ms ease;
+  will-change: opacity, transform, filter;
+}
+
+body.page-is-ready [data-fluid-root] {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+body.page-is-entering[data-page="archive"] [data-fluid-root],
+html.has-pending-nav body[data-page="archive"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  filter: blur(8px);
+}
+
+body.page-is-entering[data-page="unit"] [data-fluid-root],
+html.has-pending-nav body[data-page="unit"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(14px) scale(0.975);
+  filter: blur(10px);
+}
+
+body.page-is-entering[data-page="index"] [data-fluid-root],
+html.has-pending-nav body[data-page="index"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(-18px) scale(1.01);
+  filter: blur(10px);
+}
+
+body.page-is-exiting[data-nav-kind="enter-archive"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(-16px) scale(1.015);
+  filter: blur(8px);
+}
+
+body.page-is-exiting[data-nav-kind="focus-unit"] [data-fluid-root] {
+  opacity: 0;
+  transform: scale(0.985);
+  filter: blur(10px);
+}
+
+body.page-is-exiting[data-nav-kind="return-archive"] [data-fluid-root],
+body.page-is-exiting[data-nav-kind="return-index"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(18px) scale(0.992);
+  filter: blur(8px);
+}
+
+body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(8px);
+}
+
 .has-custom-cursor,
 .has-custom-cursor a,
 .has-custom-cursor button,
