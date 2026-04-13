@@ -22,6 +22,9 @@
   --space-5: 1.5rem;
   --space-6: 2.1rem;
   --space-7: 3rem;
+  --fluid-ease: cubic-bezier(0.24, 0.72, 0.3, 1);
+  --fluid-duration-opacity: 220ms;
+  --fluid-duration-shift: 320ms;
 }
 
 * {
@@ -46,7 +49,10 @@ html.has-pending-nav body {
 }
 
 [data-fluid-root] {
-  transition: opacity 220ms ease, transform 260ms ease, filter 260ms ease;
+  transition:
+    opacity var(--fluid-duration-opacity) var(--fluid-ease),
+    transform var(--fluid-duration-shift) var(--fluid-ease),
+    filter var(--fluid-duration-shift) var(--fluid-ease);
   will-change: opacity, transform, filter;
 }
 
@@ -59,47 +65,48 @@ body.page-is-ready [data-fluid-root] {
 body.page-is-entering[data-page="archive"] [data-fluid-root],
 html.has-pending-nav body[data-page="archive"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(24px) scale(0.985);
-  filter: blur(8px);
+  transform: translateY(3px) scale(0.998);
+  filter: blur(1px);
+  transition-duration: 180ms, 240ms, 240ms;
 }
 
 body.page-is-entering[data-page="unit"] [data-fluid-root],
 html.has-pending-nav body[data-page="unit"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(14px) scale(0.975);
-  filter: blur(10px);
+  transform: translateY(5px) scale(0.994);
+  filter: blur(2px);
 }
 
 body.page-is-entering[data-page="index"] [data-fluid-root],
 html.has-pending-nav body[data-page="index"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(-18px) scale(1.01);
-  filter: blur(10px);
+  transform: translateY(-5px) scale(1.002);
+  filter: blur(2px);
 }
 
 body.page-is-exiting[data-nav-kind="enter-archive"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(-16px) scale(1.015);
-  filter: blur(8px);
+  transform: translateY(-2px) scale(1.001);
+  filter: blur(1px);
 }
 
 body.page-is-exiting[data-nav-kind="focus-unit"] [data-fluid-root] {
   opacity: 0;
-  transform: scale(0.985);
-  filter: blur(10px);
+  transform: scale(0.996);
+  filter: blur(2px);
 }
 
 body.page-is-exiting[data-nav-kind="return-archive"] [data-fluid-root],
 body.page-is-exiting[data-nav-kind="return-index"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(18px) scale(0.992);
-  filter: blur(8px);
+  transform: translateY(4px) scale(0.997);
+  filter: blur(2px);
 }
 
 body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   opacity: 0;
-  transform: translateY(10px);
-  filter: blur(8px);
+  transform: translateY(3px);
+  filter: blur(2px);
 }
 
 .has-custom-cursor,
