@@ -104,8 +104,13 @@
 
         for (const record of filteredUnits) {
           const unitID = Number(record.id ?? record.unit);
+          const isPartnerClaimed = Boolean(record.is_partner_reserved) && record.state === 'claimed';
+          const visualState = isPartnerClaimed ? 'partner' : 'default';
+          const labelText = Boolean(record.is_partner_reserved)
+            ? (isPartnerClaimed ? 'PARTNER' : 'RESERVED')
+            : (record.display_state || record.state);
           const card = document.createElement('article');
-          card.className = `artifact-card panel state-${String(record.state || '').toLowerCase()}`;
+          card.className = `artifact-card panel state-${visualState}`;
 
           const link = document.createElement('a');
           link.href = `standardcontrol.html?unit=${unitID}`;
@@ -120,7 +125,7 @@
 
           const label = document.createElement('div');
           label.className = 'artifact-card-meta';
-          label.innerHTML = `<code>${unitID}</code><span>${record.display_state || record.state}</span>`;
+          label.innerHTML = `<code>${unitID}</code><span>${labelText}</span>`;
 
           link.append(img, label);
           card.append(link);

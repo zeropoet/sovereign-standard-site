@@ -912,11 +912,7 @@ h3 {
   transition: opacity 120ms ease;
 }
 
-.artifact-card.state-claimable {
-  background: #ffffff;
-}
-
-.artifact-card.state-claimed {
+.artifact-card.state-default {
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -929,8 +925,8 @@ h3 {
   opacity: 0.9;
 }
 
-.artifact-card.state-claimable:hover,
-.artifact-card.state-claimable:focus-within {
+.artifact-card.state-default:hover,
+.artifact-card.state-default:focus-within {
   opacity: 1;
 }
 
@@ -954,8 +950,8 @@ h3 {
   background: transparent;
 }
 
-.artifact-card.state-claimable .artifact-link:hover,
-.artifact-card.state-claimable .artifact-link:focus-visible {
+.artifact-card.state-default .artifact-link:hover,
+.artifact-card.state-default .artifact-link:focus-visible {
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -982,12 +978,7 @@ h3 {
   transition: filter 120ms ease, opacity 120ms ease, transform 120ms ease;
 }
 
-.artifact-card.state-claimable img {
-  opacity: 1;
-  transform: none;
-}
-
-.artifact-card.state-claimed img {
+.artifact-card.state-default img {
   opacity: 1;
   transform: none;
   filter: none;
@@ -1017,7 +1008,7 @@ h3 {
   transition: color 120ms ease, background-color 120ms ease;
 }
 
-.artifact-card.state-claimed code,
+.artifact-card.state-default code,
 .artifact-card.state-partner code {
   color: var(--text);
 }
@@ -1039,7 +1030,7 @@ h3 {
   text-transform: uppercase;
 }
 
-.artifact-card.state-claimed .artifact-card-meta span {
+.artifact-card.state-default .artifact-card-meta span {
   color: var(--text);
 }
 
