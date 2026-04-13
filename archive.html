@@ -43,9 +43,9 @@
       <div class="archive-filter-row" aria-label="Archive filters">
         <nav class="archive-filter-links" aria-label="State">
           <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
-          <a href="#claimable" data-state-filter="CLAIMABLE" class="archive-filter-link state-claimable">Claimable</a>
-          <a href="#claimed" data-state-filter="CLAIMED" class="archive-filter-link state-claimed">Claimed</a>
-          <a href="#partner" data-state-filter="PARTNER" class="archive-filter-link state-partner">Partner</a>
+          <a href="#claimable" data-state-filter="claimable" class="archive-filter-link state-claimable">Claimable</a>
+          <a href="#claimed" data-state-filter="claimed" class="archive-filter-link state-claimed">Claimed</a>
+          <a href="#partner" data-state-filter="partner" class="archive-filter-link state-partner">Partner Reserved</a>
         </nav>
       </div>
     </header>
@@ -57,7 +57,7 @@
   <script>
     async function loadUnits() {
       const manifest = await window.SovereignRegistry.loadRegistry();
-      const publicUnits = manifest.units.filter((record) => record.state !== 'NODE');
+      const publicUnits = manifest.units.filter((record) => record.state !== 'node');
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
       const unitSearch = document.getElementById('unit-search');
@@ -89,7 +89,8 @@
         const filteredUnits = publicUnits.filter((record) => {
           const unitID = Number(record.id ?? record.unit);
           const matchesQuery = normalizedQuery ? `${unitID}`.includes(normalizedQuery) : true;
-          const matchesState = selectedState === 'ALL' || record.state === selectedState;
+          const matchesState = selectedState === 'ALL'
+            || (selectedState === 'partner' ? Boolean(record.is_partner_reserved) : record.state === selectedState);
 
           return matchesQuery && matchesState;
         });
@@ -119,7 +120,7 @@
 
           const label = document.createElement('div');
           label.className = 'artifact-card-meta';
-          label.innerHTML = `<code>${unitID}</code><span>${record.state}</span>`;
+          label.innerHTML = `<code>${unitID}</code><span>${record.display_state || record.state}</span>`;
 
           link.append(img, label);
           card.append(link);

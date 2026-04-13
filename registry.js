@@ -82,34 +82,54 @@
     return {
       id: unitID,
       created_at: timestamp,
-      state: 'CLAIMABLE',
+      state: 'claimable',
+      display_state: 'CLAIMABLE',
       convergence_hash: null,
       claimed_at: null,
       holder_hash: null,
-      is_partner: false,
       is_partner_reserved: unitID >= 0 && unitID <= 33,
       sigil: null
     };
+  }
+
+  function normalizeStateLabel(record) {
+    if (record?.display_state) {
+      return String(record.display_state);
+    }
+
+    return String(record?.state || '')
+      .replaceAll('_', ' ')
+      .toUpperCase();
   }
 
   function mergeUnitRecord(record) {
     const claimStore = getClaimsStore();
     const unitID = Number(record.id ?? record.unit);
     const localClaim = claimStore[String(unitID)];
+    const state = String(record.state || '').toLowerCase();
 
-    if (localClaim && (record.claimed_at || record.state === 'PARTNER' || record.state === 'NODE')) {
+    if (localClaim && (record.claimed_at || state === 'claimed' || state === 'node' || state === 'retired')) {
       delete claimStore[String(unitID)];
       setClaimsStore(claimStore);
-      return record;
+      return {
+        ...record,
+        state,
+        display_state: normalizeStateLabel(record)
+      };
     }
 
     if (!localClaim) {
-      return record;
+      return {
+        ...record,
+        state,
+        display_state: normalizeStateLabel(record)
+      };
     }
 
     return {
       ...record,
-      state: 'CLAIMED',
+      state: 'claimed',
+      display_state: 'CLAIMED',
       pending: Boolean(localClaim.pending),
       claimed_at: localClaim.claimed_at,
       holder_hash: localClaim.holder_hash
@@ -151,7 +171,7 @@
       throw new Error('Unit not found');
     }
 
-    if (record.state !== 'CLAIMABLE') {
+    if (record.state !== 'claimable') {
       throw new Error('This unit is not claimable');
     }
 
@@ -189,7 +209,8 @@
 
     return {
       ...record,
-      state: 'CLAIMED',
+      state: 'claimed',
+      display_state: 'CLAIMED',
       pending: true,
       claimed_at: timestamp,
       holder_hash: holderHash
@@ -199,7 +220,7 @@
   async function claimPartnerUnit(unit, payload) {
     const record = await loadUnitRecord(unit);
 
-    if (!record || !record.is_partner_reserved || record.state !== 'CLAIMABLE') {
+    if (!record || !record.is_partner_reserved || record.state !== 'claimable') {
       throw new Error('');
     }
 
@@ -226,6 +247,8 @@
 
     return {
       ...record,
+      state: 'claimed',
+      display_state: 'CLAIMED',
       pending: true,
       partner_reference: record.coin_id || null
     };

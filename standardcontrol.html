@@ -203,7 +203,7 @@
       try {
         const committedRecord = await window.SovereignRegistry.waitForUnitRecord(
           unitID,
-          (record) => record.state === 'CLAIMED' && !record.pending && record.claimed_at === pendingRecord.claimed_at,
+          (record) => record.state === 'claimed' && !record.pending && record.claimed_at === pendingRecord.claimed_at,
           { timeoutMs: 180000, intervalMs: 4000 }
         );
 
@@ -238,7 +238,7 @@
 
       const partnerRecord = await window.SovereignRegistry.waitForUnitRecord(
         unitID,
-        (entry) => entry.state === 'PARTNER',
+        (entry) => entry.state === 'claimed' && entry.is_partner_reserved,
         { timeoutMs: 180000, intervalMs: 4000 }
       );
 
@@ -253,7 +253,7 @@
       const statePanel = document.getElementById('state-panel');
       const unitID = Number(record.id ?? record.unit);
 
-      if (record.state === 'CLAIMABLE') {
+      if (record.state === 'claimable') {
         if (record.is_partner_reserved) {
           statePanel.innerHTML = `
             <div class="state-block">
@@ -304,7 +304,7 @@
 
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">CLAIMABLE</p>
+            <p class="state-label">${escapeHTML(record.display_state || 'CLAIMABLE')}</p>
             <form class="claim-form" id="claim-form">
               <label class="order-field">
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
@@ -368,10 +368,10 @@
         return;
       }
 
-      if (record.state === 'CLAIMED') {
+      if (record.state === 'claimed') {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">${record.pending ? 'CLAIMED' : 'CLAIMED'}</p>
+            <p class="state-label">${escapeHTML(record.display_state || 'CLAIMED')}</p>
             <p class="state-detail">${escapeHTML(formatTimestamp(record.claimed_at))}</p>
             ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
@@ -386,17 +386,17 @@
         return;
       }
 
-      if (record.state === 'PARTNER') {
+      if (record.state === 'claimed' && record.is_partner_reserved) {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">STATE: PARTNER</p>
+            <p class="state-label">STATE: CLAIMED</p>
             ${record.partner_reference ? `<p class="state-detail">${escapeHTML(record.partner_reference)}</p>` : ''}
           </div>
         `;
         return;
       }
 
-      if (record.state === 'NODE') {
+      if (record.state === 'node') {
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">NODE</p>
@@ -407,7 +407,7 @@
 
       statePanel.innerHTML = `
         <div class="state-block">
-          <p class="state-label">${escapeHTML(record.state)}</p>
+          <p class="state-label">${escapeHTML(record.display_state || record.state)}</p>
         </div>
       `;
     }
@@ -428,17 +428,16 @@
           <div class="meta-group">
             <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
             ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.convergence_hash).toUpperCase())}</span></div>` : ''}
-            <div><span>State</span><br><span class="code">${escapeHTML(record.state)}</span></div>
-            ${record.state !== 'CLAIMABLE' && record.state !== 'CLAIMED' && record.state !== 'PARTNER' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+            <div><span>State</span><br><span class="code">${escapeHTML(record.display_state || record.state)}</span></div>
+            ${record.state !== 'claimable' && record.state !== 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
           </div>
         </div>
         <div class="meta-column">
           <div class="meta-group">
-            ${record.state === 'CLAIMED' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
-            ${record.state === 'CLAIMED' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
-            ${record.state === 'CLAIMED' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
-            ${record.state === 'PARTNER' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
-            ${record.state === 'PARTNER' && record.partner_reference ? `<div><span>Reference</span><br><span class="code">${escapeHTML(record.partner_reference)}</span></div>` : ''}
+            ${record.state === 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
+            ${record.state === 'claimed' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
+            ${record.state === 'claimed' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
+            ${record.state === 'claimed' && record.partner_reference ? `<div><span>Reference</span><br><span class="code">${escapeHTML(record.partner_reference)}</span></div>` : ''}
           </div>
         </div>
       `;
@@ -469,10 +468,10 @@
         throw new Error(`Unit ${unitID} is not available`);
       }
 
-      const isGatedPartnerUnit = record.is_partner_reserved && record.state !== 'PARTNER';
+      const isGatedPartnerUnit = record.is_partner_reserved && record.state !== 'claimed';
 
       const unitList = registry.units
-        .filter((entry) => entry.state !== 'NODE')
+        .filter((entry) => entry.state !== 'node')
         .map((entry) => Number(entry.id ?? entry.unit));
       const unitIndex = unitList.indexOf(unitID);
       const previousUnit = unitIndex > 0 ? unitList[unitIndex - 1] : null;
