@@ -1,1264 +1,1537 @@
 {
-  "generated_at" : "2026-04-11T18:46:08Z",
+  "generated_at" : "2026-04-13T02:39:00Z",
   "units" : [
     {
+      "attested_event_count" : 8,
+      "attested_event_hash" : "af46c8270a6ca86491bb98bbb62ae330d9e4b645279f42eae604e5524c34f3e5",
+      "claimed_at" : "2026-04-10T16:31:27Z",
       "coin_id" : "coin_00",
       "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
       "created_at" : "2026-04-10T16:31:27Z",
+      "display_state" : "CLAIMED",
       "id" : 0,
-      "is_partner" : true,
       "is_partner_reserved" : true,
       "partner_reference" : "coin_00",
       "sigil" : "output\/0\/sigil.svg",
-      "state" : "PARTNER"
+      "state" : "claimed"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "33cf510b7b705c8fee546b197cbf956253853774b95501e146aa5b657f28c50f",
       "coin_id" : "coin_01",
       "convergence_hash" : "67693a38c1b5946a2670af7c769a7c18ed80d01356266c687f5a19b7be235572",
       "created_at" : "2026-04-10T16:31:28Z",
+      "display_state" : "CLAIMABLE",
       "id" : 1,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/1\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "799c0564de330b149208c598ddeb7576b9af447005bab5642c4cab6c75cfa018",
       "coin_id" : "coin_02",
       "convergence_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
       "created_at" : "2026-04-10T16:31:28Z",
+      "display_state" : "CLAIMABLE",
       "id" : 2,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/2\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "e643d6dd73ab25e3096ea66dcee46633e7586b57e7015a4d0e5f5c5d3fd428f4",
       "coin_id" : "coin_03",
       "convergence_hash" : "a1780977b51c4c13732486bda61130d9d4329667f7d444560ac2805380771d7c",
       "created_at" : "2026-04-10T16:31:29Z",
+      "display_state" : "CLAIMABLE",
       "id" : 3,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/3\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "2b239feb9bca8de6c053312b77fb6e93fe3682f7c7c395fd884a3ec684816b93",
       "coin_id" : "coin_04",
       "convergence_hash" : "742fb915d9a1d261e7dd36a5c8f86829e780d22ea6f62c0cb62ed72c022a2bce",
       "created_at" : "2026-04-10T16:31:30Z",
+      "display_state" : "CLAIMABLE",
       "id" : 4,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/4\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "1261eca916e0b444ebc564cc63d4c4ec92e4a406af41168968d4d02d91cf0eb1",
       "coin_id" : "coin_05",
       "convergence_hash" : "b5a645b0a8e51b47871194ec91f341c576fedb1097f4a880d1fed6febc323e2e",
       "created_at" : "2026-04-10T16:31:31Z",
+      "display_state" : "CLAIMABLE",
       "id" : 5,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/5\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "9fecf9db947dfa64fa34df5ffb9f7af36048d9ed52446e5b65d8087374caa635",
       "coin_id" : "coin_06",
       "convergence_hash" : "96fea7aefdb02a961b19525afd7d7e4deca34211621cde0e17c50e519ea18063",
       "created_at" : "2026-04-10T16:31:32Z",
+      "display_state" : "CLAIMABLE",
       "id" : 6,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/6\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "d39333dc1b55704ebce2ec173ec6f585308ccafc5b1cca3e581b38b0bbbc5c8b",
       "coin_id" : "coin_07",
       "convergence_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
       "created_at" : "2026-04-10T16:31:32Z",
+      "display_state" : "CLAIMABLE",
       "id" : 7,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/7\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "29b050792f6bbeb8e311101528366e3032986f1ea0b272693e3d8fd6f988ac82",
       "coin_id" : "coin_08",
       "convergence_hash" : "6053eb82ef38f3c63f79a3207082d22e46bb95efa043c90d7f4db832917669b0",
       "created_at" : "2026-04-10T16:31:33Z",
+      "display_state" : "CLAIMABLE",
       "id" : 8,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/8\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "fdf21da6aceffa1a7b058cee0b8b2eb85e15e3dbcadeaf2b7317bdcd2dd42366",
       "coin_id" : "coin_09",
       "convergence_hash" : "bbc6612e0a0adb64ce0d2d019ac83633f13179247ac78a9f81c3b1bc84088b6d",
       "created_at" : "2026-04-10T16:31:34Z",
+      "display_state" : "CLAIMABLE",
       "id" : 9,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/9\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "5b930d8c3c3cc1fe3aff96370775dd3c90704ae26f79e3021a6be04775fec5ff",
       "coin_id" : "coin_10",
       "convergence_hash" : "b72544d06e8c5448606c786cc7d7bb2219a5a9b0d9015340d6fb054f6cefbc0c",
       "created_at" : "2026-04-10T16:31:35Z",
+      "display_state" : "CLAIMABLE",
       "id" : 10,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/10\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "f4dc919c1aeaa038962af9be1b842c3e3986ef1219ab2eadb49e7765414495cb",
       "coin_id" : "coin_11",
       "convergence_hash" : "5a6a32343ef4866c49c422e849237ee6dba26c0caf7c7f21c5801c6684b2e2b1",
       "created_at" : "2026-04-10T16:31:35Z",
+      "display_state" : "CLAIMABLE",
       "id" : 11,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/11\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "c0e170954dde69a345b9b2264fc1137c1ef06ec16b8d03fae94fac002cfe1382",
       "coin_id" : "coin_12",
       "convergence_hash" : "004ea877f49a2056adc9716d4e5eaea4f66b0b10b984de160a1c72bf0530c822",
       "created_at" : "2026-04-10T16:31:36Z",
+      "display_state" : "CLAIMABLE",
       "id" : 12,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/12\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "57e91463c84e673baeca08409bf2225930218d09ede6ed6b5de36344b8ee0414",
       "coin_id" : "coin_13",
       "convergence_hash" : "5a371917db18a2e1ee310133dacbf5cd03d16ded039215db5eacd23bd20e0c11",
       "created_at" : "2026-04-10T16:31:37Z",
+      "display_state" : "CLAIMABLE",
       "id" : 13,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/13\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "76ddf11addc0ddbb1d5ed2af71dcd93887a74bb36a591e2f189ad62b8098f4c6",
       "coin_id" : "coin_14",
       "convergence_hash" : "863f6d13033993ba3c1d5d6a4b452b21bcce5edb8646091d9720ddd558db6c26",
       "created_at" : "2026-04-10T16:31:38Z",
+      "display_state" : "CLAIMABLE",
       "id" : 14,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/14\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "fc349f114753d3fcb4af48836e47d9a5aa1efa0d6018b14f4325cba801677c33",
       "coin_id" : "coin_15",
       "convergence_hash" : "1c46d9bd2237f8d23dabef7ced3cb03d70fc7d0688d14c22b1b1d96c50d17f06",
       "created_at" : "2026-04-10T16:31:38Z",
+      "display_state" : "CLAIMABLE",
       "id" : 15,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/15\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "b959472d378b1a460519b74dd0e45926a7d2de48ecf1da978a10f908bd37724c",
       "coin_id" : "coin_16",
       "convergence_hash" : "ed3ac2b0e7e60e32acb86bc520ebe8ccbdf3eae5801448e832b2aca579934c76",
       "created_at" : "2026-04-10T16:31:39Z",
+      "display_state" : "CLAIMABLE",
       "id" : 16,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/16\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "9f7d6b252134acb17a1c21619e6bac059f059a709f18da18956dfd601d6095d3",
       "coin_id" : "coin_17",
       "convergence_hash" : "949f35353249fa9f0be29fcc87ffd69b9d7e2e501a6d170b435d8118fe1bb12d",
       "created_at" : "2026-04-10T16:31:40Z",
+      "display_state" : "CLAIMABLE",
       "id" : 17,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/17\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "b9824cd253cad84dc55f4ff62f281500a6c8c975ec2367f08d278669eca01766",
       "coin_id" : "coin_18",
       "convergence_hash" : "9ec7aec0f42c6472a9d058a049fba7fef2509a87e711504de90df28046d46849",
       "created_at" : "2026-04-10T16:31:41Z",
+      "display_state" : "CLAIMABLE",
       "id" : 18,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/18\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "4fa1dd6d67184b084f76bf89c808021c3ab71d279623115d3d0824fa5cc7487b",
       "coin_id" : "coin_19",
       "convergence_hash" : "f8fa6f4cc7c61558e1967f90dbe14f1a0d77dd33519aef632a00de0068a49e11",
       "created_at" : "2026-04-10T16:31:42Z",
+      "display_state" : "CLAIMABLE",
       "id" : 19,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/19\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "2f8c137a92208cd7a65bbb78143ea98a1b942986c92c8c11dd6b2ba34fb74d2f",
       "coin_id" : "coin_20",
       "convergence_hash" : "0a85756800c72061c2aa598cd9f4cb0cdc813cfbb62cd2f93a6c7f094690f381",
       "created_at" : "2026-04-10T16:31:42Z",
+      "display_state" : "CLAIMABLE",
       "id" : 20,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/20\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "c4d2280c1a8da1479d03c92732ba326ca943b096ebe496b2b54e17d6de170959",
       "coin_id" : "coin_21",
       "convergence_hash" : "09f16f2b701efc958a7895e4f03d8649c95347e4a08bef507d973f1208d34e15",
       "created_at" : "2026-04-10T16:31:43Z",
+      "display_state" : "CLAIMABLE",
       "id" : 21,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/21\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "5fd9e278398e8cc6d80ea7d2dff1d883bc95c5516c94e6285997a36579bcf828",
       "coin_id" : "coin_22",
       "convergence_hash" : "0814cffec595480e6a37b0b387edf8615942498177dd6fd53d47aa29b832d9ef",
       "created_at" : "2026-04-10T16:31:44Z",
+      "display_state" : "CLAIMABLE",
       "id" : 22,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/22\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "23553516f5810e681edd261537ee4d2fe9eb892186520d93eb1d60aebdd0599e",
       "coin_id" : "coin_23",
       "convergence_hash" : "3d41287d83727516819f8dc8252d678fc9999755fcf55800c520dce0b8af01a9",
       "created_at" : "2026-04-10T16:31:45Z",
+      "display_state" : "CLAIMABLE",
       "id" : 23,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/23\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "347f56e7e4b1ef5c38f11aedb75853f9c5b8f4334a63c8bb4ff5475f1a940688",
       "coin_id" : "coin_24",
       "convergence_hash" : "442ecf262e9d6035351a2f4d43f1ced5f502e33e9d854886803eb3624cee35f6",
       "created_at" : "2026-04-10T16:31:45Z",
+      "display_state" : "CLAIMABLE",
       "id" : 24,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/24\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "7119b2f7fb20b601d585f34cf84dceaba94cf9b92fa247c2e1c20955ef0fee53",
       "coin_id" : "coin_25",
       "convergence_hash" : "88608c320cc0e03c50f9dec3411dd4d5b125fb00193d0a70e01e06fbbf14becc",
       "created_at" : "2026-04-10T16:31:46Z",
+      "display_state" : "CLAIMABLE",
       "id" : 25,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/25\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "c3215f88374380cbfa30d35cca39f7f1f815424a1caf2e531d1dc1ed86e2f1ed",
       "coin_id" : "coin_26",
       "convergence_hash" : "ab8f60be9dbec94954307258ff94af4a757607938eb8a4d054a201a1200c69b1",
       "created_at" : "2026-04-10T16:31:47Z",
+      "display_state" : "CLAIMABLE",
       "id" : 26,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/26\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "672176fda8f089b454fc5aed006c34765caea81c49ff840f4d385f0a0897a4e9",
       "coin_id" : "coin_27",
       "convergence_hash" : "dc2d2aae7cc7ee0d9d8ba544e1133df0d56d5e515a67eefec67f6d1d1c465131",
       "created_at" : "2026-04-10T16:31:48Z",
+      "display_state" : "CLAIMABLE",
       "id" : 27,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/27\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "d6cac598103bc487717c1269576487f348b91238d6129d5ba94b1bbe24bd0fa5",
       "coin_id" : "coin_28",
       "convergence_hash" : "7eb02c3a40d968181b489f7a8d4a75fda2c321a17adec4ee2f83d149a0b7aeab",
       "created_at" : "2026-04-10T16:31:49Z",
+      "display_state" : "CLAIMABLE",
       "id" : 28,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/28\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "5176e6bd8bb057a2fd4d844699bf60111e6a828ed90516196fc0285efa3b0333",
       "coin_id" : "coin_29",
       "convergence_hash" : "1b102037d4cfe1d16d8cf8bb4a3c259f983eec1fd1cb816d2ee6a16291e2db0d",
       "created_at" : "2026-04-10T16:31:49Z",
+      "display_state" : "CLAIMABLE",
       "id" : 29,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/29\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "57a06d58aa41f4b538c526ce980622068cc439457dca6e3ba61a67f00be05fed",
       "coin_id" : "coin_30",
       "convergence_hash" : "45ab29e6a8042628542caf95a5a095b5571a7199d4d9ee1869ef4fcd19f6320a",
       "created_at" : "2026-04-10T16:31:50Z",
+      "display_state" : "CLAIMABLE",
       "id" : 30,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/30\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "d7557ac3e33a31de30912b5ece2dede38211a50cb2d8825e46ed36d07c05eac8",
       "coin_id" : "coin_31",
       "convergence_hash" : "63fb535b56cd71db33f382c160b2128456bda36225fe1971f6a835972356ecd5",
       "created_at" : "2026-04-10T16:31:51Z",
+      "display_state" : "CLAIMABLE",
       "id" : 31,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/31\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "87d6f3c76f5ee62c6ae0157563c4d2a26f819660bc3477ea2bdc60b34897f10c",
       "coin_id" : "coin_32",
       "convergence_hash" : "257f48d3b41680b4fe6938eff627f6ed0bccec7450c17d6ecbb5998949ae2205",
       "created_at" : "2026-04-10T16:31:52Z",
+      "display_state" : "CLAIMABLE",
       "id" : 32,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/32\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 5,
+      "attested_event_hash" : "4185125427984ea4e6e48491f85eede56e058abd6dc91fdc24c9cfbf7cdb5639",
       "coin_id" : "coin_33",
       "convergence_hash" : "80829e2f210cbf3633d025ae0359ad691ca5ffcc33509a7ad499fbd31fa2580c",
       "created_at" : "2026-04-10T16:31:52Z",
+      "display_state" : "CLAIMABLE",
       "id" : 33,
-      "is_partner" : false,
       "is_partner_reserved" : true,
       "sigil" : "output\/33\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "15a28f48dbc47cccbe0318bb192e6a4ed9e81093e66415e52f2572febb09414e",
       "convergence_hash" : "a4019cf807d11637ca93dd8443e464c3b61a8f34bc66155466fa4734cc95810a",
       "created_at" : "2026-04-10T16:31:53Z",
+      "display_state" : "CLAIMABLE",
       "id" : 34,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/34\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4129549a5f5be1d87b457d6707eaa01251fa9907ab24fb644d774991ef311af5",
       "convergence_hash" : "0095239164bf1949206ed798321a21915e7bb7e42c1ef976a344837fbfc20f8d",
       "created_at" : "2026-04-10T16:31:54Z",
+      "display_state" : "CLAIMABLE",
       "id" : 35,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/35\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1b1b38fc9f1b4946d836524f0ebdd234f1ccf46dcb156b12f6f1abf7ea128e2f",
       "convergence_hash" : "279aaf935d68b26e9328c35f53f15ebc89271833e4cee8df0bb800fb2da3f0db",
       "created_at" : "2026-04-10T16:31:55Z",
+      "display_state" : "CLAIMABLE",
       "id" : 36,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/36\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "c1dfb3caae12c04e25f6c56b169d14adae545cf35daf8c2fbae1f3b4432262d8",
       "convergence_hash" : "3156b82eb0d2fad3fbef2e944ede6b0055b72be201b07370889ecedf2abb561a",
       "created_at" : "2026-04-10T16:31:55Z",
+      "display_state" : "CLAIMABLE",
       "id" : 37,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/37\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a2b2dac1b67038e5d9ac6d336e41637142d15823fcab006f61b53ff5e4af4ec5",
       "convergence_hash" : "a20d580347f29bdfade2b6bff030fdb6186c12fef13e7b155eee9ee1ade2cefd",
       "created_at" : "2026-04-10T16:31:56Z",
+      "display_state" : "CLAIMABLE",
       "id" : 38,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/38\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5e4b72b8a937028004cbf430215f135a171568b2ff059efaa4b99b6debed9f53",
       "convergence_hash" : "dd5ff08fff68066809a2b42add30190ba631b9a5b91a1fcd76903f697f4599d3",
       "created_at" : "2026-04-10T16:31:57Z",
+      "display_state" : "CLAIMABLE",
       "id" : 39,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/39\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5ae8869842e5e0a5ea5adbbd8fde2b5dfe076cfd29c341265992e3dc13d17792",
       "convergence_hash" : "a1a997237b5306d4dfcf86fb6754348f657a17344444bb67066a95296241f549",
       "created_at" : "2026-04-10T16:31:58Z",
+      "display_state" : "CLAIMABLE",
       "id" : 40,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/40\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1e6be26f6dc4934c5d3f63e8ca5d995782b21d11cdc5c83bab6b94acf9f748b1",
       "convergence_hash" : "12936ad0f1ddd3146d53ec6365b167f6bfdb3a7002061cbbde1c8846cf15dcf7",
       "created_at" : "2026-04-10T16:31:58Z",
+      "display_state" : "CLAIMABLE",
       "id" : 41,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/41\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e199adae71d0593e9507fd191ace5e43ba5cd49ae170a1a577f31dc1fa2488f4",
       "convergence_hash" : "edeb73e5ff5800a391479e777a53a5e1cdf44fe1aa6c435887188ae31acc67b9",
       "created_at" : "2026-04-10T16:31:59Z",
+      "display_state" : "CLAIMABLE",
       "id" : 42,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/42\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "0bb2300eadf17330ba5fd6fc616cbbbaee9bc827452db5014f16f93b8b8ca379",
       "convergence_hash" : "f87eee389b8cf431164584d833b7a2f03cdba5aa8b616e258cebbd78995efdea",
       "created_at" : "2026-04-10T16:32:00Z",
+      "display_state" : "CLAIMABLE",
       "id" : 43,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/43\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "34ee0a60c6e014c10704bb89c9f7f7e2b85f4bd4efba397b1e859cdb88f1a689",
       "convergence_hash" : "e7d31b7bf49f4884dcdcf52c50de1a4fca0e7db958eeb603bd03d42e4e1eef82",
       "created_at" : "2026-04-10T16:32:01Z",
+      "display_state" : "CLAIMABLE",
       "id" : 44,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/44\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5ac8dad7de362b2f321775bbf6c781f0a136bbedd6727fc700f764bc37bcc3c9",
       "convergence_hash" : "cd8e7ec526b4a4690c1ff6d8607ccf6286a5708c2b7c24ec68f1724885a04e2e",
       "created_at" : "2026-04-10T16:32:02Z",
+      "display_state" : "CLAIMABLE",
       "id" : 45,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/45\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ef5398dc9bef3ada7d21f8ed9d9431caac2633bc3fa2ed8a6f299887a4cbf581",
       "convergence_hash" : "b31566eb1a4e3a68545414d006f4170609be6d49c363b6c9ac930eda9f407a33",
       "created_at" : "2026-04-10T16:32:02Z",
+      "display_state" : "CLAIMABLE",
       "id" : 46,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/46\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "22659bd91fe154010542ffdd9e56e163259453640b21d23280f11ec1f31d992a",
       "convergence_hash" : "a52a52641e740daef147012f9d2d0055daaf61f6b6db3321586327cc1d914182",
       "created_at" : "2026-04-10T16:32:03Z",
+      "display_state" : "CLAIMABLE",
       "id" : 47,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/47\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "60a6bcd9462529ef22e181158dffd671560cea5e0f25dc50ebc14fd7e0e21c90",
       "convergence_hash" : "a60b76032bedd6de39e63ba9f5d5e5c1d543dd08dcea94b938562de912f5705d",
       "created_at" : "2026-04-10T16:32:04Z",
+      "display_state" : "CLAIMABLE",
       "id" : 48,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/48\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "0f8672eb4b983bc992e6bb14729e880972d9c4b899ef2132c17fb384f7cfcb4c",
       "convergence_hash" : "ce30177ff54c0b07edaec1e32424410cae445698dd1bde4ca491d46d2af66ae9",
       "created_at" : "2026-04-10T16:32:05Z",
+      "display_state" : "CLAIMABLE",
       "id" : 49,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/49\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3990f427fd25d0f99bd30b5a4100ee65e3c08fc4dbf0f44a1dce421440d5267f",
       "convergence_hash" : "512ce0f49982b26ed501be9db5b1495d422bff84ca4ae92b606ab21401e8afc3",
       "created_at" : "2026-04-10T16:32:05Z",
+      "display_state" : "CLAIMABLE",
       "id" : 50,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/50\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a5d9f128901252439cfe61f568cbdd544405883b94b45387aa2e135b82901b66",
       "convergence_hash" : "732dbcd43bca4f7aec193a09eee81da51e71e28b05ddd83c2d743f1d9768d535",
       "created_at" : "2026-04-10T16:32:06Z",
+      "display_state" : "CLAIMABLE",
       "id" : 51,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/51\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "bbcb57b59d4712136cba92e235b4d98e0d3bfd7c8e476e8fded664d60d6d5f42",
       "convergence_hash" : "fcef25235f236709e7aefa4cbb146f6918edd2131111edaab20f628e4293f25e",
       "created_at" : "2026-04-10T16:32:07Z",
+      "display_state" : "CLAIMABLE",
       "id" : 52,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/52\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ceb2028dfc502b901587d859c3cedca9c1fb0f06459c98dfb90cd417aca4ed9f",
       "convergence_hash" : "6e8e177c834c36d32aeb2b584dd47ae34d9f4c14e7a5c1d58db002d944bf5b65",
       "created_at" : "2026-04-10T16:32:08Z",
+      "display_state" : "CLAIMABLE",
       "id" : 53,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/53\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5e934fd514cf61110ac7b531b056d2796a6fb32cc6e2616ef7b23a1cc0c4fe7a",
       "convergence_hash" : "139001a8c60177b9fab69c2ee3f3fe9563ca3156488956d9b7777880e81545b2",
       "created_at" : "2026-04-10T16:32:08Z",
+      "display_state" : "CLAIMABLE",
       "id" : 54,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/54\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "f1df55f36960f5f9e7bc399b8818d50fe667c81ce17849ad7f091c2c149433f2",
       "convergence_hash" : "15e43fed5a0e26e96996511c0a1f2fdf92d75ea1de0bf88d1fc4deb55c41b032",
       "created_at" : "2026-04-10T16:32:09Z",
+      "display_state" : "CLAIMABLE",
       "id" : 55,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/55\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "db0b4a4eb37499629cc471b417766c93f3ca9051021f6d579a8c89b83d81b5dc",
       "convergence_hash" : "8929bea623dfe4df25fab4494297f9517f3f7de89d42210e676f5e062f519e9a",
       "created_at" : "2026-04-10T16:32:10Z",
+      "display_state" : "CLAIMABLE",
       "id" : 56,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/56\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "295fabd6651e28167b3105b26b4520ba53035e57bcf640f7beeef4c2b48f3a10",
       "convergence_hash" : "48ccf31846de5816c1cb3dc960bea984380f7c73c7c6e6b1cea27f8fc3519a70",
       "created_at" : "2026-04-10T16:32:11Z",
+      "display_state" : "CLAIMABLE",
       "id" : 57,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/57\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "aea302a78c98892e2af777a1dac7169c43c2f424286a17f6a2fd2e0e46409296",
       "convergence_hash" : "53d0f95f7e330738d0123210d47dab4aa0f0e64c8cbc8c27cdacbc2a33cebd51",
       "created_at" : "2026-04-10T16:32:11Z",
+      "display_state" : "CLAIMABLE",
       "id" : 58,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/58\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "37d61931f4127fdc295f23304ab8fb9b0b69d77832d0fe796fc2a404dfd020a0",
       "convergence_hash" : "2fc651efeaeab164f0233c9251a0d7f1d0b2f6fba3ff8620268a96b0a990a86e",
       "created_at" : "2026-04-10T16:32:12Z",
+      "display_state" : "CLAIMABLE",
       "id" : 59,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/59\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "fc09173e033fab11212d0f3681cad2c84ca5586cafc42a8bcde76f47755059dc",
       "convergence_hash" : "bd1b69789f51626e23cb84e9b02dcaf8ac89196bf121bb3c64ec9f63c2aca9ba",
       "created_at" : "2026-04-10T16:32:13Z",
+      "display_state" : "CLAIMABLE",
       "id" : 60,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/60\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a5adcc86fa4dd2defeb727413b34f11891e35cfe6cbd80ef60caf448f00a3c63",
       "convergence_hash" : "50db8fe40cf7c83f7228ca62edf12e029419838121060fb5bf372eb4e51e6c1a",
       "created_at" : "2026-04-10T16:32:14Z",
+      "display_state" : "CLAIMABLE",
       "id" : 61,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/61\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "94dab3b57d86ee2e5b5552300ce932504da19687f6a4faff2ad755c1f5fa33cf",
       "convergence_hash" : "dc0033f61dda7409f3ace2ffd440f44b0d335c5265e8849d85b23c394bcdb8af",
       "created_at" : "2026-04-10T16:32:15Z",
+      "display_state" : "CLAIMABLE",
       "id" : 62,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/62\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "d6e0b894dc7077d3adde5516f14d3abe0d36f743ef9826818ba140add00ff901",
       "convergence_hash" : "60664ee99a25ab8c78c5b2160a9e7f4bebb78f6c5c3b8a28ff3994d83deef73e",
       "created_at" : "2026-04-10T16:32:15Z",
+      "display_state" : "CLAIMABLE",
       "id" : 63,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/63\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4f38c4c686fb02480da0bd3f26d8e269b4714f506d642ad79edd3f3085deb374",
       "convergence_hash" : "e2173a9c0638f97eda7f5b7a2abef8d9120899a3838e7571a5836b82a836bfc1",
       "created_at" : "2026-04-10T16:32:16Z",
+      "display_state" : "CLAIMABLE",
       "id" : 64,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/64\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e15b23058afbd88f9a66e1bf718e28ead73be47fd52fe98b7cf63eeaafa889c0",
       "convergence_hash" : "0c4354567aadade7473c92634c36f0f25381c51712f385b7770071f8b8731c29",
       "created_at" : "2026-04-10T16:32:17Z",
+      "display_state" : "CLAIMABLE",
       "id" : 65,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/65\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "d263802c9734fc9cbae3de42979e9ffc5198b64f4e1b2eeb8ff80b4b358a3b5e",
       "convergence_hash" : "ec6972ee39199fe7bd79d7786547c6d113c06cefd35f1d4f4734606642e315f8",
       "created_at" : "2026-04-10T16:32:18Z",
+      "display_state" : "CLAIMABLE",
       "id" : 66,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/66\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a82394991aa6f047d41fda70d885967b786c001baf458b5464dd554699b6ae12",
       "convergence_hash" : "5dea9e6799ffbfdc2425b84f6d0513f63f52efaa1406c6fbfdedd6f82cd6daaf",
       "created_at" : "2026-04-10T16:32:18Z",
+      "display_state" : "CLAIMABLE",
       "id" : 67,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/67\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "d4e0a886b18ede918045ae3e24481f34d51cf7466a31b15e73325b817df843da",
       "convergence_hash" : "817ebfd9b50159a66c8786b7d115565a90bfff3c12a9d8ad50cf0e8f6ec4e929",
       "created_at" : "2026-04-10T16:32:19Z",
+      "display_state" : "CLAIMABLE",
       "id" : 68,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/68\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ab324b9d1289506b7da0ea9429383b2f495c4669396e30937e0165cc03280250",
       "convergence_hash" : "9a3614d5eecb57689fc9018e7fde13a4e89a3ba80f1e2e359b5b86cce646556b",
       "created_at" : "2026-04-10T16:32:20Z",
+      "display_state" : "CLAIMABLE",
       "id" : 69,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/69\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "68097292b677aa2b8bcfdd823fa563f95ad1774f6b0988cb9cc48697ef10cb0c",
       "convergence_hash" : "9e91c1ae645293d732f9161d46cb202c74ad341ede6a264c9278d1419b9d2359",
       "created_at" : "2026-04-10T16:32:21Z",
+      "display_state" : "CLAIMABLE",
       "id" : 70,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/70\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "6d2440b38af5c69836d9a72b2f6072583126b1afa00042ddc6e8fce5182b8b5b",
       "convergence_hash" : "f1f4525eaefe24708eb98062e2f3ad5096f86073302e8e214bbe766a25e58080",
       "created_at" : "2026-04-10T16:32:21Z",
+      "display_state" : "CLAIMABLE",
       "id" : 71,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/71\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4fbe63a687b0a08c6a720d197ac1471015a6074ec6090ab01e1414a5c926b96e",
       "convergence_hash" : "46be119409be7e3dbfb71de9608ad3ead184987d20dd00ac5606e10fbd9fb089",
       "created_at" : "2026-04-10T16:32:22Z",
+      "display_state" : "CLAIMABLE",
       "id" : 72,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/72\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "b309025cbe5166fb6b7504831957447df7aafed78d5d4b54bff28fc3a3118cf1",
       "convergence_hash" : "ad12b5a8822f1dedb4f9270dcb568eb25e6830f3a7555fac8f3930031502a7d3",
       "created_at" : "2026-04-10T16:32:23Z",
+      "display_state" : "CLAIMABLE",
       "id" : 73,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/73\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "12d31d5ce5ecd0881471c718ffc455ff63b24b5804e09b0f46f706aa82240d51",
       "convergence_hash" : "e49cf57a02ccf7b44504e3af5c5645e80fdcc75fb58dcf44bfd47eea5e259992",
       "created_at" : "2026-04-10T16:32:24Z",
+      "display_state" : "CLAIMABLE",
       "id" : 74,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/74\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "99c91fb926a343bd07a560ef1077c9b8f75171a9575518d53fc5f79bbaa2d774",
       "convergence_hash" : "7c03c49a0714b2be9f0edd99477bfa3d4ee8eecb3b14acb51e2044933e8a840d",
       "created_at" : "2026-04-10T16:32:25Z",
+      "display_state" : "CLAIMABLE",
       "id" : 75,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/75\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "f32646da07b93f048ec036d8103a8a438e25e466e22405f629356507cff46432",
       "convergence_hash" : "7e25c6b28099f0afd0027f3255be88b70717589fc3ae793f885272291a9b9308",
       "created_at" : "2026-04-10T16:32:25Z",
+      "display_state" : "CLAIMABLE",
       "id" : 76,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/76\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "8b721f72e8c1206eb1bd6f2f16c2a92778efdb33688b04ddfb214b79c9cf3909",
       "convergence_hash" : "75976d3b5b79c43cdca0c1eef2011dcb6db5c247952d927b32fc769d941043a6",
       "created_at" : "2026-04-10T16:32:26Z",
+      "display_state" : "CLAIMABLE",
       "id" : 77,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/77\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "9925caef90dcfb3970b66a969b6719a1c3ac9a604863ec427d75d5acf816af2e",
       "convergence_hash" : "ed066401e54bf4d09df758b58a64afb039d9fad1d3b096709e3eb0e072867bdc",
       "created_at" : "2026-04-10T16:32:27Z",
+      "display_state" : "CLAIMABLE",
       "id" : 78,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/78\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "93302ea4725fde6ed58cbbb7dbbd7fbd2005f3068d6acd920ca0450c9b3d4ac9",
       "convergence_hash" : "3bf02a0af10041963cd209cbe3d3f692c4df8ac3183eadd565fb30439a104f39",
       "created_at" : "2026-04-10T16:32:28Z",
+      "display_state" : "CLAIMABLE",
       "id" : 79,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/79\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1dda9adb960d6da21f8df71304259a22af26733595e910bd8149112c0da73224",
       "convergence_hash" : "9ffe4fd59499157d68bfdf10102114c26397dddae07eb4c3be3e1da27db615eb",
       "created_at" : "2026-04-10T16:32:28Z",
+      "display_state" : "CLAIMABLE",
       "id" : 80,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/80\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "14d2be3f8cf24824b6cf27e7bd7d2f7aa5586756102a4159d7af5842dbf46dd6",
       "convergence_hash" : "19234283f8f5a2ac684e1fba64b327cab6dcca54e3c8d4bddf769d7c40fa957f",
       "created_at" : "2026-04-10T16:32:29Z",
+      "display_state" : "CLAIMABLE",
       "id" : 81,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/81\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5660ad6ea7911c74efaa0c294472efb55850ec88e0eb896bcb598e640575d1ad",
       "convergence_hash" : "2318cde76d4074f1c7f7f7d3008450a585a610d3b0358a37c4f4a76866ff3b37",
       "created_at" : "2026-04-10T16:32:30Z",
+      "display_state" : "CLAIMABLE",
       "id" : 82,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/82\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1b50475d9e0900d996e10b8ba349a4727b3c2d4156a62b8d7e41a81b74c8193a",
       "convergence_hash" : "7b295ddf0f3ecaa74e45553524995f1aa5b262e6dcf9a5e4e119e6db7e176867",
       "created_at" : "2026-04-10T16:32:31Z",
+      "display_state" : "CLAIMABLE",
       "id" : 83,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/83\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "9685aba2a014a2f14ec39647b5b8e7f522cf5b188f9e0d97f5a10d53876e59a6",
       "convergence_hash" : "80a7e10a31c0455365141509a1303931c91a0f5491315b957f7004de245bdc6d",
       "created_at" : "2026-04-10T16:32:31Z",
+      "display_state" : "CLAIMABLE",
       "id" : 84,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/84\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "c11572c81d197b05b3f3ca69f076390f14fad1fed72fa0a918bff8422e3c78ce",
       "convergence_hash" : "b74b05a6730cc15eaf4f9a912d6a37c45e880bf42bdb90da10f37a1e564421c2",
       "created_at" : "2026-04-10T16:32:32Z",
+      "display_state" : "CLAIMABLE",
       "id" : 85,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/85\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "d85f2690460fe8069b10c8a59aa10ff08680d19ab98a730051c65a723d8bda47",
       "convergence_hash" : "ef1d9e83c76e7ac017e917efe5d12eda070ddc537be16659f45826a071f56702",
       "created_at" : "2026-04-10T16:32:33Z",
+      "display_state" : "CLAIMABLE",
       "id" : 86,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/86\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "976ffe12f3e8c2f35284202de39f91716d068a03993368ce84f43319d550eb56",
       "convergence_hash" : "32fe71589cf4a4e4378147dccf75afb4fd09dd629252ef1b7999fd1c68e52181",
       "created_at" : "2026-04-10T16:32:34Z",
+      "display_state" : "CLAIMABLE",
       "id" : 87,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/87\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "2186889768b5c7c1a65df99eb231de37d138aa88888fd4a68a85cc467dafa84b",
       "convergence_hash" : "cad9a2968924704b9e0bb05a1351a24a323b32c58f02cc51e8bcaa3c4b49a887",
       "created_at" : "2026-04-10T16:32:34Z",
+      "display_state" : "CLAIMABLE",
       "id" : 88,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/88\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "8f1bf28f38a11cbbda1e0da1684d2bf2ff4dc798c4c7fc8987fffe784eb9d031",
       "convergence_hash" : "47b273d33e6e6dc630c8d48cfe305970e43c8ca9087c72f5e738e59a46f47415",
       "created_at" : "2026-04-10T16:32:35Z",
+      "display_state" : "CLAIMABLE",
       "id" : 89,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/89\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "33ece2d866f58d55ca1c17700fa54333c4bceaeba2441a96f9f06779ec87b3d9",
       "convergence_hash" : "7c602aa827a3f7b129629cbb286ccfa6f0f19ff34d7f4e628c15b6bc32e73881",
       "created_at" : "2026-04-10T16:32:36Z",
+      "display_state" : "CLAIMABLE",
       "id" : 90,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/90\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4810cc6f0b8eb9d3b70c7c9c26bb273d46aab8cb3b66260f67943834405601ae",
       "convergence_hash" : "ed4c37fe2d645e830532754f65b316f7ea38ec819698baa562baa3692f9043cf",
       "created_at" : "2026-04-10T16:32:37Z",
+      "display_state" : "CLAIMABLE",
       "id" : 91,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/91\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "10f6240b6091408732de67a8c34f02fbd97062d966d436a3039d69e77c7703b0",
       "convergence_hash" : "c1f4bf538b7d7420753bb00793da5a1418aa31c3b6c1e697b48acd747d31c183",
       "created_at" : "2026-04-10T16:32:38Z",
+      "display_state" : "CLAIMABLE",
       "id" : 92,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/92\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4376ac2e7efdb34599ff4e47735227fdd8f13d33b72ad7c169e800c99523ec6b",
       "convergence_hash" : "e11c8ce7b26f3d52994d5d5a44d3cb52504dde4369fdac46207ef7a1959b6777",
       "created_at" : "2026-04-10T16:32:38Z",
+      "display_state" : "CLAIMABLE",
       "id" : 93,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/93\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "f131a4a896440425e77e6557b9e1f5e8edc9d7693d05373fb8337c9d416e52f2",
       "convergence_hash" : "987d04884b5b9014506c290355ce7ecd314c0300f66794dc4d3f5b0be2939963",
       "created_at" : "2026-04-10T16:32:39Z",
+      "display_state" : "CLAIMABLE",
       "id" : 94,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/94\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5dddb2ccfcfd1ecb58fc677b7f5a86f48478aa17cd212052cc1ee41eeff89805",
       "convergence_hash" : "128d36ba09e9747fde5094610dccfbe3aac2e2f687edb551bf098f8d57bd4fdc",
       "created_at" : "2026-04-10T16:32:40Z",
+      "display_state" : "CLAIMABLE",
       "id" : 95,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/95\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "b72a9ea14f05644f307ec8d17d60be57186cd58e7b6355f22997e2b743fd769c",
       "convergence_hash" : "3e242f63190881d1ce1fc788b31b356969a6e5699bf78936cee374bdfa803d0c",
       "created_at" : "2026-04-10T16:32:41Z",
+      "display_state" : "CLAIMABLE",
       "id" : 96,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/96\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "f34a4a7fb7b4e32faf1f08c87ae7de5628f3e557508b164f4c553419e33e06fd",
       "convergence_hash" : "120e23b17dbbb98e6ac2a458d598f7bdd4856ee4209a541b91a3be4872a31dda",
       "created_at" : "2026-04-10T16:32:41Z",
+      "display_state" : "CLAIMABLE",
       "id" : 97,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/97\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1c45b5efa2a4a5ebce31de126cceefbb7b75a1cc75fbccdfb9623e714d4d2485",
       "convergence_hash" : "c2303af8fca2a2a702d4d0c4f373f3d8fdc55180faaf4b190a71e60419bc5552",
       "created_at" : "2026-04-10T16:32:42Z",
+      "display_state" : "CLAIMABLE",
       "id" : 98,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/98\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a47ceb55bb980cda2b1114cecbeb0fa651c2c24ac26b0034a202f2e02a9b5dbf",
       "convergence_hash" : "97330a27e51b686d323c3beff1f6290c25c2fb37134705ef31d11882521f909a",
       "created_at" : "2026-04-10T16:32:43Z",
+      "display_state" : "CLAIMABLE",
       "id" : 99,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/99\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "2162811a7cf33e85189c1c1bcc88008e4c3271ce8ced753b561c5f70b3d881bb",
       "convergence_hash" : "52cd862e9ee6edbeb4eba113b5292d4db67a961828e366a93e3b016d9116d6a4",
       "created_at" : "2026-04-10T16:32:44Z",
+      "display_state" : "CLAIMABLE",
       "id" : 100,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/100\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "dc76361275e4d64f1fc6b900af0ab0d24646b4c523b3c47aed5f3e79a6daa067",
       "convergence_hash" : "e783d5b511787c904b5b405737891aa9640e8cd8d3ce78986a1ce47fc7fc8da0",
       "created_at" : "2026-04-10T16:32:44Z",
+      "display_state" : "CLAIMABLE",
       "id" : 101,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/101\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "975f0533f764fa1dbc194f182bbee37aed0f869b15d2b9861034ace4c54def6f",
       "convergence_hash" : "4c8613fc7867b1d77c5b90ebf41005f77b58b3f044f2984a76d76a2f77910c76",
       "created_at" : "2026-04-10T16:32:45Z",
+      "display_state" : "CLAIMABLE",
       "id" : 102,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/102\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ad4bb849055b4878407d6b78b0b2125f5d613d68644227f13aaf84761dfe28f7",
       "convergence_hash" : "a02bab5cd0e46b0f0d4aa75ede4a75a671388bb2744b82fbd6063d5c1f6f7336",
       "created_at" : "2026-04-10T16:32:46Z",
+      "display_state" : "CLAIMABLE",
       "id" : 103,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/103\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "a0588ff470b4766feb430b96c174026f2af05be4e90c3ee39975d228c5502835",
       "convergence_hash" : "c207be3f70aff58a6d4bebe92a80e8e9be6e8c01ca0efbe2150bbdae51c7ccb2",
       "created_at" : "2026-04-10T16:32:47Z",
+      "display_state" : "CLAIMABLE",
       "id" : 104,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/104\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "7567a63f392c38edad452c40cabb24755fc27cc65793ea0c515dab726809e8a0",
       "convergence_hash" : "b82370691041233b211e7e44c11665c8e14be0b077c4c2a5f868446b9d076bd2",
       "created_at" : "2026-04-10T16:32:47Z",
+      "display_state" : "CLAIMABLE",
       "id" : 105,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/105\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "f5d9edbde2e3ca2cb9e56ccd29f6f09417e5b1f916c2ce2f489f005b20b2d15a",
       "convergence_hash" : "0aaaf7c86fb6890d007e5e672920f9888d606384ade007ddd611819a7166129c",
       "created_at" : "2026-04-10T16:32:48Z",
+      "display_state" : "CLAIMABLE",
       "id" : 106,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/106\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "304d0ec81015ea326f3f43fe6ffa634fbde968ac22277395dfd7b96206acfff3",
       "convergence_hash" : "9acb6f28e05510c887223de2eff6d453fa1a9898d8e4c3853ecf081b880c2a14",
       "created_at" : "2026-04-10T16:32:49Z",
+      "display_state" : "CLAIMABLE",
       "id" : 107,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/107\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "d2bc6130c5a9072862897258b07af2dcde6316630c3bd60f79b23ef039d8e258",
       "convergence_hash" : "66f0b9bf9139f6673a01d660202f8277830046d962b49049f8e3fa2854c4fe1d",
       "created_at" : "2026-04-10T16:32:50Z",
+      "display_state" : "CLAIMABLE",
       "id" : 108,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/108\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ef842f1c7233728f431f037b4708a3664ffda3065c77f49d05ee313df961360a",
       "convergence_hash" : "174373ff1a47f3103fadda57a2b644fbdbe2e4a0851845ca55e5d411a495d301",
       "created_at" : "2026-04-10T16:32:50Z",
+      "display_state" : "CLAIMABLE",
       "id" : 109,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/109\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "54bf85a9a4a66f561e54bd54c940adf0f7fe4d1e729de17a9b3bb9bf0c20cdbe",
       "convergence_hash" : "7171cae90cdbaf03aa7504845f6e79833e205840019cdb48ceaa5dd5103517a9",
       "created_at" : "2026-04-10T16:32:51Z",
+      "display_state" : "CLAIMABLE",
       "id" : 110,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/110\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "bf7c1aaab73b144296988e7496c35eb9ec4ab16a0a2962d824308f1b799aee7a",
       "convergence_hash" : "484ddac2e4e8904136c6a94e2f30f0272b8e36dcf219069e044fa2a7907d0449",
       "created_at" : "2026-04-10T16:32:52Z",
+      "display_state" : "CLAIMABLE",
       "id" : 111,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/111\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e983541167e1e6dbcb1ab3da886869d7387c553a48638b6dbc11018a9128cf02",
       "convergence_hash" : "2000590e11a4ef950e72cd45e8e6a2ba87ea0867db7ba2c4831c3acd4e61d97a",
       "created_at" : "2026-04-10T16:32:53Z",
+      "display_state" : "CLAIMABLE",
       "id" : 112,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/112\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "dd35de449a2ce413368d410cd1ababf7f495cd11c2c06c98a422536c29f1bc8e",
       "convergence_hash" : "91e2af9e2fa0a6cf09265212fcabb7abd65d62ae8dc490f0769543301da74629",
       "created_at" : "2026-04-10T16:32:54Z",
+      "display_state" : "CLAIMABLE",
       "id" : 113,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/113\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "7155eed2dc722eee1564fba4cf8687966d54db5c31834d60793f6fbe659eb764",
       "convergence_hash" : "a1ba98466fed100451da00fd71ce00352bccb31030566d38034e3092d71c2c4b",
       "created_at" : "2026-04-10T16:32:54Z",
+      "display_state" : "CLAIMABLE",
       "id" : 114,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/114\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "077e2d7be01cb0b34c798df721902526360e5a3228ab5ce028be8f379aa218c8",
       "convergence_hash" : "f30ef48de538ac646d07766df3c30d0db68237659bd134f263a041b5660ff152",
       "created_at" : "2026-04-10T16:32:55Z",
+      "display_state" : "CLAIMABLE",
       "id" : 115,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/115\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1129089fde46c64dcddf612f1a00666cc59740f5129472b0e8e8f67a359449fc",
       "convergence_hash" : "f0a77a9a131bf0f8193e565e8350a6afd4f0b804f9dccc345328dea3c9a72708",
       "created_at" : "2026-04-10T16:32:56Z",
+      "display_state" : "CLAIMABLE",
       "id" : 116,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/116\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "70f0320fcc76d4376a5f006c96063c50d0accbcbe953933809499c18e4a1a184",
       "convergence_hash" : "62dbc1c64f6fdfa1fba61e8279acca3ba15df32a0ccd5cedb327f39a1602971f",
       "created_at" : "2026-04-10T16:32:57Z",
+      "display_state" : "CLAIMABLE",
       "id" : 117,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/117\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "9238fb96253698dc02088882de14748e4903e67e53fdd59b55ab11b58b3abec1",
       "convergence_hash" : "1ba68c55ac7e8d42043dbfbf0208d6534fb4ea9f4b2ddf9eaf2e97dd5fe8284c",
       "created_at" : "2026-04-10T16:32:57Z",
+      "display_state" : "CLAIMABLE",
       "id" : 118,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/118\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "875fa0c7c3b1b2278e33224dc4b684ee2282d4909b04bc0f6ca49db6d8577227",
       "convergence_hash" : "67f729a7165293075a131b304d51e150568fa6debdc0d9e42e2546c271379d52",
       "created_at" : "2026-04-10T16:32:58Z",
+      "display_state" : "CLAIMABLE",
       "id" : 119,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/119\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "bdb61dd118931b7733bdd37266cc0d2054076f7bc967a13c7f9229bf17e6946b",
       "convergence_hash" : "116e92e0f79c22a6b4af19c8c475f8ee6efa1b52fcf6159dc1c8d294483e8686",
       "created_at" : "2026-04-10T16:32:59Z",
+      "display_state" : "CLAIMABLE",
       "id" : 120,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/120\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "8bf86d7f3440b43ad753b632d1a6f19babfb121f6646c7d5d70ba2a19bb3c743",
       "convergence_hash" : "17d158faf243762164d5e17788d1e867bd9f3804bda5c406b7458d4820b1a95e",
       "created_at" : "2026-04-10T16:33:00Z",
+      "display_state" : "CLAIMABLE",
       "id" : 121,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/121\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1eb2f873235f973ff1b7360bc4f087be49b1cab0380d0c38d2b43cbd3c6ef459",
       "convergence_hash" : "0b7d63ef26b9cb97bcfc7b043f8e1c333b627188dbfd34ff46ba80749d2be49a",
       "created_at" : "2026-04-10T16:33:00Z",
+      "display_state" : "CLAIMABLE",
       "id" : 122,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/122\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4266629c85e9f669c5b4e64c3c5a1b1eb2b9b199f3c77cb4dbac1b80bfd49ce5",
       "convergence_hash" : "cb29f3562c57f9c569bd831fc17ce05eefc5c07b5ce54fbf829c57186a2d5c79",
       "created_at" : "2026-04-10T16:33:01Z",
+      "display_state" : "CLAIMABLE",
       "id" : 123,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/123\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "c3ab8ed4ecb5460a46534487e228887f46d0ed1e0e64db86135b9506a175a57b",
       "convergence_hash" : "81034e5dd10da9a1b7fe93288bf29ea314294f681a0f5a342723fd9bacf7cf79",
       "created_at" : "2026-04-10T16:33:02Z",
+      "display_state" : "CLAIMABLE",
       "id" : 124,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/124\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1e2ce694eec19d73025f3bcc0810fc8bbbfcc0237b11ecccf1a209b07d8dc3b6",
       "convergence_hash" : "d40b1e2e71fccccb3aa1e29394ee268b3523a091dccda33e712d19e050c65a44",
       "created_at" : "2026-04-10T16:33:03Z",
+      "display_state" : "CLAIMABLE",
       "id" : 125,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/125\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3b08f49f283856ff9c707919a1346a027a4081782d212fa1181264f4c88e52f4",
       "convergence_hash" : "355ba96753c21107551685a424b169a44222ea3352b850fd0d7acce77e81414b",
       "created_at" : "2026-04-10T16:33:03Z",
+      "display_state" : "CLAIMABLE",
       "id" : 126,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/126\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4f3c19a2816fa27e0f36af28b49ae086583607fbabb570b076907f0a59965a22",
       "convergence_hash" : "5e08b1727944ecdfea6f76fd53bfc684581efefeab7bb600b406d3076cfb2732",
       "created_at" : "2026-04-10T16:33:04Z",
+      "display_state" : "CLAIMABLE",
       "id" : 127,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/127\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "040133891ca77148f1ed9242b1f9ae5cbbd84aedb71caacfb672c3fe4d887809",
       "convergence_hash" : "335a709117bf0f7f0580fcc907ae05bb9a000a6113a1f01f8ac54b42319e5282",
       "created_at" : "2026-04-10T16:33:05Z",
+      "display_state" : "CLAIMABLE",
       "id" : 128,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/128\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "dd53346d41fcda3f3b09c9f291b72b6defb1df47fdcd752f46a65483d678611d",
       "convergence_hash" : "0d7c6762d66737127651749f14af708a53343731e9880a2351d4d83875386c6d",
       "created_at" : "2026-04-10T16:33:06Z",
+      "display_state" : "CLAIMABLE",
       "id" : 129,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/129\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4dcf62835bb0c80decb3ca56974ad57320481aa220abd32dff062a27a4dfba1c",
       "convergence_hash" : "a6b2bdfb6eb7bc75fba89e40158df03dcad17eb3205d20a87e7a5a417722d053",
       "created_at" : "2026-04-10T16:33:07Z",
+      "display_state" : "CLAIMABLE",
       "id" : 130,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/130\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "58bd9f7053e1e1e868359b84f472ee590c9637d7715985e4f3dd3e4130388de0",
       "convergence_hash" : "7532430ea37322a9cf07bd601bbd137425139a411889721baca4a9602b2b373e",
       "created_at" : "2026-04-10T16:33:07Z",
+      "display_state" : "CLAIMABLE",
       "id" : 131,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/131\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "1e25161a404ed65c4656f8d8f66072b79ffcc86036cf747abeff4bfcac693f6e",
       "convergence_hash" : "de05305113bf9ff261349e17b537c3ee643c7683b927590c6e9b88ae0c32846d",
       "created_at" : "2026-04-10T16:33:08Z",
+      "display_state" : "CLAIMABLE",
       "id" : 132,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/132\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4a9c4dda9135aedac0bd80a19394abd048a02df211885babbd50e3e3e1b286eb",
       "convergence_hash" : "5c6b30efff2e45deedd9a5608ab0bf40eadb0ccfdad87cad71fbfb17e83e6d68",
       "created_at" : "2026-04-10T16:33:09Z",
+      "display_state" : "CLAIMABLE",
       "id" : 133,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/133\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "109de638bcbea4be47e68410a50d8f1053d54a94daa4b255321fce695294c05f",
       "convergence_hash" : "0a5abe6c34ddd0b5eecba2d3a321baab3405eacf6ac84cfc72072442d7a955b8",
       "created_at" : "2026-04-10T16:33:10Z",
+      "display_state" : "CLAIMABLE",
       "id" : 134,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/134\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     },
     {
+      "attested_event_count" : 4,
+      "attested_event_hash" : "19f1e1fb58dd3edf8ca3662c38149970e00adde4b734cdd2677b83f3b1afcba7",
       "convergence_hash" : "9cebcff625b000838065c3ac64c8532c42e0ce5b6788144ef061911e6c00c199",
       "created_at" : "2026-04-10T16:33:10Z",
+      "display_state" : "CLAIMABLE",
       "id" : 135,
-      "is_partner" : false,
       "is_partner_reserved" : false,
       "sigil" : "output\/135\/sigil.svg",
-      "state" : "CLAIMABLE"
+      "state" : "claimable"
     }
   ]
 }
