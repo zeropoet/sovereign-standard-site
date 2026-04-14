@@ -76,7 +76,7 @@
     const quantityInput = form.elements.quantity;
     const partnerTokenInput = form.elements.partner_token;
     const STANDARD_UNIT_PRICE = 68;
-    const WHOLESALE_UNIT_PRICE = 34;
+    const PARTNER_UNIT_PRICE = 34;
 
     function formatDollars(value) {
       return `$${value.toFixed(0)}`;
@@ -87,7 +87,7 @@
       const unitsLabel = `${quantity} unit${quantity === 1 ? '' : 's'}`;
       const hasPartnerToken = String(partnerTokenInput.value || '').trim().length > 0;
       pricing.textContent = hasPartnerToken
-        ? `Partner pricing total for ${unitsLabel}: ${formatDollars(quantity * WHOLESALE_UNIT_PRICE)}`
+        ? `Partner pricing total for ${unitsLabel}: ${formatDollars(quantity * PARTNER_UNIT_PRICE)}`
         : `Standard pricing total for ${unitsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
     }
 

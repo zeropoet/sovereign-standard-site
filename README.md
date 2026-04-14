@@ -29,13 +29,13 @@ The public site is exported from the main `sovereign-standard` repository root a
 
 - `units.json` publishes the attested registry state for each unit.
 - Standard claims publish claim metadata including `claimed_at` and `holder_hash`.
-- Wholesale-reserved units `0...33` still claim through the wholesale activation flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned `wholesale_token`.
+- Partner-reserved units `0...33` still claim through the partner activation flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned partner token in the public record.
 - The public site does not expose internal claim codes, partner claim codes, or partner tokens.
 
 ## Naming
 
-- The public role name is `Wholesale Steward`.
-- Public UI should prefer `wholesale-reserved`, `wholesale activation`, and `wholesale token`.
+- The public role name is `Partner Steward`.
+- Public UI should prefer `partner-reserved`, `partner activation`, and `partner token`.
 - Internal compatibility names may still use `partner` behind the scenes.
 
 ## Source of truth
