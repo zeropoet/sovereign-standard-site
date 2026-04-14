@@ -239,7 +239,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
 }
 
 .sequence-stage {
-  width: clamp(180px, 24vw, 300px);
+  width: clamp(140px, 24vw, 300px);
   max-width: 100%;
   aspect-ratio: 1 / 1;
   display: grid;
@@ -276,7 +276,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
 
 .site-object-lockup {
   display: block;
-  width: clamp(180px, 28vw, 320px);
+  width: clamp(140px, 28vw, 320px);
   max-width: 100%;
   height: auto;
   margin: 0 auto;
@@ -1450,6 +1450,19 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  .landing-page,
+  .archive-page,
+  .artifact-page {
+    padding: 12px;
+  }
+
+  .site-object-lockup {
+    width: clamp(120px, 34vw, 220px);
+  }
+
+  .sequence-stage {
+    width: clamp(120px, 34vw, 220px);
+  }
 
   .purchase-layout {
     grid-template-columns: minmax(0, 1fr);
