@@ -249,8 +249,8 @@
 
     async function activatePartnerUnit(unitID, partnerToken, status) {
       startClaimStatusUpdates(status, [
-        'Submitting wholesale activation...',
-        'Wholesale activation is being processed...',
+        'Submitting partner activation...',
+        'Partner activation is being processed...',
         'Waiting for the registry to confirm activation...'
       ], 2800);
 
@@ -280,7 +280,7 @@
           statePanel.innerHTML = `
             <div class="state-block">
               <p class="state-label">STATE: UNCLAIMED</p>
-              ${activePartnerMode ? '<p class="state-detail">This unit is eligible for wholesale activation.</p>' : ''}
+              ${activePartnerMode ? '<p class="state-detail">This unit is eligible for partner activation.</p>' : ''}
               <form class="claim-form" id="partner-claim-form">
                 <label class="order-field">
                   <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
@@ -307,7 +307,7 @@
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             startClaimStatusUpdates(status, [
-              'Submitting wholesale activation...',
+              'Submitting partner activation...',
               'Activation request sent. Waiting for confirmation...',
               'Still working in the background...'
             ], 2600);
@@ -316,7 +316,7 @@
               await activatePartnerUnit(unitID, String(data.get('claim_code') || '').trim(), status);
             } catch (error) {
               stopClaimStatusUpdates();
-              status.textContent = error.message || 'Unable to activate this wholesale unit right now.';
+              status.textContent = error.message || 'Unable to activate this partner unit right now.';
               submitButton.disabled = false;
             }
           });
@@ -411,7 +411,7 @@
       if (record.state === 'claimed' && record.is_partner_reserved) {
         statePanel.innerHTML = `
           <div class="state-block">
-            <p class="state-label">STATE: WHOLESALE</p>
+            <p class="state-label">STATE: PARTNER</p>
             ${record.wholesale_token ? `<p class="state-detail">${escapeHTML(record.wholesale_token)}</p>` : ''}
           </div>
         `;
@@ -459,7 +459,7 @@
             ${record.state === 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
             ${record.state === 'claimed' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
             ${record.state === 'claimed' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
-            ${record.state === 'claimed' && record.wholesale_token ? `<div><span>Wholesale Token</span><br><span class="code">${escapeHTML(record.wholesale_token)}</span></div>` : ''}
+            ${record.state === 'claimed' && record.wholesale_token ? `<div><span>Partner Token</span><br><span class="code">${escapeHTML(record.wholesale_token)}</span></div>` : ''}
           </div>
         </div>
       `;
