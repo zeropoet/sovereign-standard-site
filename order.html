@@ -17,19 +17,32 @@
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title">Order Status</h1>
-      <p class="page-intro">Orders are assigned sequentially after the reserved partner range.</p>
     </header>
 
-    <section class="panel section-stack artifact-section state-section">
-      <div class="section-head">
-        <h2>Status</h2>
-      </div>
-      <div class="state-panel">
-        <div class="state-block">
-          <div class="state-label" id="order-status-label">Loading</div>
-          <p id="order-status" class="state-detail muted order-status"></p>
+    <section class="artifact-section order-overview-layout">
+      <section class="panel section-stack state-section">
+        <div class="section-head">
+          <h2>Overview</h2>
         </div>
-      </div>
+        <div class="state-panel">
+          <div class="state-block">
+            <div class="state-label" id="order-status-label">Loading</div>
+            <p id="order-status" class="state-detail muted order-status"></p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="panel order-overview-media"
+        aria-label="Sigil sequence"
+        data-sigil-sequence
+        data-sequence-fps="8"
+        data-sequence-autoplay="true"
+      >
+        <div class="order-overview-stage">
+          <img data-sequence-image alt="Sigil sequence frame">
+        </div>
+      </section>
     </section>
 
     <section class="panel section-stack artifact-section metadata-section">
@@ -40,6 +53,7 @@
     </section>
   </main>
 
+  <script src="sigil-sequence.js"></script>
   <script src="site.js"></script>
   <script>
     const endpoint = document

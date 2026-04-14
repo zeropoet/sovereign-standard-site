@@ -688,6 +688,11 @@ h3 {
   margin-top: 84px;
 }
 
+.site-footer {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
 .archive-page .system-grid,
 .archive-page .system-grid + .site-footer,
 .archive-page .system-grid ~ .site-footer {
@@ -795,6 +800,44 @@ h3 {
 .order-layout {
   max-width: 980px;
   display: block;
+}
+
+.order-overview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.order-overview-layout > .panel {
+  height: 100%;
+}
+
+.order-overview-layout .state-section {
+  margin-top: 0;
+}
+
+.orders-intro-section .page-intro {
+  max-width: none;
+}
+
+.order-overview-media {
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+}
+
+.order-overview-stage {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.order-overview-stage img {
+  display: block;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .purchase-layout {
@@ -1095,7 +1138,7 @@ h3 {
 
 #gallery {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   justify-content: stretch;
   margin: 40px 0 0;
@@ -1397,6 +1440,10 @@ h3 {
 @media (max-width: 640px) {
   .purchase-layout {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .order-overview-layout {
+    grid-template-columns: 1fr;
   }
 
   .unit-pagination {
