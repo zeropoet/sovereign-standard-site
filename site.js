@@ -117,9 +117,7 @@ if (fluidRoot) {
     } catch {
     }
 
-    window.setTimeout(() => {
-      window.location.href = url.toString();
-    }, 190);
+    window.location.href = url.toString();
   });
 }
 
