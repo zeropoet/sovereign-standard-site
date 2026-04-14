@@ -55,7 +55,7 @@
       <img
         src="assets/sovereign-standard-lockup.png"
         alt="Sovereign Standard"
-        class="landing-wordmark"
+        class="site-object-lockup"
         width="700"
         height="210"
       >
@@ -71,13 +71,39 @@
           <img data-sequence-image alt="Sigil sequence frame">
         </div>
       </section>
-      <nav class="top-links landing-links" aria-label="Primary">
-        <a href="archive.html" class="landing-link" data-nav-kind="enter-archive">Enter Archive</a>
-      </nav>
-      <nav class="landing-secondary-links" aria-label="Secondary">
-        <a href="purchase.html" class="landing-link">Purchase Units</a>
-        <a href="orders.html" class="landing-link">Order Manifest</a>
-      </nav>
+    </section>
+    <nav class="top-links site-object-nav" aria-label="Primary">
+      <a href="archive.html" class="landing-link landing-action-primary" data-nav-kind="enter-archive">Enter Archive</a>
+      <a href="purchase.html" class="landing-link">Purchase Units</a>
+      <a href="orders.html" class="landing-link">Order Manifest</a>
+    </nav>
+    <section class="landing-brief" aria-labelledby="landing-brief-title">
+      <header class="landing-brief-head">
+        <p class="page-kicker">Registry Model</p>
+        <h1 id="landing-brief-title" class="page-title">Published units with standing record</h1>
+        <p class="page-intro">
+          Sovereign Standard publishes physical units in visible sequence.
+          Each unit carries a standing record as it moves through the archive.
+        </p>
+      </header>
+      <div class="trust-grid">
+        <article class="panel trust-card">
+          <h2>Deterministic origin</h2>
+          <p>Every unit begins from the same fixed instrument baseline, with its sigil, hash, and generated form tied to that origin.</p>
+        </article>
+        <article class="panel trust-card">
+          <h2>Recorded state</h2>
+          <p>Each published change extends the standing record for that unit. What appears in the archive comes from that record.</p>
+        </article>
+        <article class="panel trust-card">
+          <h2>Physical issuance</h2>
+          <p>Each unit is issued as a physical object with its own artifacts, issuance record, and public control page.</p>
+        </article>
+        <article class="panel trust-card">
+          <h2>Claimed state</h2>
+          <p>When a collector claims a unit, that passage is added to the archive record and remains part of its visible history.</p>
+        </article>
+      </div>
     </section>
   </main>
   <script src="site.js"></script>

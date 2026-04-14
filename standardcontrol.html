@@ -52,12 +52,23 @@
 </head>
 <body data-page="unit">
   <main class="artifact-page" data-fluid-root>
-    <nav class="top-links" aria-label="Primary">
-      <a href="archive.html" class="nav" data-nav-kind="return-archive">Back</a>
+    <a href="index.html" class="site-object-lockup-link" data-nav-kind="return-index" aria-label="Sovereign Standard home">
+      <img
+        src="assets/sovereign-standard-lockup.png"
+        alt="Sovereign Standard"
+        class="site-object-lockup"
+        width="700"
+        height="210"
+      >
+    </a>
+    <nav class="top-links site-object-nav" aria-label="Primary">
+      <a href="archive.html" class="nav" data-nav-kind="return-archive">Enter Archive</a>
+      <a href="purchase.html" class="nav">Purchase Units</a>
+      <a href="orders.html" class="nav">Order Manifest</a>
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title" id="unit-title">Unit</h1>
-      <p class="page-intro">Standard, held.</p>
+      <p class="page-intro">Standard, claimed.</p>
     </header>
 
     <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
@@ -67,6 +78,13 @@
 
     <section class="panel section-stack artifact-section state-section">
       <div id="state-panel" class="state-panel"></div>
+    </section>
+
+    <section class="panel section-stack artifact-section verification-section">
+      <div class="section-head">
+        <h2>Verification</h2>
+      </div>
+      <div id="verification-list" class="verification-list"></div>
     </section>
 
     <section class="panel section-stack artifact-section metadata-section">
@@ -237,6 +255,7 @@
         renderArtifactState(committedRecord);
         renderStatePanel(committedRecord);
         renderMetadata(committedRecord);
+        renderVerification(committedRecord);
       } catch {
         if (pollToken !== activePollToken) {
           return;
@@ -268,6 +287,7 @@
       renderArtifactState(partnerRecord);
       renderStatePanel(partnerRecord);
       renderMetadata(partnerRecord);
+      renderVerification(partnerRecord);
       document.getElementById('sigil').src = partnerRecord.sigil || `output/${unitID}/sigil.svg`;
     }
 
@@ -373,6 +393,7 @@
             renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
             renderMetadata(claimedRecord);
+            renderVerification(claimedRecord);
             const nextStatus = document.getElementById('claim-status');
             if (nextStatus) {
               void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
@@ -465,6 +486,37 @@
       `;
     }
 
+    function renderVerification(record) {
+      const verificationList = document.getElementById('verification-list');
+      const eventCount = Number(record.attested_event_count || 0);
+      const registryLine = record.state === 'claimed'
+        ? 'This unit now stands in the archive as claimed.'
+        : 'This unit remains open in the archive and has not yet passed into claimed state.';
+
+      verificationList.innerHTML = `
+        <div class="verification-column">
+          <div class="verification-group">
+            <p>
+              This page is the standing record of this unit.
+              Its state, dates, and identifying marks are drawn from the published archive and held there as part of the unit's visible history.
+            </p>
+            <p>${escapeHTML(registryLine)}</p>
+          </div>
+        </div>
+        <div class="verification-column">
+          <div class="verification-group">
+            <h3>Provenance</h3>
+            ${record.attested_event_hash ? `<div><span>Latest Event Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.attested_event_hash).toUpperCase())}</span></div>` : ''}
+            <div><span>Event Count</span><br><span class="code">${escapeHTML(String(eventCount))}</span></div>
+            <p>
+              Each published change adds another mark to the line of record for this unit.
+              The event count reflects how many attested steps are currently preserved in that sequence.
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
     async function loadUnit() {
       const params = new URLSearchParams(window.location.search);
       const rawUnitID = params.get('unit') || params.get('id');
@@ -544,6 +596,7 @@
       renderArtifactState(record);
       renderStatePanel(record);
       renderMetadata(record);
+      renderVerification(record);
 
       if (isGatedPartnerUnit && activePartnerToken) {
         const status = document.getElementById('claim-status');
