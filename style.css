@@ -109,39 +109,6 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   filter: blur(2px);
 }
 
-.has-custom-cursor,
-.has-custom-cursor a,
-.has-custom-cursor button,
-.has-custom-cursor input,
-.has-custom-cursor textarea {
-  cursor: none;
-}
-
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: #111111;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-100px, -100px);
-  opacity: 0;
-  transition: opacity 120ms ease, background-color 120ms ease;
-  margin-left: -6px;
-  margin-top: -6px;
-}
-
-.cursor-dot.is-visible {
-  opacity: 1;
-}
-
-.cursor-dot.is-inverted {
-  background: #ffffff;
-}
-
 .landing-page {
   width: 100%;
   max-width: 1440px;
