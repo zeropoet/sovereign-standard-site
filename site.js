@@ -100,9 +100,13 @@ if (fluidRoot) {
       return;
     }
 
-    event.preventDefault();
-
     const navKind = link.dataset.navKind || 'page-flow';
+    if (navKind === 'return-index') {
+      window.location.href = url.toString();
+      return;
+    }
+
+    event.preventDefault();
     document.body.dataset.navKind = navKind;
     document.body.classList.add('page-is-exiting');
 
