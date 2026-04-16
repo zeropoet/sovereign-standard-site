@@ -149,6 +149,38 @@
       color: var(--text);
     }
 
+    .site-contact {
+      width: min(100%, 400px);
+      display: grid;
+      gap: 8px;
+      padding: calc(1.5rem - 0.1rem) 1.5rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .site-contact-label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .site-contact-link {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .site-contact-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
     @media (max-width: 640px) {
       body {
         padding: 12px;
@@ -180,6 +212,11 @@
         </div>
         <input data-sequence-frame type="range" min="0" max="0" step="1" value="0" aria-label="Frame scrubber">
       </section>
+    </section>
+
+    <section class="site-contact" aria-label="Contact">
+      <p class="site-contact-label">For partnership and product questions</p>
+      <a class="site-contact-link" href="mailto:hello@sovereignstandard.co">hello@sovereignstandard.co</a>
     </section>
   </main>
 

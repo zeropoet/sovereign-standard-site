@@ -509,6 +509,38 @@ h3 {
   gap: var(--space-3);
 }
 
+.site-contact,
+.landing-contact {
+  margin-top: var(--space-3);
+  gap: var(--space-2);
+  align-items: start;
+}
+
+.site-contact-label,
+.landing-contact-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.site-contact-link,
+.landing-contact-link {
+  display: inline-block;
+  color: var(--text);
+  font-size: var(--step-1);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  word-break: break-word;
+}
+
+.site-contact-link:hover,
+.landing-contact-link:hover {
+  text-decoration: none;
+}
+
 .archive-controls-row {
   display: flex;
   align-items: center;
@@ -1115,6 +1147,7 @@ h3 {
   gap: 0;
   justify-content: stretch;
   margin: var(--space-4) 0 0;
+  padding-bottom: var(--space-4);
   width: 100%;
 }
 
