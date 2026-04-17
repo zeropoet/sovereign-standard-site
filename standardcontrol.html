@@ -81,7 +81,7 @@
 
     <section class="panel section-stack artifact-section verification-section">
       <div class="section-head">
-        <h2>Verification</h2>
+        <h2>Provenance</h2>
       </div>
       <div id="verification-list" class="verification-list"></div>
     </section>
@@ -137,10 +137,6 @@
       </div>
     </section>
 
-    <section class="panel section-stack artifact-section site-contact" aria-label="Contact">
-      <p class="site-contact-label">For partnership and product questions</p>
-      <a class="site-contact-link" href="mailto:hello@sovereignstandard.co">hello@sovereignstandard.co</a>
-    </section>
   </main>
 
   <script src="site.js"></script>
@@ -500,16 +496,11 @@
       verificationList.innerHTML = `
         <div class="verification-column">
           <div class="verification-group">
-            <p>
-              This page is the standing record of this unit.
-              Its state, dates, and identifying marks are drawn from the published archive and held there as part of the unit's visible history.
-            </p>
             <p>${escapeHTML(registryLine)}</p>
           </div>
         </div>
         <div class="verification-column">
           <div class="verification-group">
-            <h3>Provenance</h3>
             ${record.attested_event_hash ? `<div><span>Latest Event Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.attested_event_hash).toUpperCase())}</span></div>` : ''}
             <div><span>Event Count</span><br><span class="code">${escapeHTML(String(eventCount))}</span></div>
             <p>
