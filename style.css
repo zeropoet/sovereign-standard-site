@@ -243,7 +243,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
 
 .site-object-lockup {
   display: block;
-  width: clamp(140px, 28vw, 320px);
+  width: clamp(175px, 35vw, 400px);
   max-width: 100%;
   height: auto;
   margin: 0 auto;
@@ -1457,7 +1457,7 @@ h3 {
   }
 
   .site-object-lockup {
-    width: clamp(120px, 34vw, 220px);
+    width: clamp(150px, 42.5vw, 275px);
   }
 
   .sequence-stage {
