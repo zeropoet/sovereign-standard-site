@@ -285,6 +285,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
   margin-top: var(--space-6);
+  margin-bottom: 34px;
 }
 
 .landing-image-card {
@@ -313,6 +314,10 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
+}
+
+.archive-guide-grid {
+  gap: calc(var(--space-4) * 3);
 }
 
 .trust-card,
@@ -503,15 +508,28 @@ h3 {
   align-items: start;
 }
 
+.archive-title {
+  display: grid;
+  gap: 14px;
+}
+
+.archive-title::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+}
+
 .archive-guide {
   max-width: none;
   margin: var(--space-4) 0 var(--space-3);
+  border: 0;
   gap: var(--space-3);
 }
 
 .site-contact,
 .landing-contact {
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   gap: var(--space-2);
   align-items: start;
 }
@@ -747,6 +765,14 @@ h3 {
   margin-top: var(--space-4);
 }
 
+.orders-section {
+  border: 0;
+}
+
+.order-overview-layout > .state-section {
+  border: 0;
+}
+
 .verification-section {
   margin-top: var(--space-4);
 }
@@ -861,6 +887,14 @@ h3 {
 .purchase-order-column,
 .purchase-sequence-column {
   min-width: 0;
+}
+
+.purchase-order-column {
+  border: 0;
+}
+
+.purchase-sequence-column {
+  border: 0;
 }
 
 .purchase-note {
@@ -1058,6 +1092,10 @@ h3 {
 
 .state-section {
   margin-top: var(--space-3);
+}
+
+.unit-state-section {
+  border: 0;
 }
 
 .state-panel,
