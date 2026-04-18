@@ -289,6 +289,10 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   letter-spacing: 0.01em;
 }
 
+.landing-partner-section {
+  margin-top: var(--space-2);
+}
+
 .landing-image-strip {
   width: 100%;
   display: grid;
