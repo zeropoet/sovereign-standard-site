@@ -279,6 +279,16 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   gap: var(--space-5);
 }
 
+.landing-copy-block {
+  width: min(100%, 760px);
+  margin-top: var(--space-4);
+  justify-self: center;
+  color: var(--muted);
+  font-size: var(--step-0);
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
+
 .landing-image-strip {
   width: 100%;
   display: grid;
