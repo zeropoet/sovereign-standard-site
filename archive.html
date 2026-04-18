@@ -93,7 +93,7 @@
             <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
             <a href="#claimable" data-state-filter="claimable" class="archive-filter-link state-claimable">Claimable</a>
             <a href="#claimed" data-state-filter="claimed" class="archive-filter-link state-claimed">Claimed</a>
-            <a href="#partner" data-state-filter="partner" class="archive-filter-link state-partner">Partners</a>
+            <a href="#partner" data-state-filter="partner" class="archive-filter-link state-partner">Nodes</a>
           </nav>
         </div>
         <div class="archive-search-row">
@@ -165,7 +165,7 @@
             ? 'partner'
             : (record.state === 'claimable' || isReservedUnclaimed ? 'claimable' : 'default');
           const labelText = Boolean(record.is_partner_reserved)
-            ? (isPartnerClaimed ? 'PARTNER' : 'RESERVED')
+            ? (isPartnerClaimed ? 'NODE' : 'RESERVED')
             : (record.display_state || record.state);
           const card = document.createElement('article');
           card.className = `artifact-card panel state-${visualState}`;

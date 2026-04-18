@@ -411,6 +411,16 @@
         return;
       }
 
+      if (record.state === 'claimed' && record.is_partner_reserved) {
+        statePanel.innerHTML = `
+          <div class="state-block">
+            <p class="state-label">STATE: NODE</p>
+            ${record.wholesale_token ? `<p class="state-detail">${escapeHTML(record.wholesale_token)}</p>` : ''}
+          </div>
+        `;
+        return;
+      }
+
       if (record.state === 'claimed') {
         statePanel.innerHTML = `
           <div class="state-block">
@@ -426,16 +436,6 @@
             void pollForCommittedClaim(unitID, record, pendingStatus);
           }
         }
-        return;
-      }
-
-      if (record.state === 'claimed' && record.is_partner_reserved) {
-        statePanel.innerHTML = `
-          <div class="state-block">
-            <p class="state-label">STATE: PARTNER</p>
-            ${record.wholesale_token ? `<p class="state-detail">${escapeHTML(record.wholesale_token)}</p>` : ''}
-          </div>
-        `;
         return;
       }
 
@@ -489,9 +489,11 @@
     function renderVerification(record) {
       const verificationList = document.getElementById('verification-list');
       const eventCount = Number(record.attested_event_count || 0);
-      const registryLine = record.state === 'claimed'
-        ? 'This unit now stands in the archive as claimed.'
-        : 'This unit remains open in the archive and has not yet passed into claimed state.';
+      const registryLine = (record.state === 'node' || (record.state === 'claimed' && record.is_partner_reserved))
+        ? 'This unit now stands in the archive as a node.'
+        : (record.state === 'claimed'
+          ? 'This unit now stands in the archive as claimed.'
+          : 'This unit remains open in the archive and has not yet passed into claimed state.');
 
       verificationList.innerHTML = `
         <div class="verification-column">

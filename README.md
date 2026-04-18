@@ -31,11 +31,13 @@ The public site is exported from the main `sovereign-standard` repository root a
 - Standard claims publish claim metadata including `claimed_at` and `holder_hash`.
 - Partner-reserved units `0...33` still claim through the partner activation flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned partner token in the public record.
 - The public site does not expose internal claim codes, partner claim codes, or partner tokens.
+- In the public UI, claimed partner-reserved units are presented as `NODE`.
 
 ## Naming
 
 - The public role name is `Partner Steward`.
 - Public UI should prefer `partner-reserved`, `partner activation`, and `partner token`.
+- The archive filter for claimed reserved units is labeled `Nodes`, and the unit registry state panel shows `STATE: NODE` for those units.
 - Internal compatibility names may still use `partner` behind the scenes.
 
 ## Source of truth
