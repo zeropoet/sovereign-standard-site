@@ -464,6 +464,18 @@
       grid.style.display = 'grid';
     }
 
+    function getPublicStateLabel(record) {
+      if (record.state === 'claimed' && record.is_partner_reserved) {
+        return 'NODE';
+      }
+
+      if (record.state === 'node') {
+        return 'NODE';
+      }
+
+      return record.display_state || record.state;
+    }
+
     function renderMetadata(record) {
       const unitID = Number(record.id ?? record.unit);
       document.getElementById('meta-list').innerHTML = `
@@ -471,7 +483,7 @@
           <div class="meta-group">
             <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
             ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.convergence_hash).toUpperCase())}</span></div>` : ''}
-            <div><span>State</span><br><span class="code">${escapeHTML(record.display_state || record.state)}</span></div>
+            <div><span>State</span><br><span class="code">${escapeHTML(getPublicStateLabel(record))}</span></div>
             ${record.state !== 'claimable' && record.state !== 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
           </div>
         </div>
