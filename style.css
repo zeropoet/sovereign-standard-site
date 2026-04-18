@@ -226,6 +226,27 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   text-transform: uppercase;
 }
 
+.landing-archive-cta {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-6);
+}
+
+.landing-archive-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--line);
+}
+
+.landing-archive-button:hover {
+  text-decoration: none;
+  border-color: var(--text);
+}
+
 .top-links {
   display: flex;
   flex-wrap: wrap;
@@ -290,7 +311,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
 }
 
 .landing-partner-section {
-  margin-top: var(--space-2);
+  margin-top: var(--space-4);
 }
 
 .landing-image-strip {
@@ -299,7 +320,7 @@ body.page-is-exiting[data-nav-kind="page-flow"] [data-fluid-root] {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-4);
   margin-top: var(--space-6);
-  margin-bottom: 34px;
+  margin-bottom: var(--space-4);
 }
 
 .landing-image-card {
@@ -1346,6 +1367,7 @@ h3 {
   display: grid;
   gap: var(--space-1);
   justify-items: center;
+  padding-bottom: var(--space-3);
 }
 
 .artifact-card-meta span {

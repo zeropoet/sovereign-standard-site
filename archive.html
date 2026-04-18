@@ -82,8 +82,8 @@
             <p>Each published change extends the standing record for that unit. What appears in the archive comes from that record.</p>
           </article>
           <article class="archive-guide-item">
-            <h3>Claimed State</h3>
-            <p>When a collector claims a unit, that passage is added to the archive record and remains part of its visible history.</p>
+            <h3>Collected State</h3>
+            <p>When a collector takes custody of a unit, that collected passage is added to the archive record and remains part of its visible history.</p>
           </article>
         </div>
       </section>
@@ -91,8 +91,8 @@
         <div class="archive-filter-row" aria-label="Archive filters">
           <nav class="archive-filter-links" aria-label="State">
             <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
-            <a href="#claimable" data-state-filter="claimable" class="archive-filter-link state-claimable">Claimable</a>
-            <a href="#claimed" data-state-filter="claimed" class="archive-filter-link state-claimed">Claimed</a>
+            <a href="#claimable" data-state-filter="claimable" class="archive-filter-link state-claimable">Sealed</a>
+            <a href="#claimed" data-state-filter="claimed" class="archive-filter-link state-claimed">Collected</a>
             <a href="#partner" data-state-filter="partner" class="archive-filter-link state-partner">Nodes</a>
           </nav>
         </div>
@@ -166,7 +166,11 @@
             : (record.state === 'claimable' || isReservedUnclaimed ? 'claimable' : 'default');
           const labelText = Boolean(record.is_partner_reserved)
             ? (isPartnerClaimed ? 'NODE' : 'RESERVED')
-            : (record.display_state || record.state);
+            : (record.state === 'claimable'
+              ? 'SEALED'
+              : (record.state === 'claimed'
+                ? 'COLLECTED'
+                : (record.display_state || record.state)));
           const card = document.createElement('article');
           card.className = `artifact-card panel state-${visualState}`;
 
