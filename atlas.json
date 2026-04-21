@@ -602,7 +602,7 @@
       4
     ]
   },
-  "generated_at" : "2026-04-21T15:41:25Z",
+  "generated_at" : "2026-04-21T16:47:26Z",
   "metrics" : {
     "cluster_schema" : "atlas_regions_v2",
     "distance_metric" : "atlas_distance_v2",
@@ -651,6 +651,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.45,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -714,6 +715,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -777,6 +779,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -842,6 +845,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -906,6 +910,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -969,6 +974,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1032,6 +1038,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.45,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -1096,6 +1103,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1.45,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1159,6 +1167,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -1222,6 +1231,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1287,6 +1297,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1350,6 +1361,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.45,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -1415,6 +1427,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.45,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1479,6 +1492,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1542,6 +1556,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -1605,6 +1620,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1668,6 +1684,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1731,6 +1748,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 15,
           "direction_changes" : 0,
@@ -1794,6 +1812,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1857,6 +1876,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1920,6 +1940,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -1983,6 +2004,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2046,6 +2068,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2110,6 +2133,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2173,6 +2197,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2236,6 +2261,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2299,6 +2325,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -2362,6 +2389,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -2425,6 +2453,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2488,6 +2517,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2553,6 +2583,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2616,6 +2647,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2679,6 +2711,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 10,
           "direction_changes" : 0,
@@ -2742,6 +2775,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.12,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2805,6 +2839,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.26,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2868,6 +2903,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1.26,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -2931,6 +2967,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2994,6 +3031,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3057,6 +3095,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -3120,6 +3159,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3183,6 +3223,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -3246,6 +3287,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3309,6 +3351,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -3372,6 +3415,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -3436,6 +3480,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3499,6 +3544,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -3563,6 +3609,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3626,6 +3673,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -3689,6 +3737,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3752,6 +3801,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3815,6 +3865,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -3879,6 +3930,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -3942,6 +3994,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4005,6 +4058,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4070,6 +4124,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4133,6 +4188,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4196,6 +4252,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4259,6 +4316,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -4322,6 +4380,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4386,6 +4445,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4449,6 +4509,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4512,6 +4573,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4575,6 +4637,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -4638,6 +4701,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4701,6 +4765,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4766,6 +4831,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -4829,6 +4895,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -4892,6 +4959,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -4955,6 +5023,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5018,6 +5087,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5081,6 +5151,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5144,6 +5215,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5208,6 +5280,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5271,6 +5344,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5334,6 +5408,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5398,6 +5473,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5461,6 +5537,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5524,6 +5601,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5587,6 +5665,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5650,6 +5729,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -5713,6 +5793,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5776,6 +5857,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5841,6 +5923,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5904,6 +5987,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -5967,6 +6051,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -6030,6 +6115,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -6093,6 +6179,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6156,6 +6243,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -6221,6 +6309,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6284,6 +6373,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6348,6 +6438,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6412,6 +6503,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -6475,6 +6567,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6539,6 +6632,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6603,6 +6697,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -6666,6 +6761,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6729,6 +6825,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6792,6 +6889,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -6855,6 +6953,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -6918,6 +7017,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -6981,6 +7081,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7044,6 +7145,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7107,6 +7209,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7170,6 +7273,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7233,6 +7337,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -7296,6 +7401,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7359,6 +7465,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7422,6 +7529,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7486,6 +7594,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7549,6 +7658,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -7614,6 +7724,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7677,6 +7788,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7740,6 +7852,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7803,6 +7916,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7867,6 +7981,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -7930,6 +8045,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -7993,6 +8109,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8056,6 +8173,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8119,6 +8237,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8182,6 +8301,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8245,6 +8365,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8309,6 +8430,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8372,6 +8494,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8435,6 +8558,7 @@
           ],
           "primary" : "anchor"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8498,6 +8622,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 15,
           "direction_changes" : 0,
@@ -8561,6 +8686,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8624,6 +8750,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8687,6 +8814,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8750,6 +8878,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -8815,6 +8944,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8879,6 +9009,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -8942,6 +9073,7 @@
           ],
           "primary" : "frontier"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -9006,6 +9138,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -9070,6 +9203,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -9133,6 +9267,7 @@
           ],
           "primary" : "bridge"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -9196,6 +9331,7 @@
           ],
           "primary" : "interior"
         },
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,

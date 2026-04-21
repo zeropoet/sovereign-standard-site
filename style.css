@@ -1498,6 +1498,18 @@ body[data-page="atlas"] {
   fill: rgba(255, 255, 255, 0.92);
 }
 
+.atlas-node.state-reserved .atlas-node-dot {
+  stroke-width: 0.7;
+}
+
+.atlas-node.state-collected .atlas-node-dot {
+  stroke-width: 0.95;
+}
+
+.atlas-node.state-node .atlas-node-dot {
+  stroke-width: 1.1;
+}
+
 .atlas-node.is-active .atlas-node-label {
   opacity: 1;
 }

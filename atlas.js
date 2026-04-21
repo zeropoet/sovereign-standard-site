@@ -37,6 +37,7 @@ function buildNodeClass(unit, state) {
   const neighbor = state.selectedUnit && (state.selectedUnit.atlas.neighbors || []).some((entry) => entry.id === unit.id);
   const sameCluster = state.selectedUnit && state.selectedUnit.atlas.position.cluster_id === unit.atlas.position.cluster_id;
   const role = unit.atlas.role?.primary || 'interior';
+  const publicState = getPublicStateLabel(state.publicUnitByID?.get(unit.id)).toLowerCase();
 
   return [
     'atlas-node',
@@ -46,6 +47,7 @@ function buildNodeClass(unit, state) {
     neighbor ? 'is-neighbor' : '',
     !selected && !neighbor && sameCluster ? 'is-cluster' : '',
     !selected && !neighbor && !sameCluster ? 'is-other' : '',
+    `state-${publicState}`,
     `role-${role}`
   ].filter(Boolean).join(' ');
 }
@@ -102,6 +104,7 @@ function renderReadout(unit, cluster, publicRecord) {
   const rows = [
     ['UNIT', unit.id],
     ['STATE', String(getPublicStateLabel(publicRecord)).toUpperCase()],
+    ['STATE WEIGHT', formatMetric(unit.atlas.state_weight)],
     ['REGION', cluster?.name || cluster?.id || position.cluster_id],
     ['REGION ROLE', String(clusterProfile.dominant_role || 'interior').toUpperCase()],
     ['UNIT ROLE', String(unit.atlas.role?.primary || 'interior').toUpperCase()],
@@ -185,9 +188,11 @@ function applyFieldLayout(state) {
     const density = unit.atlas.position.density_score ?? 0;
     const outlier = unit.atlas.position.outlier_score ?? 0;
     const bridge = unit.atlas.position.bridge_score ?? 0;
+    const stateWeight = unit.atlas.state_weight ?? 1;
     unit._x = point.x;
     unit._y = point.y;
-    unit._size = Math.max(8, Math.min(17, baseSize + density * 2.1 + outlier * 1.2 + bridge * 0.85));
+    unit._stateWeight = stateWeight;
+    unit._size = Math.max(8, Math.min(18, (baseSize + density * 2.1 + outlier * 1.2 + bridge * 0.85) * (0.92 + ((stateWeight - 1) * 0.55))));
   });
 
   document.getElementById('atlas-expression-copy').textContent = ATLAS_FIELD.copy;
@@ -245,12 +250,16 @@ function drawTopology(state) {
         continue;
       }
 
+      const relationWeight = ((activeUnit._stateWeight ?? 1) + (target._stateWeight ?? 1)) / 2;
+
       edges.append(createSvgNode('line', {
         x1: activeUnit._x,
         y1: activeUnit._y,
         x2: target._x,
         y2: target._y,
-        class: 'atlas-edge atlas-edge-neighbor'
+        class: 'atlas-edge atlas-edge-neighbor',
+        'stroke-width': Math.min(1.7, 1 + ((relationWeight - 1) * 1.25)),
+        opacity: Math.min(0.92, 0.68 + ((relationWeight - 1) * 0.45))
       }));
     }
 
@@ -260,12 +269,15 @@ function drawTopology(state) {
         continue;
       }
 
+      const relationWeight = ((activeUnit._stateWeight ?? 1) + (unit._stateWeight ?? 1)) / 2;
+
       edges.append(createSvgNode('line', {
         x1: activeUnit._x,
         y1: activeUnit._y,
         x2: unit._x,
         y2: unit._y,
-        class: 'atlas-edge atlas-edge-cluster'
+        class: 'atlas-edge atlas-edge-cluster',
+        opacity: Math.min(0.42, 0.22 + ((relationWeight - 1) * 0.28))
       }));
     }
   }
@@ -301,7 +313,15 @@ function drawTopology(state) {
     regions.append(group);
   }
 
-  for (const unit of state.units) {
+  const orderedUnits = state.units.slice().sort((left, right) => {
+    const weightDelta = (left._stateWeight ?? 1) - (right._stateWeight ?? 1);
+    if (weightDelta !== 0) {
+      return weightDelta;
+    }
+    return left.id - right.id;
+  });
+
+  for (const unit of orderedUnits) {
     let entry = state.nodeElements.get(unit.id);
 
     if (!entry) {
@@ -373,7 +393,9 @@ function drawTopology(state) {
     entry.circle.setAttribute('width', String(unit._size));
     entry.circle.setAttribute('height', String(unit._size));
     entry.circle.setAttribute('fill', '#ffffff');
+    entry.circle.style.opacity = String(Math.min(1, 0.48 + ((unit._stateWeight ?? 1) - 1) * 0.8));
     entry.label.setAttribute('y', String(-(unit._size + 8)));
+    state.nodeLayer.append(entry.nodeGroup);
   }
 }
 
