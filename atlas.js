@@ -1,5 +1,7 @@
 const ATLAS_STAGE_WIDTH = 1600;
 const ATLAS_STAGE_HEIGHT = 900;
+const ATLAS_GRID_STEP = 18;
+const ATLAS_GRID_MAJOR_STEP = ATLAS_GRID_STEP * 4;
 const ATLAS_FIELD = {
   copy: 'Each unit occupies one deterministic coordinate within the attested structure.'
 };
@@ -30,12 +32,12 @@ function createSvgNode(tagName, attributes = {}) {
 }
 
 function buildNodeClass(unit, state) {
-  const activeID = state.hoverUnit?.id ?? state.selectedUnit?.id;
+  const focusUnit = state.hoverUnit ?? state.selectedUnit;
+  const activeID = focusUnit?.id;
   const selected = state.selectedUnit?.id === unit.id;
   const active = activeID === unit.id;
   const hovered = state.hoverUnit?.id === unit.id;
-  const neighbor = state.selectedUnit && (state.selectedUnit.atlas.neighbors || []).some((entry) => entry.id === unit.id);
-  const sameCluster = state.selectedUnit && state.selectedUnit.atlas.position.cluster_id === unit.atlas.position.cluster_id;
+  const neighbor = focusUnit && (focusUnit.atlas.neighbors || []).some((entry) => entry.id === unit.id);
   const role = unit.atlas.role?.primary || 'interior';
   const publicState = getPublicStateLabel(state.publicUnitByID?.get(unit.id)).toLowerCase();
 
@@ -45,8 +47,7 @@ function buildNodeClass(unit, state) {
     active ? 'is-active' : '',
     hovered ? 'is-hovered' : '',
     neighbor ? 'is-neighbor' : '',
-    !selected && !neighbor && sameCluster ? 'is-cluster' : '',
-    !selected && !neighbor && !sameCluster ? 'is-other' : '',
+    !selected && !neighbor ? 'is-other' : '',
     `state-${publicState}`,
     `role-${role}`
   ].filter(Boolean).join(' ');
@@ -178,6 +179,18 @@ function bindTargetButtons(state) {
   });
 }
 
+function updateHoverUnit(state, unit) {
+  const currentID = state.hoverUnit?.id ?? null;
+  const nextID = unit?.id ?? null;
+
+  if (currentID === nextID) {
+    return;
+  }
+
+  state.hoverUnit = unit || null;
+  drawTopology(state);
+}
+
 function applyFieldLayout(state) {
   const unitCount = Math.max(state.units.length, 1);
   const densityScale = Math.sqrt(136 / unitCount);
@@ -202,24 +215,45 @@ function drawTopology(state) {
   const svg = state.svg;
   if (!state.topologyLayer) {
     state.topologyLayer = createSvgNode('g', { class: 'atlas-topology-layer' });
+    state.gridLayer = createSvgNode('g', { class: 'atlas-grid' });
     state.guideLayer = createSvgNode('g', { class: 'atlas-topology-guides' });
     state.edgeLayer = createSvgNode('g', { class: 'atlas-topology-edges' });
     state.regionLayer = createSvgNode('g', { class: 'atlas-topology-regions' });
     state.nodeLayer = createSvgNode('g', { class: 'atlas-topology-nodes' });
-    state.topologyLayer.append(state.guideLayer, state.edgeLayer, state.regionLayer, state.nodeLayer);
+    state.topologyLayer.append(state.gridLayer, state.guideLayer, state.edgeLayer, state.regionLayer, state.nodeLayer);
     svg.append(state.topologyLayer);
   }
 
+  const grid = state.gridLayer;
   const guides = state.guideLayer;
   const edges = state.edgeLayer;
   const regions = state.regionLayer;
+  grid.innerHTML = '';
   guides.innerHTML = '';
   edges.innerHTML = '';
   regions.innerHTML = '';
+
+  for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
+    for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
+      const major = x % ATLAS_GRID_MAJOR_STEP === 0 && y % ATLAS_GRID_MAJOR_STEP === 0;
+      const size = major ? 2 : 1;
+      grid.append(createSvgNode('rect', {
+        x: x - (size / 2),
+        y: y - (size / 2),
+        width: size,
+        height: size,
+        class: `atlas-grid-point ${major ? 'atlas-grid-point-major' : 'atlas-grid-point-minor'}`
+      }));
+    }
+  }
+
   const activeUnit = state.hoverUnit || state.selectedUnit;
   const selectedNeighbors = new Set((activeUnit?.atlas?.neighbors || []).map((neighbor) => neighbor.id));
 
   if (activeUnit) {
+    const activeCenterX = activeUnit._x + (activeUnit._size / 2);
+    const activeCenterY = activeUnit._y + (activeUnit._size / 2);
+
     guides.append(
       createSvgNode('line', {
         x1: activeUnit._x,
@@ -236,10 +270,10 @@ function drawTopology(state) {
         class: 'atlas-guide atlas-guide-axis'
       }),
       createSvgNode('rect', {
-        x: activeUnit._x - Math.max(9, activeUnit._size * 0.85),
-        y: activeUnit._y - Math.max(9, activeUnit._size * 0.85),
-        width: Math.max(18, activeUnit._size * 1.7),
-        height: Math.max(18, activeUnit._size * 1.7),
+        x: activeUnit._x - 8,
+        y: activeUnit._y - 8,
+        width: activeUnit._size + 16,
+        height: activeUnit._size + 16,
         class: 'atlas-guide atlas-guide-reticle'
       })
     );
@@ -251,35 +285,20 @@ function drawTopology(state) {
       }
 
       const relationWeight = ((activeUnit._stateWeight ?? 1) + (target._stateWeight ?? 1)) / 2;
+      const targetCenterX = target._x + (target._size / 2);
+      const targetCenterY = target._y + (target._size / 2);
 
       edges.append(createSvgNode('line', {
-        x1: activeUnit._x,
-        y1: activeUnit._y,
-        x2: target._x,
-        y2: target._y,
+        x1: activeCenterX,
+        y1: activeCenterY,
+        x2: targetCenterX,
+        y2: targetCenterY,
         class: 'atlas-edge atlas-edge-neighbor',
         'stroke-width': Math.min(1.7, 1 + ((relationWeight - 1) * 1.25)),
         opacity: Math.min(0.92, 0.68 + ((relationWeight - 1) * 0.45))
       }));
     }
 
-    for (const unit of state.units) {
-      const sameCluster = unit.atlas.position.cluster_id === activeUnit.atlas.position.cluster_id;
-      if (!sameCluster || unit.id === activeUnit.id || selectedNeighbors.has(unit.id)) {
-        continue;
-      }
-
-      const relationWeight = ((activeUnit._stateWeight ?? 1) + (unit._stateWeight ?? 1)) / 2;
-
-      edges.append(createSvgNode('line', {
-        x1: activeUnit._x,
-        y1: activeUnit._y,
-        x2: unit._x,
-        y2: unit._y,
-        class: 'atlas-edge atlas-edge-cluster',
-        opacity: Math.min(0.42, 0.22 + ((relationWeight - 1) * 0.28))
-      }));
-    }
   }
 
   const selectedClusterID = activeUnit?.atlas.position.cluster_id;
@@ -330,41 +349,38 @@ function drawTopology(state) {
         role: 'button',
         'aria-label': `Unit ${unit.id}`
       });
+      nodeGroup.dataset.unitId = String(unit.id);
       const hitbox = createSvgNode('rect', {
-        x: -(unit._size / 2),
-        y: -(unit._size / 2),
+        x: 0,
+        y: 0,
         width: unit._size,
         height: unit._size,
         class: 'atlas-node-hitbox'
       });
       const halo = createSvgNode('rect', {
-        x: -(unit._size + 3),
-        y: -(unit._size + 3),
-        width: (unit._size + 3) * 2,
-        height: (unit._size + 3) * 2,
+        x: -3,
+        y: -3,
+        width: unit._size + 6,
+        height: unit._size + 6,
         class: 'atlas-node-halo'
       });
       const circle = createSvgNode('rect', {
-        x: -(unit._size / 2),
-        y: -(unit._size / 2),
+        x: 0,
+        y: 0,
         width: unit._size,
         height: unit._size,
         class: 'atlas-node-dot'
       });
-      const label = createSvgNode('text', { x: 0, y: -10, class: 'atlas-node-label' });
+      const label = createSvgNode('text', { x: unit._size / 2, y: -10, class: 'atlas-node-label' });
       label.textContent = String(unit.id);
 
       nodeGroup.append(hitbox, halo, circle, label);
       nodeGroup.addEventListener('click', () => focusUnit(state, unit.id));
-      nodeGroup.addEventListener('mouseenter', () => {
-        state.hoverUnit = unit;
-        drawTopology(state);
+      hitbox.addEventListener('pointerenter', () => {
+        updateHoverUnit(state, unit);
       });
-      nodeGroup.addEventListener('mouseleave', () => {
-        if (state.hoverUnit?.id === unit.id) {
-          state.hoverUnit = null;
-          drawTopology(state);
-        }
+      hitbox.addEventListener('pointerleave', () => {
+        updateHoverUnit(state, null);
       });
       nodeGroup.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -379,21 +395,23 @@ function drawTopology(state) {
     }
 
     entry.nodeGroup.setAttribute('class', buildNodeClass(unit, state));
-    entry.nodeGroup.style.transform = `translate(${unit._x}px, ${unit._y}px)`;
-    entry.hitbox.setAttribute('x', String(-(unit._size / 2)));
-    entry.hitbox.setAttribute('y', String(-(unit._size / 2)));
+    entry.nodeGroup.setAttribute('transform', `translate(${unit._x} ${unit._y})`);
+    entry.hitbox.setAttribute('x', '0');
+    entry.hitbox.setAttribute('y', '0');
     entry.hitbox.setAttribute('width', String(unit._size));
     entry.hitbox.setAttribute('height', String(unit._size));
-    entry.halo.setAttribute('x', String(-(unit._size + 3)));
-    entry.halo.setAttribute('y', String(-(unit._size + 3)));
-    entry.halo.setAttribute('width', String((unit._size + 3) * 2));
-    entry.halo.setAttribute('height', String((unit._size + 3) * 2));
-    entry.circle.setAttribute('x', String(-(unit._size / 2)));
-    entry.circle.setAttribute('y', String(-(unit._size / 2)));
+    entry.halo.setAttribute('x', '-3');
+    entry.halo.setAttribute('y', '-3');
+    entry.halo.setAttribute('width', String(unit._size + 6));
+    entry.halo.setAttribute('height', String(unit._size + 6));
+    entry.circle.setAttribute('x', '0');
+    entry.circle.setAttribute('y', '0');
     entry.circle.setAttribute('width', String(unit._size));
     entry.circle.setAttribute('height', String(unit._size));
     entry.circle.setAttribute('fill', '#ffffff');
-    entry.circle.style.opacity = String(Math.min(1, 0.48 + ((unit._stateWeight ?? 1) - 1) * 0.8));
+    entry.circle.style.removeProperty('opacity');
+    entry.circle.style.setProperty('--node-base-opacity', String(Math.min(1, 0.48 + ((unit._stateWeight ?? 1) - 1) * 0.8)));
+    entry.label.setAttribute('x', String(unit._size / 2));
     entry.label.setAttribute('y', String(-(unit._size + 8)));
     state.nodeLayer.append(entry.nodeGroup);
   }
@@ -411,91 +429,12 @@ function focusUnit(state, unitID) {
   const cluster = state.clusterByID.get(unit.atlas.position.cluster_id);
   const publicRecord = state.publicUnitByID?.get(unit.id);
   document.getElementById('atlas-unit-profile').innerHTML = renderReadout(unit, cluster, publicRecord);
-  positionReadout(state, unit);
   drawTopology(state);
   bindTargetButtons(state);
 
   const params = new URLSearchParams(window.location.search);
   params.set('unit', String(unit.id));
   history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
-}
-
-function positionReadout(state, unit) {
-  const readout = document.getElementById('atlas-unit-profile');
-  if (!readout || !unit) {
-    return;
-  }
-
-  const field = document.querySelector('.atlas-field');
-  const fieldRect = field?.getBoundingClientRect();
-  const fieldWidth = fieldRect?.width || state.svg?.clientWidth || ATLAS_STAGE_WIDTH;
-  const fieldHeight = fieldRect?.height || state.svg?.clientHeight || ATLAS_STAGE_HEIGHT;
-  const readoutWidth = readout.offsetWidth || 244;
-  const readoutHeight = readout.offsetHeight || 292;
-  const padding = 24;
-  const unitX = (unit._x / ATLAS_STAGE_WIDTH) * fieldWidth;
-  const unitY = (unit._y / ATLAS_STAGE_HEIGHT) * fieldHeight;
-  const candidates = [
-    { x: padding, y: padding, left: true, top: true },
-    { x: fieldWidth - readoutWidth - padding, y: padding, left: false, top: true },
-    { x: padding, y: fieldHeight - readoutHeight - padding, left: true, top: false },
-    { x: fieldWidth - readoutWidth - padding, y: fieldHeight - readoutHeight - padding, left: false, top: false }
-  ].map((candidate) => {
-    const rect = {
-      left: candidate.x,
-      right: candidate.x + readoutWidth,
-      top: candidate.y,
-      bottom: candidate.y + readoutHeight
-    };
-    let score = 0;
-
-    for (const other of state.units) {
-      const otherX = (other._x / ATLAS_STAGE_WIDTH) * fieldWidth;
-      const otherY = (other._y / ATLAS_STAGE_HEIGHT) * fieldHeight;
-      const dx = otherX < rect.left
-        ? rect.left - otherX
-        : otherX > rect.right
-          ? otherX - rect.right
-          : 0;
-      const dy = otherY < rect.top
-        ? rect.top - otherY
-        : otherY > rect.bottom
-          ? otherY - rect.bottom
-          : 0;
-      const distance = Math.hypot(dx, dy);
-
-      if (distance === 0) {
-        score += 10_000;
-        continue;
-      }
-
-      if (distance < 240) {
-        score += (240 - distance) * (1 + (other._size / 18));
-      }
-    }
-
-    const activeDistance = Math.hypot(
-      unitX - (candidate.x + (readoutWidth / 2)),
-      unitY - (candidate.y + (readoutHeight / 2))
-    );
-    score -= Math.min(activeDistance, 600) * 0.02;
-
-    return { ...candidate, score };
-  }).sort((left, right) => left.score - right.score);
-
-  const best = candidates[0];
-  const x = Math.max(padding, Math.min(fieldWidth - readoutWidth - padding, best.x));
-  const y = Math.max(padding, Math.min(fieldHeight - readoutHeight - padding, best.y));
-
-  readout.classList.toggle('is-left', best.left);
-  readout.classList.toggle('is-right', !best.left);
-  readout.classList.toggle('is-top', best.top);
-  readout.classList.toggle('is-bottom', !best.top);
-
-  readout.style.left = `${x}px`;
-  readout.style.top = `${y}px`;
-  readout.style.right = 'auto';
-  readout.style.bottom = 'auto';
 }
 
 async function loadAtlas() {
@@ -542,6 +481,10 @@ async function loadAtlas() {
     nodeLayer: null
   };
 
+  state.svg.addEventListener('mouseleave', () => {
+    updateHoverUnit(state, null);
+  });
+
   const totalUnits = payload.unit_count || units.length;
   const totalLabel = document.getElementById('atlas-unit-total');
   if (totalLabel) {
@@ -559,9 +502,6 @@ async function loadAtlas() {
 
   window.addEventListener('resize', () => {
     drawTopology(state);
-    if (state.selectedUnit) {
-      positionReadout(state, state.selectedUnit);
-    }
   });
 
   applyFieldLayout(state);
