@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas | Sovereign Standard</title>
+  <meta name="description" content="A sharp, minimal relational instrument for the Sovereign Standard archive.">
+  <link rel="canonical" href="https://sovereignstandard.co/atlas.html">
+  <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicons/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sovereign Standard">
+  <meta property="og:title" content="Atlas | Sovereign Standard">
+  <meta property="og:description" content="A sharp, minimal relational instrument for the Sovereign Standard archive.">
+  <meta property="og:url" content="https://sovereignstandard.co/atlas.html">
+  <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atlas | Sovereign Standard">
+  <meta name="twitter:description" content="A sharp, minimal relational instrument for the Sovereign Standard archive.">
+  <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
+  <meta name="theme-color" content="#000000">
+  <script>
+    (() => {
+      try {
+        const navState = sessionStorage.getItem('sovereign-standard.nav');
+        if (!navState) {
+          return;
+        }
+
+        const parsed = JSON.parse(navState);
+        if (!parsed || !parsed.to) {
+          return;
+        }
+
+        if (parsed.to.includes('atlas.html')) {
+          document.documentElement.classList.add('has-pending-nav');
+          document.documentElement.dataset.navKind = parsed.kind || '';
+          document.documentElement.dataset.navFrom = parsed.fromPage || '';
+        }
+      } catch {
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="atlas">
+  <main class="atlas-screen" data-fluid-root>
+    <a href="index.html" class="site-object-lockup-link atlas-lockup-link" data-nav-kind="return-index" aria-label="Sovereign Standard home">
+      <img
+        src="assets/sovereign-standard-lockup.png"
+        alt="Sovereign Standard"
+        class="site-object-lockup atlas-lockup"
+        width="700"
+        height="210"
+      >
+    </a>
+    <nav class="top-links site-object-nav atlas-nav" aria-label="Primary">
+      <a href="archive.html" class="nav" data-nav-kind="return-archive">Archive</a>
+      <a href="purchase.html" class="nav">Purchase</a>
+      <a href="orders.html" class="nav">Orders</a>
+      <a href="atlas.html" class="nav nav-active">Atlas</a>
+    </nav>
+    <header class="page-header artifact-header atlas-header">
+      <div class="atlas-title-block">
+        <h1 class="page-title">Atlas</h1>
+      </div>
+      <div class="atlas-header-row">
+        <p id="atlas-expression-copy" class="page-intro atlas-intro">Each unit occupies one deterministic coordinate within the attested structure.</p>
+        <label class="atlas-search" for="atlas-unit-search">
+          <span class="atlas-search-label">UNIT</span>
+          <input id="atlas-unit-search" name="atlas-unit-search" type="search" inputmode="numeric" placeholder="000" autocomplete="off">
+          <span id="atlas-unit-total" class="atlas-search-total">/ 000</span>
+        </label>
+      </div>
+    </header>
+
+    <section class="atlas-field">
+      <div class="atlas-field-grid"></div>
+      <svg id="atlas-topology" class="atlas-topology" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" aria-label="Atlas topology field"></svg>
+
+      <div id="atlas-unit-profile" class="atlas-overlay atlas-overlay-readout">
+        <p class="muted">Select a unit to inspect its position in the archive field.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="atlas.js"></script>
+</body>
+</html>
