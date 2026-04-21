@@ -8,6 +8,7 @@ The public site is exported from the main `sovereign-standard` repository root a
 
 - `index.html` is the landing page.
 - `archive.html` lists public unit state from `units.json`.
+- `atlas.html` reads `atlas.json` and presents archive-level unit relationships.
 - `purchase.html` is the checkout entry page and includes the embedded sigil sequence.
 - `order.html` is the post-checkout order lookup and status page.
 - `orders.html` lists committed public order state from `orders.json`.
@@ -18,8 +19,10 @@ The public site is exported from the main `sovereign-standard` repository root a
 
 - `style.css` holds the shared site styles.
 - `site.js` handles general front-end behavior.
+- `atlas.js` handles atlas-oriented archive-field browsing and unit lookup.
 - `registry.js` handles claim-oriented unit interactions.
 - `sigil-sequence.js` drives both the standalone and embedded sigil sequence playback.
+- `atlas.json` is the generated public atlas manifest.
 - `units.json` is the generated public unit manifest.
 - `orders.json` is the generated public order manifest.
 - `output/<unit-id>/` contains published SVG artifacts used by the site.
@@ -37,7 +40,9 @@ The public site is exported from the main `sovereign-standard` repository root a
 
 - The public role name is `Partner Steward`.
 - Public UI should prefer `partner-reserved`, `partner activation`, and `partner token`.
+- Primary navigation should prefer `Archive`, `Atlas`, `Purchase`, and `Orders`.
 - The archive filters are labeled `All`, `Sealed`, `Collected`, and `Nodes`, and the unit registry state panel presents public states as `STATE: SEALED`, `STATE: COLLECTED`, `STATE: RESERVED`, or `STATE: NODE`.
+- Atlas uses `REGION`, `REGION ROLE`, and `UNIT ROLE`, with public role values `ANCHOR`, `BRIDGE`, `FRONTIER`, and `INTERIOR`.
 - Internal compatibility names may still use `partner` behind the scenes.
 
 ## Source of truth
