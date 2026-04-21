@@ -235,14 +235,12 @@ function drawTopology(state) {
 
   for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
     for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
-      const major = x % ATLAS_GRID_MAJOR_STEP === 0 && y % ATLAS_GRID_MAJOR_STEP === 0;
-      const size = major ? 2 : 1;
       grid.append(createSvgNode('rect', {
-        x: x - (size / 2),
-        y: y - (size / 2),
-        width: size,
-        height: size,
-        class: `atlas-grid-point ${major ? 'atlas-grid-point-major' : 'atlas-grid-point-minor'}`
+        x: x - 0.5,
+        y: y - 0.5,
+        width: 1,
+        height: 1,
+        class: 'atlas-grid-point atlas-grid-point-minor'
       }));
     }
   }

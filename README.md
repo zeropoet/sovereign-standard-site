@@ -43,6 +43,8 @@ The public site is exported from the main `sovereign-standard` repository root a
 - Primary navigation should prefer `Archive`, `Atlas`, `Purchase`, and `Orders`.
 - The archive filters are labeled `All`, `Sealed`, `Collected`, and `Nodes`, and the unit registry state panel presents public states as `STATE: SEALED`, `STATE: COLLECTED`, `STATE: RESERVED`, or `STATE: NODE`.
 - Atlas uses `REGION`, `REGION ROLE`, and `UNIT ROLE`, with public role values `ANCHOR`, `BRIDGE`, `FRONTIER`, and `INTERIOR`.
+- Atlas currently renders as a black archive field with white relational instrumentation. Unit squares inherit archive state fills: `SEALED` = white, `COLLECTED` = light gray value, and `RESERVED` / `NODE` = black fill, all with a white `1px` stroke.
+- Atlas highlighting should be governed only by explicit relation data, not by broad region-wide heuristics.
 - Internal compatibility names may still use `partner` behind the scenes.
 
 ## Source of truth
