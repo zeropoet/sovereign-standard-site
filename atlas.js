@@ -194,7 +194,9 @@ function updateHoverUnit(state, unit) {
 function applyFieldLayout(state) {
   const unitCount = Math.max(state.units.length, 1);
   const densityScale = Math.sqrt(136 / unitCount);
-  const baseSize = 16 * densityScale;
+  const baseSize = 14 * densityScale;
+  const maxSize = ATLAS_GRID_STEP - 3;
+  const minSize = 7;
 
   state.units.forEach((unit) => {
     const point = unit.atlas.coordinate || { x: ATLAS_STAGE_WIDTH / 2, y: ATLAS_STAGE_HEIGHT / 2 };
@@ -205,7 +207,13 @@ function applyFieldLayout(state) {
     unit._x = point.x;
     unit._y = point.y;
     unit._stateWeight = stateWeight;
-    unit._size = Math.max(8, Math.min(18, (baseSize + density * 2.1 + outlier * 1.2 + bridge * 0.85) * (0.92 + ((stateWeight - 1) * 0.55))));
+    unit._size = Math.max(
+      minSize,
+      Math.min(
+        maxSize,
+        (baseSize + density * 1.8 + outlier * 1.0 + bridge * 0.7) * (0.92 + ((stateWeight - 1) * 0.45))
+      )
+    );
   });
 
   document.getElementById('atlas-expression-copy').textContent = ATLAS_FIELD.copy;
@@ -309,9 +317,18 @@ function drawTopology(state) {
 
   for (const region of visibleRegions) {
     const isActive = region.id === selectedClusterID;
+    if (!isActive) {
+      continue;
+    }
     const group = createSvgNode('g', {
       class: `atlas-region ${isActive ? 'is-active' : ''}`
     });
+    const label = createSvgNode('text', {
+      x: region.x,
+      y: region.y - 14,
+      class: 'atlas-region-label'
+    });
+    label.textContent = region.name.toUpperCase();
     const tagWidth = Math.max(92, (region.name.length * 7) + 26);
     const tag = createSvgNode('rect', {
       x: region.x - (tagWidth / 2),
@@ -320,13 +337,8 @@ function drawTopology(state) {
       height: 16,
       class: 'atlas-region-tag'
     });
-    const label = createSvgNode('text', {
-      x: region.x,
-      y: region.y - 14,
-      class: 'atlas-region-label'
-    });
-    label.textContent = region.name.toUpperCase();
-    group.append(tag, label);
+    group.append(tag);
+    group.append(label);
     regions.append(group);
   }
 

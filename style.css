@@ -1223,7 +1223,7 @@ body[data-page="atlas"] {
   display: block;
   width: 100%;
   margin-top: var(--space-5);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid #b8b8b8;
 }
 
 .atlas-header-row {
