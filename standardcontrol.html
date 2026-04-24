@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standard Control</title>
-  <meta name="description" content="State record for a Sovereign Standard unit.">
+  <title>Unit | Sovereign Standard</title>
+  <meta name="description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
   <link id="canonical-link" rel="canonical" href="https://sovereignstandard.co/standardcontrol.html">
   <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
@@ -16,13 +16,13 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sovereign Standard">
-  <meta id="og-title" property="og:title" content="Standard Control · Sovereign Standard">
-  <meta id="og-description" property="og:description" content="State record for a Sovereign Standard unit.">
+  <meta id="og-title" property="og:title" content="Unit · Sovereign Standard">
+  <meta id="og-description" property="og:description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
   <meta id="og-url" property="og:url" content="https://sovereignstandard.co/standardcontrol.html">
   <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta id="twitter-title" name="twitter:title" content="Standard Control · Sovereign Standard">
-  <meta id="twitter-description" name="twitter:description" content="State record for a Sovereign Standard unit.">
+  <meta id="twitter-title" name="twitter:title" content="Unit · Sovereign Standard">
+  <meta id="twitter-description" name="twitter:description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
   <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="sovereign-claim-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
   <meta name="theme-color" content="#000000">
@@ -52,46 +52,48 @@
 </head>
 <body data-page="unit">
   <main class="artifact-page" data-fluid-root>
-    <a href="index.html" class="site-object-lockup-link" data-nav-kind="return-index" aria-label="Sovereign Standard home">
-      <img
-        src="assets/sovereign-standard-lockup.png"
-        alt="Sovereign Standard"
-        class="site-object-lockup"
-        width="700"
-        height="210"
-      >
-    </a>
     <nav class="top-links site-object-nav" aria-label="Primary">
+      <a href="index.html" class="nav" data-nav-kind="return-index">Home</a>
       <a href="archive.html" class="nav" data-nav-kind="return-archive">Archive</a>
-      <a href="purchase.html" class="nav">Purchase</a>
+      <a href="purchase.html" class="nav">Acquire</a>
       <a href="orders.html" class="nav">Orders</a>
       <a href="atlas.html" class="nav">Atlas</a>
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title" id="unit-title">Unit</h1>
+      <p class="page-intro">Public state, provenance, attestation, and collector access for a Sovereign Standard unit.</p>
     </header>
 
-    <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
-      <a id="unit-prev" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Previous</a>
-      <a id="unit-next" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Next</a>
-    </nav>
+    <section class="panel section-stack artifact-section unit-identity-section">
+      <div class="section-head">
+        <h2>Unit Summary</h2>
+      </div>
+      <div class="unit-identity-grid">
+        <div id="state-panel" class="state-panel unit-threshold-panel"></div>
+        <div id="unit-summary-grid" class="unit-summary-grid"></div>
+      </div>
+    </section>
 
-    <section class="panel section-stack artifact-section state-section unit-state-section">
-      <div id="state-panel" class="state-panel"></div>
+    <section class="panel section-stack artifact-section unit-entry-section">
+      <div class="section-head">
+        <h2>COLLECTOR ACCESS</h2>
+        <p>The etched claim code is the enduring key for this vessel. Use it to cross the threshold, return to the unit, and request your place in what comes next.</p>
+      </div>
+      <div id="entry-panel" class="unit-entry-panel"></div>
+      <div id="holder-panel" class="holder-panel"></div>
+      <div class="section-head continuation-history-head">
+        <h2>Drop History</h2>
+        <p>Recorded drops, fills, and holder events associated with this unit gather here as its attested history accumulates.</p>
+      </div>
+      <div id="continuation-history" class="verification-list"></div>
     </section>
 
     <section class="panel section-stack artifact-section verification-section">
       <div class="section-head">
         <h2>Provenance</h2>
+        <p>These records describe the unit at origin and through its attested public and collected record.</p>
       </div>
       <div id="verification-list" class="verification-list"></div>
-    </section>
-
-    <section class="panel section-stack artifact-section metadata-section">
-      <div class="section-head">
-        <h2>Registry</h2>
-      </div>
-      <div id="meta-list" class="meta-list"></div>
     </section>
 
     <section id="artifact-grid" class="artifact-grid artifact-section">
@@ -110,6 +112,10 @@
     </section>
 
     <section class="panel section-stack artifact-section standard-unit-section">
+      <div class="section-head">
+        <h2>Initial Fill</h2>
+        <p>The first inhabitant of this vessel is the Sovereign Standard green tea blend. This profile describes the opening composition, not the full life of the unit.</p>
+      </div>
       <div class="standard-unit-grid">
         <article class="standard-unit-block">
           <h3>Origin</h3>
@@ -137,6 +143,11 @@
         </article>
       </div>
     </section>
+
+    <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
+      <a id="unit-prev" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Previous</a>
+      <a id="unit-next" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Next</a>
+    </nav>
 
   </main>
 
@@ -187,8 +198,8 @@
 
     function updateMeta(unitID) {
       const unitURL = `https://sovereignstandard.co/standardcontrol.html?unit=${unitID}`;
-      const unitTitle = `Unit ${unitID} · Standard Control`;
-      const unitDescription = `State record for Sovereign Standard unit ${unitID}.`;
+      const unitTitle = `Unit ${unitID} · Sovereign Standard`;
+      const unitDescription = `State, provenance, attestation, and collector access for Sovereign Standard unit ${unitID}.`;
 
       document.title = unitTitle;
       document.getElementById('unit-title').textContent = `Unit ${unitID}`;
@@ -202,15 +213,148 @@
     }
 
     let activePollToken = 0;
-    let activePartnerToken = '';
-    let activePartnerMode = false;
     let activeStatusTimer = 0;
+    const HOLDER_ACCESS_STORAGE_KEY = 'sovereign-standard.holder-access.v1';
+    const CONTINUATION_PENDING_STORAGE_KEY = 'sovereign-standard.continuation-pending.v1';
 
     function stopClaimStatusUpdates() {
       if (activeStatusTimer) {
         window.clearInterval(activeStatusTimer);
         activeStatusTimer = 0;
       }
+    }
+
+    function getHolderAccessStore() {
+      try {
+        return JSON.parse(window.sessionStorage.getItem(HOLDER_ACCESS_STORAGE_KEY) || '{}') || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function getStoredClaimCode(unitID) {
+      const store = getHolderAccessStore();
+      return typeof store[String(unitID)] === 'string' ? store[String(unitID)] : '';
+    }
+
+    function isHolderContinuationEligible(record) {
+      return Boolean(
+        record?.continuation_eligible
+        || record?.state === 'claimed'
+      );
+    }
+
+    function setStoredClaimCode(unitID, claimCode) {
+      const store = getHolderAccessStore();
+      store[String(unitID)] = String(claimCode || '');
+      window.sessionStorage.setItem(HOLDER_ACCESS_STORAGE_KEY, JSON.stringify(store));
+    }
+
+    function clearStoredClaimCode(unitID) {
+      const store = getHolderAccessStore();
+      delete store[String(unitID)];
+      window.sessionStorage.setItem(HOLDER_ACCESS_STORAGE_KEY, JSON.stringify(store));
+    }
+
+    function getPendingContinuationStore() {
+      try {
+        return JSON.parse(window.sessionStorage.getItem(CONTINUATION_PENDING_STORAGE_KEY) || '{}') || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function getPendingContinuationAction(unitID) {
+      const store = getPendingContinuationStore();
+      const entry = store[String(unitID)];
+      return entry && typeof entry === 'object' ? entry : null;
+    }
+
+    function setPendingContinuationAction(unitID, payload) {
+      const store = getPendingContinuationStore();
+      store[String(unitID)] = {
+        ...payload,
+        created_at: payload?.created_at || new Date().toISOString()
+      };
+      window.sessionStorage.setItem(CONTINUATION_PENDING_STORAGE_KEY, JSON.stringify(store));
+    }
+
+    function clearPendingContinuationAction(unitID) {
+      const store = getPendingContinuationStore();
+      delete store[String(unitID)];
+      window.sessionStorage.setItem(CONTINUATION_PENDING_STORAGE_KEY, JSON.stringify(store));
+    }
+
+    function reconcilePendingContinuationAction(unitID, summary, record) {
+      const pending = getPendingContinuationAction(unitID);
+      if (!pending) {
+        return null;
+      }
+
+      const nextDropStatus = String(summary?.next_drop_status || record?.next_drop_status || 'out');
+      const requestedCount = Number(summary?.requested_drop_count ?? record?.requested_drop_count ?? 0);
+      const createdAt = Date.parse(pending.created_at || '');
+      const isExpired = Number.isFinite(createdAt) && (Date.now() - createdAt) > (6 * 60 * 60 * 1000);
+
+      let shouldClear = isExpired;
+
+      if (!shouldClear) {
+        shouldClear = nextDropStatus === 'in'
+          || requestedCount > Number(pending.requested_count_before ?? -1);
+      }
+
+      if (shouldClear) {
+        clearPendingContinuationAction(unitID);
+        return null;
+      }
+
+      return pending;
+    }
+
+    function formatNextDropStatusLabel(status) {
+      return String(status || 'out') === 'in' ? 'In For Next Drop' : 'Out For Now';
+    }
+
+    function describePendingContinuationAction(pendingAction) {
+      if (!pendingAction?.kind) {
+        return 'No queued action';
+      }
+
+      return pendingAction.kind === 'request_drop'
+        ? 'Next Drop Queued'
+        : 'Update Queued';
+    }
+
+    async function submitContinuationAction(path, payload) {
+      const endpoint = getClaimEndpoint();
+      if (!endpoint) {
+        throw new Error('Continuation relay is not configured yet');
+      }
+
+      let response;
+      try {
+        response = await fetch(`${endpoint}${path}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch {
+        throw new Error('Continuation relay is unreachable from this origin');
+      }
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+      }
+
+      if (!response.ok) {
+        throw new Error(data?.error || 'Unable to submit holder action.');
+      }
+
+      return data;
     }
 
     function startClaimStatusUpdates(status, messages, intervalMs = 2200) {
@@ -255,8 +399,11 @@
         stopClaimStatusUpdates();
         renderArtifactState(committedRecord);
         renderStatePanel(committedRecord);
-        renderMetadata(committedRecord);
+        renderUnitSummary(committedRecord);
+        renderEntryPanel(committedRecord);
+        renderHolderPanel(committedRecord);
         renderVerification(committedRecord);
+        renderContinuationHistory(committedRecord);
       } catch {
         if (pollToken !== activePollToken) {
           return;
@@ -267,29 +414,204 @@
       }
     }
 
-    async function activatePartnerUnit(unitID, partnerToken, status) {
-      startClaimStatusUpdates(status, [
-        'Submitting partner activation...',
-        'Partner activation is being processed...',
-        'Waiting for the registry to confirm activation...'
-      ], 2800);
+    function renderUnitSummary(record) {
+      const unitSummaryGrid = document.getElementById('unit-summary-grid');
+      const unitID = Number(record.id ?? record.unit);
+      const attestationDepth = Number(record.attested_event_count || 0) + Number(record.continuation_event_count || 0);
+      const holderSignal = isHolderContinuationEligible(record) && record.holder_hash
+        ? String(record.holder_hash).slice(0, 16)
+        : 'Unavailable';
 
-      await window.SovereignRegistry.claimPartnerUnit(unitID, {
-        partnerToken
+      unitSummaryGrid.innerHTML = `
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Unit</p>
+          <p class="unit-summary-value">${escapeHTML(unitID)}</p>
+        </article>
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Public State</p>
+          <p class="unit-summary-value">${escapeHTML(getPublicStateLabel(record))}</p>
+        </article>
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Created</p>
+          <p class="unit-summary-value">${escapeHTML(formatDateOnly(record.created_at))}</p>
+        </article>
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Claimed</p>
+          <p class="unit-summary-value">${escapeHTML(record.claimed_at ? formatDateOnly(record.claimed_at) : 'Not yet')}</p>
+        </article>
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Attested Steps</p>
+          <p class="unit-summary-value">${escapeHTML(String(attestationDepth))}</p>
+        </article>
+        <article class="unit-summary-card">
+          <p class="unit-summary-label">Drop Count</p>
+          <p class="unit-summary-value">${escapeHTML(String(record.fulfilled_drop_count || 0))}</p>
+        </article>
+        <article class="unit-summary-card unit-summary-card-wide">
+          <p class="unit-summary-label">Holder Signal</p>
+          <p class="unit-summary-value code-wrap">${escapeHTML(holderSignal)}</p>
+        </article>
+      `;
+    }
+
+    function renderEntryPanel(record) {
+      const entryPanel = document.getElementById('entry-panel');
+      const unitID = Number(record.id ?? record.unit);
+      const storedClaimCode = getStoredClaimCode(unitID);
+      const hasStoredAccess = storedClaimCode.length > 0;
+
+      if (record.state === 'claimable') {
+        entryPanel.innerHTML = `
+          <div class="entry-panel-copy entry-panel-copy-compact">
+            <p>If this vessel is in your possession, enter the etched code above. Claim confirms possession and opens collector access through the unit.</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (isHolderContinuationEligible(record)) {
+        entryPanel.innerHTML = `
+          <div class="entry-access-shell">
+            <form class="claim-form" id="holder-entry-form">
+              <label class="order-field">
+                Claim Code
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" value="${escapeHTML(storedClaimCode)}" required>
+              </label>
+              <div class="claim-actions claim-actions-inline">
+                <button class="order-submit" type="submit">${hasStoredAccess ? 'Refresh Access' : 'Enter Through Unit'}</button>
+                ${hasStoredAccess ? '<button class="order-submit order-submit-secondary" type="button" id="clear-holder-access-button">Clear This Device</button>' : ''}
+              </div>
+              <p class="muted claim-note" id="holder-entry-status">${hasStoredAccess ? 'Holder access is remembered for this unit on this device.' : ''}</p>
+            </form>
+          </div>
+        `;
+
+        const form = document.getElementById('holder-entry-form');
+        const status = document.getElementById('holder-entry-status');
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          if (!form.reportValidity()) {
+            return;
+          }
+
+          const claimCode = String(new FormData(form).get('claim_code') || '').trim();
+          setStoredClaimCode(unitID, claimCode);
+          status.textContent = 'Holder access refreshed. The request tools below will use this etched code.';
+          void loadUnit();
+        });
+
+        const clearButton = document.getElementById('clear-holder-access-button');
+        clearButton?.addEventListener('click', () => {
+          clearStoredClaimCode(unitID);
+          void loadUnit();
+        });
+        return;
+      }
+
+      entryPanel.innerHTML = `
+        <div class="entry-panel-copy">
+          <p>This unit can be inspected here as part of the public archive record.</p>
+        </div>
+      `;
+    }
+
+    function renderHolderPanel(record, continuationRecord = null) {
+      const holderPanel = document.getElementById('holder-panel');
+      const unitID = Number(record.id ?? record.unit);
+      const storedClaimCode = getStoredClaimCode(unitID);
+
+      if (!isHolderContinuationEligible(record)) {
+        holderPanel.innerHTML = '';
+        return;
+      }
+
+      const summary = continuationRecord?.summary || null;
+      const nextDropStatus = summary?.next_drop_status || record.next_drop_status || 'out';
+      const nextDropID = summary?.next_drop_id || record.next_drop_id || 'next-drop';
+      const pendingDropCount = summary?.pending_drop_count ?? record.pending_drop_count ?? 0;
+      const requestedCount = summary?.requested_drop_count ?? record.requested_drop_count ?? 0;
+      const fulfilledCount = summary?.fulfilled_drop_count ?? record.fulfilled_drop_count ?? 0;
+      const isUnlocked = storedClaimCode.length > 0;
+      const latestContentFamily = summary?.latest_content_family || record.latest_content_family || 'Sovereign Standard green tea blend';
+      const latestContinuationAt = summary?.latest_event_at || record.latest_continuation_at || null;
+      const statusLabel = formatNextDropStatusLabel(nextDropStatus);
+      const pendingAction = reconcilePendingContinuationAction(unitID, summary, record);
+      const pendingLabel = describePendingContinuationAction(pendingAction);
+      const isAlreadyInUpcomingDrop = String(nextDropStatus) === 'in';
+      const canRequestDrop = isUnlocked && !pendingAction && !isAlreadyInUpcomingDrop;
+      const requestLabel = pendingAction?.kind === 'request_drop'
+        ? 'Next Drop Queued'
+        : (isAlreadyInUpcomingDrop ? 'Already In Next Drop' : 'Request Next Drop');
+      const nextDropDescription = isAlreadyInUpcomingDrop
+        ? `This unit is already committed to the upcoming drop manifest${nextDropID ? ` as ${nextDropID}` : ''}.`
+        : '';
+      const requestStateLabel = pendingAction
+        ? pendingLabel
+        : (isAlreadyInUpcomingDrop ? 'In For Upcoming Drop' : '');
+      const requestStateNote = pendingAction
+        ? 'This device is waiting for the public holder record to catch up.'
+        : (isAlreadyInUpcomingDrop
+          ? `Manifest entry ${escapeHTML(String(nextDropID))} is now carrying this unit forward.`
+          : '');
+
+      holderPanel.innerHTML = `
+        <div class="holder-request-shell">
+          <article class="holder-status-card holder-readout">
+            <p class="holder-status-label">Latest Inhabitant</p>
+            <p class="holder-status-value">${escapeHTML(String(latestContentFamily))}</p>
+            <p class="holder-status-note">${latestContinuationAt ? `Last recorded ${escapeHTML(formatTimestamp(latestContinuationAt))}` : ''}</p>
+          </article>
+          <article class="holder-request-card holder-readout">
+            <p class="holder-status-label">Upcoming Drop</p>
+            ${requestStateLabel ? `<p class="holder-request-state">${escapeHTML(requestStateLabel)}</p>` : ''}
+            ${requestStateNote ? `<p class="holder-status-note">${requestStateNote}</p>` : ''}
+            ${nextDropDescription ? `<p class="holder-request-copy">${escapeHTML(nextDropDescription)}</p>` : ''}
+            <button class="order-submit" type="button" id="request-drop-button" ${canRequestDrop ? '' : 'disabled'}>${requestLabel}</button>
+          </article>
+        </div>
+        <p class="muted claim-note" id="holder-action-status">${pendingAction
+          ? `${pendingLabel}. Refresh after commit to read the updated collected record.`
+          : (isUnlocked
+            ? 'Collector access is ready. Requesting the next drop will queue this unit into the upcoming drop manifest.'
+            : '')}</p>
+      `;
+
+      if (!isUnlocked) {
+        return;
+      }
+
+      const status = document.getElementById('holder-action-status');
+      const requestDropButton = document.getElementById('request-drop-button');
+      const actionButtons = [requestDropButton].filter(Boolean);
+
+      function setActionBusyState(isBusy) {
+        actionButtons.forEach((button) => {
+          button.disabled = isBusy;
+        });
+      }
+
+      requestDropButton?.addEventListener('click', async () => {
+        setActionBusyState(true);
+        status.textContent = 'Queueing next drop request...';
+        try {
+          await submitContinuationAction('/continuation/request', {
+            unit: unitID,
+            claim_code: storedClaimCode,
+            drop_id: String(nextDropID || 'next-drop'),
+            content_family: record.latest_content_family || null
+          });
+          setPendingContinuationAction(unitID, {
+            kind: 'request_drop',
+            requested_count_before: requestedCount
+          });
+          status.textContent = 'Next drop queued. The holder record will update after the event is committed.';
+          void loadUnit();
+        } catch (error) {
+          status.textContent = error.message || 'Unable to request the next drop.';
+        } finally {
+          setActionBusyState(false);
+        }
       });
-
-      const partnerRecord = await window.SovereignRegistry.waitForUnitRecord(
-        unitID,
-        (entry) => entry.state === 'claimed' && entry.is_partner_reserved,
-        { timeoutMs: 180000, intervalMs: 4000 }
-      );
-
-      stopClaimStatusUpdates();
-      renderArtifactState(partnerRecord);
-      renderStatePanel(partnerRecord);
-      renderMetadata(partnerRecord);
-      renderVerification(partnerRecord);
-      document.getElementById('sigil').src = partnerRecord.sigil || `output/${unitID}/sigil.svg`;
     }
 
     function renderStatePanel(record) {
@@ -297,63 +619,17 @@
       const unitID = Number(record.id ?? record.unit);
 
       if (record.state === 'claimable') {
-        if (record.is_partner_reserved) {
-          statePanel.innerHTML = `
-            <div class="state-block">
-              <p class="state-label">STATE: RESERVED</p>
-              ${activePartnerMode ? '<p class="state-detail">This unit is eligible for partner activation.</p>' : ''}
-              <form class="claim-form" id="partner-claim-form">
-                <label class="order-field">
-                  <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
-                </label>
-                <div class="claim-actions">
-                  <button class="order-submit" type="submit">Submit</button>
-                  <p class="muted claim-note" id="claim-status"></p>
-                </div>
-              </form>
-            </div>
-          `;
-
-          const form = document.getElementById('partner-claim-form');
-          const status = document.getElementById('claim-status');
-
-          form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            if (!form.reportValidity()) {
-              return;
-            }
-
-            const data = new FormData(form);
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            startClaimStatusUpdates(status, [
-              'Submitting partner activation...',
-              'Activation request sent. Waiting for confirmation...',
-              'Still working in the background...'
-            ], 2600);
-
-            try {
-              await activatePartnerUnit(unitID, String(data.get('claim_code') || '').trim(), status);
-            } catch (error) {
-              stopClaimStatusUpdates();
-              status.textContent = error.message || 'Unable to activate this partner unit right now.';
-              submitButton.disabled = false;
-            }
-          });
-
-          return;
-        }
-
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">STATE: SEALED</p>
+            <p class="state-detail">This vessel remains sealed in the archive. Claim confirms possession and moves the unit into collected state.</p>
             <form class="claim-form" id="claim-form">
               <label class="order-field">
-                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" required>
+                Claim Code
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" required>
               </label>
               <div class="claim-actions">
-                <button class="order-submit" type="submit">Submit</button>
+                <button class="order-submit" type="submit">Claim Unit</button>
                 <p class="muted claim-note" id="claim-status"></p>
               </div>
             </form>
@@ -393,8 +669,11 @@
             status.textContent = 'Claim accepted. Awaiting registry publish...';
             renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
-            renderMetadata(claimedRecord);
+            renderUnitSummary(claimedRecord);
+            renderEntryPanel(claimedRecord);
+            renderHolderPanel(claimedRecord);
             renderVerification(claimedRecord);
+            renderContinuationHistory(claimedRecord);
             const nextStatus = document.getElementById('claim-status');
             if (nextStatus) {
               void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
@@ -412,19 +691,11 @@
         return;
       }
 
-      if (record.state === 'claimed' && record.is_partner_reserved) {
-        statePanel.innerHTML = `
-          <div class="state-block">
-            <p class="state-label">STATE: NODE</p>
-          </div>
-        `;
-        return;
-      }
-
       if (record.state === 'claimed') {
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">STATE: COLLECTED</p>
+            <p class="state-detail">This vessel has passed from sealed issuance into collected state. Future drop requests will return through the same unit.</p>
             ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;
@@ -435,15 +706,6 @@
             void pollForCommittedClaim(unitID, record, pendingStatus);
           }
         }
-        return;
-      }
-
-      if (record.state === 'node') {
-        statePanel.innerHTML = `
-          <div class="state-block">
-            <p class="state-label">NODE</p>
-          </div>
-        `;
         return;
       }
 
@@ -464,74 +726,63 @@
     }
 
     function getPublicStateLabel(record) {
-      if (record.state === 'claimable' && record.is_partner_reserved) {
-        return 'RESERVED';
-      }
-
       if (record.state === 'claimable') {
         return 'SEALED';
-      }
-
-      if (record.state === 'claimed' && record.is_partner_reserved) {
-        return 'NODE';
       }
 
       if (record.state === 'claimed') {
         return 'COLLECTED';
       }
 
-      if (record.state === 'node') {
-        return 'NODE';
-      }
-
       return record.display_state || record.state;
-    }
-
-    function renderMetadata(record) {
-      const unitID = Number(record.id ?? record.unit);
-      document.getElementById('meta-list').innerHTML = `
-        <div class="meta-column">
-          <div class="meta-group">
-            <div><span>Unit Number</span><br><span class="code">${escapeHTML(unitID)}</span></div>
-            ${record.state === 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
-            ${record.convergence_hash ? `<div><span>Convergence Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.convergence_hash).toUpperCase())}</span></div>` : ''}
-            <div><span>State</span><br><span class="code">${escapeHTML(getPublicStateLabel(record))}</span></div>
-            ${record.state !== 'claimable' && record.state !== 'claimed' ? `<div><span>Created At</span><br><span class="code">${escapeHTML(formatTimestamp(record.created_at))}</span></div>` : ''}
-          </div>
-        </div>
-        <div class="meta-column">
-          <div class="meta-group">
-            ${record.state === 'claimed' && record.holder_hash ? `<div><span>Holder Hash</span><br><span class="code">${escapeHTML(String(record.holder_hash).slice(0, 16))}</span></div>` : ''}
-            ${record.state === 'claimed' && record.wholesale_token ? `<div><span>Partner Token</span><br><span class="code">${escapeHTML(record.wholesale_token)}</span></div>` : ''}
-            ${record.state === 'claimed' ? `<div><span>Claimed At</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
-          </div>
-        </div>
-      `;
     }
 
     function renderVerification(record) {
       const verificationList = document.getElementById('verification-list');
       const eventCount = Number(record.attested_event_count || 0);
-      const registryLine = (record.state === 'node' || (record.state === 'claimed' && record.is_partner_reserved))
-        ? 'This unit now stands in the archive as a node.'
-        : (record.state === 'claimed'
-          ? 'This unit now stands in the archive as collected.'
-          : 'This unit remains sealed in the archive and has not yet passed into collected state.');
+      const continuationEvents = Number(record.continuation_event_count || 0);
 
       verificationList.innerHTML = `
         <div class="verification-column">
           <div class="verification-group">
             ${record.attested_event_hash ? `<div><span>Latest Event Hash</span><br><span class="code code-wrap">${escapeHTML(String(record.attested_event_hash).toUpperCase())}</span></div>` : ''}
-            <div><span>Event Count</span><br><span class="code">${escapeHTML(String(eventCount))}</span></div>
+            <div><span>Registry Events</span><br><span class="code">${escapeHTML(String(eventCount))}</span></div>
+            <div><span>Holder Events</span><br><span class="code">${escapeHTML(String(continuationEvents))}</span></div>
+            <div><span>Current Public State</span><br><span class="code">${escapeHTML(getPublicStateLabel(record))}</span></div>
+            ${record.claimed_at ? `<div><span>Claim Threshold</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
             <p>
               Each published change adds another mark to the line of record for this unit.
-              The event count reflects how many attested steps are currently preserved in that sequence.
+              These counts reflect how many attested public and holder steps are currently preserved in that sequence.
             </p>
           </div>
         </div>
+      `;
+    }
+
+    function renderContinuationHistory(record, continuationRecord = null) {
+      const continuationHistory = document.getElementById('continuation-history');
+      const publicEvents = Array.isArray(continuationRecord?.events) ? continuationRecord.events : [];
+      const content = publicEvents.length > 0
+        ? publicEvents.map((event) => `
+            <div class="continuation-history-entry">
+              <div><span>Event</span><br><span class="code">${escapeHTML(String(event.type || '').replaceAll('_', ' ').toUpperCase())}</span></div>
+              <div><span>Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(event.recorded_at))}</span></div>
+              ${event.drop_id ? `<div><span>Drop</span><br><span class="code">${escapeHTML(event.drop_id)}</span></div>` : ''}
+              ${event.content_family ? `<div><span>Content Family</span><br><span class="code">${escapeHTML(event.content_family)}</span></div>` : ''}
+            </div>
+          `).join('')
+        : (record.claimed_at
+          ? `
+              <div><span>Claim Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>
+            `
+          : `
+              <p>No holder history has yet been recorded for this unit beyond issuance.</p>
+            `);
+
+      continuationHistory.innerHTML = `
         <div class="verification-column">
           <div class="verification-group">
-            <p>${escapeHTML(registryLine)}</p>
+            ${content}
           </div>
         </div>
       `;
@@ -540,8 +791,6 @@
     async function loadUnit() {
       const params = new URLSearchParams(window.location.search);
       const rawUnitID = params.get('unit') || params.get('id');
-      activePartnerToken = String(params.get('token') || '').trim();
-      activePartnerMode = params.get('mode') === 'partner' || Boolean(activePartnerToken);
 
       if (!rawUnitID) {
         throw new Error('Missing unit id');
@@ -557,15 +806,13 @@
 
       const registry = await window.SovereignRegistry.loadRegistry();
       const record = registry.units.find((entry) => Number(entry.id ?? entry.unit) === unitID);
+      const continuationRecord = await window.SovereignRegistry.loadUnitContinuation(unitID);
 
       if (!record) {
         throw new Error(`Unit ${unitID} is not available`);
       }
 
-      const isGatedPartnerUnit = record.is_partner_reserved && record.state !== 'claimed';
-
       const unitList = registry.units
-        .filter((entry) => entry.state !== 'node')
         .map((entry) => Number(entry.id ?? entry.unit));
       const unitIndex = unitList.indexOf(unitID);
       const previousUnit = unitIndex > 0 ? unitList[unitIndex - 1] : null;
@@ -615,20 +862,11 @@
 
       renderArtifactState(record);
       renderStatePanel(record);
-      renderMetadata(record);
+      renderUnitSummary(record);
+      renderEntryPanel(record);
+      renderHolderPanel(record, continuationRecord);
       renderVerification(record);
-
-      if (isGatedPartnerUnit && activePartnerToken) {
-        const status = document.getElementById('claim-status');
-        try {
-          await activatePartnerUnit(unitID, activePartnerToken, status);
-        } catch (error) {
-          stopClaimStatusUpdates();
-          if (status) {
-            status.textContent = error.message || 'Unable to activate this unit right now.';
-          }
-        }
-      }
+      renderContinuationHistory(record, continuationRecord);
     }
 
     loadUnit().catch((error) => {

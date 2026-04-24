@@ -51,18 +51,10 @@
 </head>
 <body data-page="archive">
   <main class="archive-page" data-fluid-root>
-    <a href="index.html" class="site-object-lockup-link" data-nav-kind="return-index" aria-label="Sovereign Standard home">
-      <img
-        src="assets/sovereign-standard-lockup.png"
-        alt="Sovereign Standard"
-        class="site-object-lockup"
-        width="700"
-        height="210"
-      >
-    </a>
     <nav class="top-links site-object-nav" aria-label="Primary">
+      <a href="index.html" class="nav" data-nav-kind="return-index">Home</a>
       <a href="archive.html" class="nav nav-active" aria-current="page">Archive</a>
-      <a href="purchase.html" class="nav">Purchase</a>
+      <a href="purchase.html" class="nav">Acquire</a>
       <a href="orders.html" class="nav">Orders</a>
       <a href="atlas.html" class="nav">Atlas</a>
     </nav>
@@ -94,7 +86,6 @@
             <a href="#all" data-state-filter="ALL" class="archive-filter-link state-all">All</a>
             <a href="#claimable" data-state-filter="claimable" class="archive-filter-link state-claimable">Sealed</a>
             <a href="#claimed" data-state-filter="claimed" class="archive-filter-link state-claimed">Collected</a>
-            <a href="#partner" data-state-filter="partner" class="archive-filter-link state-partner">Nodes</a>
           </nav>
         </div>
         <div class="archive-search-row">
@@ -116,7 +107,7 @@
   <script>
     async function loadUnits() {
       const manifest = await window.SovereignRegistry.loadRegistry();
-      const publicUnits = manifest.units.filter((record) => record.state !== 'node');
+      const publicUnits = manifest.units;
       const gallery = document.getElementById('gallery');
       const unitCount = document.getElementById('unit-count');
       const unitSearch = document.getElementById('unit-search');
@@ -148,8 +139,7 @@
         const filteredUnits = publicUnits.filter((record) => {
           const unitID = Number(record.id ?? record.unit);
           const matchesQuery = normalizedQuery ? `${unitID}`.includes(normalizedQuery) : true;
-          const matchesState = selectedState === 'ALL'
-            || (selectedState === 'partner' ? Boolean(record.is_partner_reserved) : record.state === selectedState);
+          const matchesState = selectedState === 'ALL' || record.state === selectedState;
 
           return matchesQuery && matchesState;
         });
@@ -163,18 +153,12 @@
 
         for (const record of filteredUnits) {
           const unitID = Number(record.id ?? record.unit);
-          const isPartnerClaimed = Boolean(record.is_partner_reserved) && record.state === 'claimed';
-          const isReservedUnclaimed = Boolean(record.is_partner_reserved) && record.state !== 'claimed';
-          const visualState = isPartnerClaimed
-            ? 'partner'
-            : (record.state === 'claimable' || isReservedUnclaimed ? 'claimable' : 'default');
-          const labelText = Boolean(record.is_partner_reserved)
-            ? (isPartnerClaimed ? 'NODE' : 'RESERVED')
-            : (record.state === 'claimable'
-              ? 'SEALED'
-              : (record.state === 'claimed'
-                ? 'COLLECTED'
-                : (record.display_state || record.state)));
+          const visualState = record.state === 'claimable' ? 'claimable' : 'default';
+          const labelText = record.state === 'claimable'
+            ? 'SEALED'
+            : (record.state === 'claimed'
+              ? 'COLLECTED'
+              : (record.display_state || record.state));
           const card = document.createElement('article');
           card.className = `artifact-card panel state-${visualState}`;
 

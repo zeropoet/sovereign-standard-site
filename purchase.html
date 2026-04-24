@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purchase Units | Sovereign Standard</title>
-  <meta name="description" content="Purchase sequential Sovereign Standard units.">
+  <title>Acquire a Vessel | Sovereign Standard</title>
+  <meta name="description" content="Acquire a serialized Sovereign Standard vessel with its initial fill. Claim the unit after receipt and continue through future drops using the same vessel.">
   <link rel="canonical" href="https://sovereignstandard.co/purchase.html">
   <meta name="theme-color" content="#000000">
   <meta name="sovereign-commerce-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
@@ -12,38 +12,27 @@
 </head>
 <body>
   <main class="artifact-page">
-    <a href="index.html" class="site-object-lockup-link" aria-label="Sovereign Standard home">
-      <img
-        src="assets/sovereign-standard-lockup.png"
-        alt="Sovereign Standard"
-        class="site-object-lockup"
-        width="700"
-        height="210"
-      >
-    </a>
     <nav class="top-links site-object-nav" aria-label="Primary">
+      <a href="index.html" class="nav">Home</a>
       <a href="archive.html" class="nav">Archive</a>
-      <a href="purchase.html" class="nav nav-active" aria-current="page">Purchase</a>
+      <a href="purchase.html" class="nav nav-active" aria-current="page">Acquire</a>
       <a href="orders.html" class="nav">Orders</a>
       <a href="atlas.html" class="nav">Atlas</a>
     </nav>
     <header class="page-header artifact-header">
-      <h1 class="page-title">Purchase</h1>
+      <h1 class="page-title">Acquire</h1>
     </header>
 
     <section class="purchase-layout artifact-section">
       <section class="panel section-stack purchase-order-column">
         <div class="section-head">
-          <p class="purchase-note">Select the number of units you want to purchase. Sequence assignment happens after checkout confirmation.</p>
+          <p class="purchase-note">Each acquisition includes an engraved matte black vessel, its assigned unit identity, the initial Sovereign Standard green tea fill, and the internal claim code etched into the vessel itself.</p>
+          <p class="purchase-note">After claim, the unit becomes your access point for future drops and recorded holder history.</p>
         </div>
         <form id="purchase-form" class="order-panel">
           <label class="order-field">
             Quantity
             <input type="number" name="quantity" min="1" max="102" value="1" inputmode="numeric" required>
-          </label>
-          <label class="order-field">
-            Partner Token
-            <input type="text" name="partner_token" autocomplete="off" autocapitalize="characters" spellcheck="false">
           </label>
           <div class="section-head order-total-head">
             <h2>Order total</h2>
@@ -52,17 +41,28 @@
             <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 unit: $68</p>
           </div>
           <div class="order-actions">
-            <button class="order-submit" type="submit">Checkout</button>
+            <button class="order-submit" type="submit">Continue to Checkout</button>
             <p id="purchase-status" class="muted order-status"></p>
           </div>
         </form>
       </section>
 
-      <section class="panel section-stack purchase-sequence-column" aria-label="Sovereign Standard unit">
+      <section class="panel section-stack purchase-sequence-column" aria-label="Sovereign Standard unit reference">
         <div class="purchase-sequence-stage">
           <img
-            src="assets/unit-image-ref-3.jpeg"
+            src="assets/unit-image-ref-1.jpeg"
             alt="Sovereign Standard unit container"
+            width="768"
+            height="768"
+          >
+        </div>
+      </section>
+
+      <section class="panel section-stack purchase-sequence-column" aria-label="Open Sovereign Standard unit reference">
+        <div class="purchase-sequence-stage">
+          <img
+            src="assets/unit-image-ref-2.jpeg"
+            alt="Open Sovereign Standard unit showing leaf material"
             width="768"
             height="768"
           >
@@ -71,7 +71,7 @@
     </section>
 
     <footer class="site-footer artifact-section">
-      <p class="muted">Standard, held.</p>
+      <p class="muted">Acquire once. Continue through the unit.</p>
     </footer>
   </main>
 
@@ -87,9 +87,7 @@
     const status = document.getElementById('purchase-status');
     const pricing = document.getElementById('order-pricing');
     const quantityInput = form.elements.quantity;
-    const partnerTokenInput = form.elements.partner_token;
     const STANDARD_UNIT_PRICE = 68;
-    const PARTNER_UNIT_PRICE = 34;
 
     function formatDollars(value) {
       return `$${value.toFixed(0)}`;
@@ -98,10 +96,7 @@
     function updatePricing() {
       const quantity = Math.max(1, Number(quantityInput.value) || 1);
       const unitsLabel = `${quantity} unit${quantity === 1 ? '' : 's'}`;
-      const hasPartnerToken = String(partnerTokenInput.value || '').trim().length > 0;
-      pricing.textContent = hasPartnerToken
-        ? `Partner pricing total for ${unitsLabel}: ${formatDollars(quantity * PARTNER_UNIT_PRICE)}`
-        : `Standard pricing total for ${unitsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
+      pricing.textContent = `Standard acquisition total for ${unitsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
     }
 
     if (new URLSearchParams(window.location.search).get('cancelled') === '1') {
@@ -109,7 +104,6 @@
     }
 
     quantityInput.addEventListener('input', updatePricing);
-    partnerTokenInput.addEventListener('input', updatePricing);
     updatePricing();
 
     form.addEventListener('submit', async (event) => {
@@ -131,8 +125,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            quantity: Number(data.get('quantity') || 0),
-            partner_token: String(data.get('partner_token') || '').trim()
+            quantity: Number(data.get('quantity') || 0)
           })
         });
 

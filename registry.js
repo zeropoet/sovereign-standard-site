@@ -25,6 +25,7 @@
   const MASK_64 = (1n << 64n) - 1n;
 
   let manifestPromise;
+  let continuationManifestPromise;
 
   function migrateClaimsStore(claims) {
     if (claims['34']) {
@@ -87,7 +88,6 @@
       convergence_hash: null,
       claimed_at: null,
       holder_hash: null,
-      is_partner_reserved: unitID >= 0 && unitID <= 33,
       sigil: null
     };
   }
@@ -108,7 +108,7 @@
     const localClaim = claimStore[String(unitID)];
     const state = String(record.state || '').toLowerCase();
 
-    if (localClaim && (record.claimed_at || state === 'claimed' || state === 'node' || state === 'retired')) {
+    if (localClaim && (record.claimed_at || state === 'claimed' || state === 'retired')) {
       delete claimStore[String(unitID)];
       setClaimsStore(claimStore);
       return {
@@ -175,10 +175,6 @@
       throw new Error('This unit is not claimable');
     }
 
-    if (record.is_partner_reserved) {
-      throw new Error('This unit is not claimable');
-    }
-
     const normalizedClaimCode = normalizeClaimCode(payload.claimCode);
     if (normalizedClaimCode.length < 12) {
       throw new Error('Invalid code');
@@ -214,43 +210,6 @@
       pending: true,
       claimed_at: timestamp,
       holder_hash: holderHash
-    };
-  }
-
-  async function claimPartnerUnit(unit, payload) {
-    const record = await loadUnitRecord(unit);
-
-    if (!record || !record.is_partner_reserved || record.state !== 'claimable') {
-      throw new Error('');
-    }
-
-    const partnerToken = String(payload.partnerToken || payload.claimCode || '').trim();
-    if (!partnerToken) {
-      throw new Error('');
-    }
-
-    const timestamp = formatTimestamp(new Date());
-    const unitID = Number(record.id ?? record.unit);
-    const relayEndpoint = getClaimEndpoint();
-
-    if (!relayEndpoint) {
-      throw new Error('');
-    }
-
-    await submitClaimToRelay(relayEndpoint, {
-      unit: unitID,
-      claimed_at: timestamp,
-      claim_code: partnerToken,
-      claim_type: 'partner',
-      partner_reference: record.coin_id || `coin_${String(unitID).padStart(2, '0')}`
-    });
-
-    return {
-      ...record,
-      state: 'claimed',
-      display_state: 'CLAIMED',
-      pending: true,
-      partner_reference: record.coin_id || null
     };
   }
 
@@ -313,6 +272,28 @@
 
   function clearManifestCache() {
     manifestPromise = undefined;
+    continuationManifestPromise = undefined;
+  }
+
+  async function loadContinuationManifest() {
+    if (!continuationManifestPromise) {
+      continuationManifestPromise = fetch('continuations.json', { cache: 'no-store' })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Unable to load continuation registry');
+          }
+          return response.json();
+        })
+        .catch(() => ({ units: [] }));
+    }
+
+    return continuationManifestPromise;
+  }
+
+  async function loadUnitContinuation(unit) {
+    const manifest = await loadContinuationManifest();
+    const units = Array.isArray(manifest?.units) ? manifest.units : [];
+    return units.find((entry) => Number(entry.id) === Number(unit)) || null;
   }
 
   async function refreshUnitRecord(unit) {
@@ -432,10 +413,11 @@
     clearManifestCache,
     clearClaim,
     claimUnit,
-    claimPartnerUnit,
     getPublicClaimSignal,
     keccak256,
+    loadContinuationManifest,
     loadRegistry,
+    loadUnitContinuation,
     loadUnitRecord,
     refreshUnitRecord,
     waitForUnitRecord

@@ -242,6 +242,26 @@ function drawTopology(state) {
   regions.innerHTML = '';
 
   for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
+    grid.append(createSvgNode('line', {
+      x1: x,
+      y1: 0,
+      x2: x,
+      y2: ATLAS_STAGE_HEIGHT,
+      class: 'atlas-grid-line'
+    }));
+  }
+
+  for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
+    grid.append(createSvgNode('line', {
+      x1: 0,
+      y1: y,
+      x2: ATLAS_STAGE_WIDTH,
+      y2: y,
+      class: 'atlas-grid-line'
+    }));
+  }
+
+  for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
     for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
       grid.append(createSvgNode('rect', {
         x: x - 0.5,
