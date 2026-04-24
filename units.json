@@ -1,21 +1,23 @@
 {
-  "generated_at" : "2026-04-24T18:37:35Z",
+  "generated_at" : "2026-04-24T21:25:32Z",
   "units" : [
     {
       "attested_event_count" : 8,
       "attested_event_hash" : "43efcb879838a96a200d3ca7d77a3f368f2b1ae15974791857e33f45049879bf",
       "claimed_at" : "2026-04-10T16:31:27Z",
       "continuation_eligible" : true,
-      "continuation_event_count" : 0,
+      "continuation_event_count" : 1,
       "convergence_hash" : "1500739fcaa8af0f5a34e5c02438cb81f795c7ae5ea5601daf1b6f3560f1a837",
       "created_at" : "2026-04-10T16:31:27Z",
       "display_state" : "CLAIMED",
       "fulfilled_drop_count" : 0,
       "holder_hash" : "b5a77361f8ebb6bc48c071154e72867438d72ad87bc8f33145431add1d3180c4",
       "id" : 0,
-      "next_drop_status" : "out",
-      "pending_drop_count" : 0,
-      "requested_drop_count" : 0,
+      "latest_continuation_at" : "2026-04-24T21:25:30Z",
+      "next_drop_id" : "next-drop",
+      "next_drop_status" : "in",
+      "pending_drop_count" : 1,
+      "requested_drop_count" : 1,
       "sigil" : "output\/0\/sigil.svg",
       "state" : "claimed"
     },
