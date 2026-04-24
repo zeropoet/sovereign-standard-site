@@ -81,7 +81,7 @@
       </div>
       <div id="entry-panel" class="unit-entry-panel"></div>
       <div id="holder-panel" class="holder-panel"></div>
-      <div class="section-head continuation-history-head">
+      <div id="continuation-history-head" class="section-head continuation-history-head">
         <h2>Drop History</h2>
         <p>Recorded drops, fills, and holder events associated with this unit gather here as its attested history accumulates.</p>
       </div>
@@ -325,6 +325,13 @@
         : 'Update Queued';
     }
 
+    function getClaimEndpoint() {
+      return document
+        .querySelector('meta[name="sovereign-claim-endpoint"]')
+        ?.getAttribute('content')
+        ?.trim() || '';
+    }
+
     async function submitContinuationAction(path, payload) {
       const endpoint = getClaimEndpoint();
       if (!endpoint) {
@@ -478,16 +485,13 @@
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" value="${escapeHTML(storedClaimCode)}" required>
               </label>
               <div class="claim-actions claim-actions-inline">
-                <button class="order-submit" type="submit">${hasStoredAccess ? 'Refresh Access' : 'Enter Through Unit'}</button>
-                ${hasStoredAccess ? '<button class="order-submit order-submit-secondary" type="button" id="clear-holder-access-button">Clear This Device</button>' : ''}
+                <button class="order-submit" type="submit">Enter Through Unit</button>
               </div>
-              <p class="muted claim-note" id="holder-entry-status">${hasStoredAccess ? 'Holder access is remembered for this unit on this device.' : ''}</p>
             </form>
           </div>
         `;
 
         const form = document.getElementById('holder-entry-form');
-        const status = document.getElementById('holder-entry-status');
         form.addEventListener('submit', (event) => {
           event.preventDefault();
           if (!form.reportValidity()) {
@@ -496,13 +500,6 @@
 
           const claimCode = String(new FormData(form).get('claim_code') || '').trim();
           setStoredClaimCode(unitID, claimCode);
-          status.textContent = 'Holder access refreshed. The request tools below will use this etched code.';
-          void loadUnit();
-        });
-
-        const clearButton = document.getElementById('clear-holder-access-button');
-        clearButton?.addEventListener('click', () => {
-          clearStoredClaimCode(unitID);
           void loadUnit();
         });
         return;
@@ -517,11 +514,13 @@
 
     function renderHolderPanel(record, continuationRecord = null) {
       const holderPanel = document.getElementById('holder-panel');
+      const continuationHistoryHead = document.getElementById('continuation-history-head');
       const unitID = Number(record.id ?? record.unit);
       const storedClaimCode = getStoredClaimCode(unitID);
 
       if (!isHolderContinuationEligible(record)) {
         holderPanel.innerHTML = '';
+        continuationHistoryHead.hidden = true;
         return;
       }
 
@@ -538,6 +537,13 @@
       const pendingAction = reconcilePendingContinuationAction(unitID, summary, record);
       const pendingLabel = describePendingContinuationAction(pendingAction);
       const isAlreadyInUpcomingDrop = String(nextDropStatus) === 'in';
+      if (!isUnlocked) {
+        holderPanel.innerHTML = '';
+        continuationHistoryHead.hidden = true;
+        return;
+      }
+
+      continuationHistoryHead.hidden = false;
       const canRequestDrop = isUnlocked && !pendingAction && !isAlreadyInUpcomingDrop;
       const requestLabel = pendingAction?.kind === 'request_drop'
         ? 'Next Drop Queued'
@@ -571,14 +577,8 @@
         </div>
         <p class="muted claim-note" id="holder-action-status">${pendingAction
           ? `${pendingLabel}. Refresh after commit to read the updated collected record.`
-          : (isUnlocked
-            ? 'Collector access is ready. Requesting the next drop will queue this unit into the upcoming drop manifest.'
-            : '')}</p>
+          : ''}</p>
       `;
-
-      if (!isUnlocked) {
-        return;
-      }
 
       const status = document.getElementById('holder-action-status');
       const requestDropButton = document.getElementById('request-drop-button');
@@ -761,6 +761,17 @@
 
     function renderContinuationHistory(record, continuationRecord = null) {
       const continuationHistory = document.getElementById('continuation-history');
+      const continuationHistoryHead = document.getElementById('continuation-history-head');
+      const unitID = Number(record.id ?? record.unit);
+      const storedClaimCode = getStoredClaimCode(unitID);
+
+      if (!isHolderContinuationEligible(record) || storedClaimCode.length === 0) {
+        continuationHistoryHead.hidden = true;
+        continuationHistory.innerHTML = '';
+        return;
+      }
+
+      continuationHistoryHead.hidden = false;
       const publicEvents = Array.isArray(continuationRecord?.events) ? continuationRecord.events : [];
       const content = publicEvents.length > 0
         ? publicEvents.map((event) => `
@@ -859,6 +870,9 @@
       document.getElementById('material').src = `output/${unitID}/material.svg`;
       document.getElementById('logo').src = `output/${unitID}/logo.svg`;
       document.getElementById('sigil').src = record.sigil || `output/${unitID}/sigil.svg`;
+
+      const collectorAccessSection = document.querySelector('.unit-entry-section');
+      collectorAccessSection.hidden = record.state === 'claimable';
 
       renderArtifactState(record);
       renderStatePanel(record);
