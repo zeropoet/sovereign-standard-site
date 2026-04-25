@@ -482,7 +482,7 @@
             <form class="claim-form" id="holder-entry-form">
               <label class="order-field">
                 Claim Code
-                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" value="${escapeHTML(storedClaimCode)}" required>
+                <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" required>
               </label>
               <div class="claim-actions claim-actions-inline">
                 <button class="order-submit" type="submit">Enter Through Unit</button>
@@ -500,6 +500,7 @@
 
           const claimCode = String(new FormData(form).get('claim_code') || '').trim();
           setStoredClaimCode(unitID, claimCode);
+          form.reset();
           void loadUnit();
         });
         return;
@@ -648,6 +649,7 @@
 
           const data = new FormData(form);
           const submitButton = form.querySelector('button[type="submit"]');
+          form.reset();
           submitButton.disabled = true;
           startClaimStatusUpdates(status, [
             'Submitting claim...',
