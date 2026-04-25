@@ -24,33 +24,11 @@
 
     <section class="artifact-section order-overview-layout">
       <section class="panel section-stack state-section">
-        <div class="section-head">
-          <h2>Overview</h2>
-        </div>
         <p id="orders-summary" class="muted order-status">Loading committed order ledger...</p>
       </section>
-
-      <section
-        class="panel order-overview-media"
-        aria-label="Sigil sequence"
-        data-sigil-sequence
-        data-sequence-fps="8"
-        data-sequence-autoplay="true"
-      >
-        <div class="order-overview-stage">
-          <img data-sequence-image alt="Sigil sequence frame">
-        </div>
-      </section>
-    </section>
-
-    <section class="artifact-section orders-intro-section">
-      <p class="page-intro">Committed order state, organized by ledger sequence.</p>
     </section>
 
     <section class="panel section-stack artifact-section metadata-section orders-section">
-      <div class="section-head">
-        <h2>Orders</h2>
-      </div>
       <div id="orders-list" class="ledger-list"></div>
     </section>
 
@@ -59,8 +37,6 @@
     </footer>
 
   </main>
-
-  <script src="sigil-sequence.js"></script>
   <script src="site.js"></script>
   <script>
     function escapeHTML(value) {
@@ -110,7 +86,7 @@
       const orders = Array.isArray(payload.orders) ? payload.orders : [];
       const totalUnits = orders.reduce((sum, order) => sum + Number(order.quantity || 0), 0);
 
-      summary.innerHTML = `${orders.length} orders recorded.<br>${totalUnits} total units allocated or requested through the ledger.`;
+      summary.textContent = `${orders.length} orders recorded. ${totalUnits} total units collected.`;
 
       if (!orders.length) {
         list.innerHTML = '<p class="muted">No committed orders yet.</p>';

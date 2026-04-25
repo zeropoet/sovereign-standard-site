@@ -61,61 +61,57 @@
     </nav>
     <header class="page-header artifact-header">
       <h1 class="page-title" id="unit-title">Unit</h1>
-      <p class="page-intro">Public state, provenance, attestation, and collector access for a Sovereign Standard unit.</p>
     </header>
 
     <section class="panel section-stack artifact-section unit-identity-section">
-      <div class="section-head">
-        <h2>Unit Summary</h2>
-      </div>
       <div class="unit-identity-grid">
         <div id="state-panel" class="state-panel unit-threshold-panel"></div>
         <div id="unit-summary-grid" class="unit-summary-grid"></div>
       </div>
     </section>
 
-    <section class="panel section-stack artifact-section unit-entry-section">
-      <div class="section-head">
-        <h2>COLLECTOR ACCESS</h2>
-        <p>The etched claim code is the enduring key for this vessel. Use it to cross the threshold, return to the unit, and request your place in what comes next.</p>
-      </div>
-      <div id="entry-panel" class="unit-entry-panel"></div>
-      <div id="holder-panel" class="holder-panel"></div>
-      <div id="continuation-history-head" class="section-head continuation-history-head">
-        <h2>Drop History</h2>
-        <p>Recorded drops, fills, and holder events associated with this unit gather here as its attested history accumulates.</p>
-      </div>
-      <div id="continuation-history" class="verification-list"></div>
-    </section>
+    <div class="artifact-section unit-detail-row">
+      <section class="panel section-stack unit-entry-section">
+        <div class="section-head">
+          <h2>COLLECTOR ACCESS</h2>
+          <p>The etched claim code is the vessel's key. Use it to request your place in what comes next.</p>
+        </div>
+        <div id="entry-panel" class="unit-entry-panel"></div>
+        <div id="holder-panel" class="holder-panel"></div>
+        <div id="continuation-history-head" class="section-head continuation-history-head">
+          <h2>Fill History</h2>
+        </div>
+        <div id="continuation-history" class="verification-list"></div>
+      </section>
 
-    <section class="panel section-stack artifact-section verification-section">
-      <div class="section-head">
-        <h2>Provenance</h2>
-        <p>These records describe the unit at origin and through its attested public and collected record.</p>
-      </div>
-      <div id="verification-list" class="verification-list"></div>
-    </section>
-
-    <section id="artifact-grid" class="artifact-grid artifact-section">
-      <article class="panel artifact-figure">
-        <h3>Material</h3>
-        <img id="material" alt="Material layout">
-      </article>
-      <article class="panel artifact-figure">
-        <h3>Logo</h3>
-        <img id="logo" alt="Logo lockup">
-      </article>
-      <article class="panel artifact-figure">
-        <h3>Sigil</h3>
-        <img id="sigil" alt="Sigil">
-      </article>
-    </section>
+      <section class="panel section-stack verification-section">
+        <div class="section-head">
+          <h2>Provenance</h2>
+          <p>These records describe the unit at origin and through its attested public and collected record. Each published change adds another mark to the line of record for this unit. These counts reflect how many attested steps are currently preserved in that sequence.</p>
+        </div>
+        <div id="verification-list" class="verification-list"></div>
+      </section>
+    </div>
 
     <section class="panel section-stack artifact-section standard-unit-section">
       <div class="section-head">
         <h2>Initial Fill</h2>
         <p>The first inhabitant of this vessel is the Sovereign Standard green tea blend. This profile describes the opening composition, not the full life of the unit.</p>
       </div>
+      <section id="artifact-grid" class="artifact-grid">
+        <article class="panel artifact-figure">
+          <h3>Material</h3>
+          <img id="material" alt="Material layout">
+        </article>
+        <article class="panel artifact-figure">
+          <h3>Logo</h3>
+          <img id="logo" alt="Logo lockup">
+        </article>
+        <article class="panel artifact-figure">
+          <h3>Sigil</h3>
+          <img id="sigil" alt="Sigil">
+        </article>
+      </section>
       <div class="standard-unit-grid">
         <article class="standard-unit-block">
           <h3>Origin</h3>
@@ -311,18 +307,39 @@
       return pending;
     }
 
-    function formatNextDropStatusLabel(status) {
-      return String(status || 'out') === 'in' ? 'In For Next Drop' : 'Out For Now';
-    }
-
     function describePendingContinuationAction(pendingAction) {
       if (!pendingAction?.kind) {
         return 'No queued action';
       }
 
       return pendingAction.kind === 'request_drop'
-        ? 'Next Drop Queued'
+        ? 'Next Fill Queued'
         : 'Update Queued';
+    }
+
+    function formatContinuationEventLabel(eventType) {
+      const normalized = String(eventType || '').trim().toLowerCase();
+      if (normalized === 'request_drop') {
+        return 'NEXT FILL REQUESTED';
+      }
+
+      return String(eventType || '')
+        .replaceAll('drop', 'fill')
+        .replaceAll('_', ' ')
+        .toUpperCase();
+    }
+
+    function formatDropLabel(dropID) {
+      const normalized = String(dropID || '').trim().toLowerCase();
+      if (normalized === 'next-drop') {
+        return 'Sovereign Coin';
+      }
+
+      return String(dropID || '');
+    }
+
+    function isFulfilledDropEvent(eventType) {
+      return String(eventType || '').toLowerCase().includes('fulfill');
     }
 
     function getClaimEndpoint() {
@@ -358,7 +375,7 @@
       }
 
       if (!response.ok) {
-        throw new Error(data?.error || 'Unable to submit holder action.');
+        throw new Error(data?.error || 'Unable to submit collector action.');
       }
 
       return data;
@@ -426,7 +443,7 @@
       const unitID = Number(record.id ?? record.unit);
       const attestationDepth = Number(record.attested_event_count || 0) + Number(record.continuation_event_count || 0);
       const holderSignal = isHolderContinuationEligible(record) && record.holder_hash
-        ? String(record.holder_hash).slice(0, 16)
+        ? String(record.holder_hash)
         : 'Unavailable';
 
       unitSummaryGrid.innerHTML = `
@@ -451,7 +468,7 @@
           <p class="unit-summary-value">${escapeHTML(String(attestationDepth))}</p>
         </article>
         <article class="unit-summary-card">
-          <p class="unit-summary-label">Drop Count</p>
+          <p class="unit-summary-label">Fill Count</p>
           <p class="unit-summary-value">${escapeHTML(String(record.fulfilled_drop_count || 0))}</p>
         </article>
         <article class="unit-summary-card unit-summary-card-wide">
@@ -468,11 +485,7 @@
       const hasStoredAccess = storedClaimCode.length > 0;
 
       if (record.state === 'claimable') {
-        entryPanel.innerHTML = `
-          <div class="entry-panel-copy entry-panel-copy-compact">
-            <p>If this vessel is in your possession, enter the etched code above. Claim confirms possession and opens collector access through the unit.</p>
-          </div>
-        `;
+        entryPanel.innerHTML = '';
         return;
       }
 
@@ -480,12 +493,11 @@
         entryPanel.innerHTML = `
           <div class="entry-access-shell">
             <form class="claim-form" id="holder-entry-form">
-              <label class="order-field">
-                Claim Code
+              <label class="order-field" aria-label="Claim Code">
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" required>
               </label>
               <div class="claim-actions claim-actions-inline">
-                <button class="order-submit" type="submit">Enter Through Unit</button>
+                <button class="order-submit" type="submit">Access Unit</button>
               </div>
             </form>
           </div>
@@ -532,47 +544,23 @@
       const requestedCount = summary?.requested_drop_count ?? record.requested_drop_count ?? 0;
       const fulfilledCount = summary?.fulfilled_drop_count ?? record.fulfilled_drop_count ?? 0;
       const isUnlocked = storedClaimCode.length > 0;
-      const latestContentFamily = summary?.latest_content_family || record.latest_content_family || 'Sovereign Standard green tea blend';
-      const latestContinuationAt = summary?.latest_event_at || record.latest_continuation_at || null;
-      const statusLabel = formatNextDropStatusLabel(nextDropStatus);
       const pendingAction = reconcilePendingContinuationAction(unitID, summary, record);
       const pendingLabel = describePendingContinuationAction(pendingAction);
       const isAlreadyInUpcomingDrop = String(nextDropStatus) === 'in';
-      if (!isUnlocked) {
-        holderPanel.innerHTML = '';
-        continuationHistoryHead.hidden = true;
-        return;
-      }
-
       continuationHistoryHead.hidden = false;
       const canRequestDrop = isUnlocked && !pendingAction && !isAlreadyInUpcomingDrop;
       const requestLabel = pendingAction?.kind === 'request_drop'
-        ? 'Next Drop Queued'
-        : (isAlreadyInUpcomingDrop ? 'Already In Next Drop' : 'Request Next Drop');
-      const nextDropDescription = isAlreadyInUpcomingDrop
-        ? `This unit is already committed to the upcoming drop manifest${nextDropID ? ` as ${nextDropID}` : ''}.`
-        : '';
+        ? 'Next Fill Queued'
+        : (isAlreadyInUpcomingDrop ? 'Already In Next Fill' : 'Request Next Fill');
       const requestStateLabel = pendingAction
         ? pendingLabel
-        : (isAlreadyInUpcomingDrop ? 'In For Upcoming Drop' : '');
-      const requestStateNote = pendingAction
-        ? 'This device is waiting for the public holder record to catch up.'
-        : (isAlreadyInUpcomingDrop
-          ? `Manifest entry ${escapeHTML(String(nextDropID))} is now carrying this unit forward.`
-          : '');
+        : 'Sovereign Coin';
 
       holderPanel.innerHTML = `
         <div class="holder-request-shell">
-          <article class="holder-status-card holder-readout">
-            <p class="holder-status-label">Latest Inhabitant</p>
-            <p class="holder-status-value">${escapeHTML(String(latestContentFamily))}</p>
-            <p class="holder-status-note">${latestContinuationAt ? `Last recorded ${escapeHTML(formatTimestamp(latestContinuationAt))}` : ''}</p>
-          </article>
           <article class="holder-request-card holder-readout">
-            <p class="holder-status-label">Upcoming Drop</p>
-            ${requestStateLabel ? `<p class="holder-request-state">${escapeHTML(requestStateLabel)}</p>` : ''}
-            ${requestStateNote ? `<p class="holder-status-note">${requestStateNote}</p>` : ''}
-            ${nextDropDescription ? `<p class="holder-request-copy">${escapeHTML(nextDropDescription)}</p>` : ''}
+            <p class="holder-status-label">Next Fill</p>
+            ${requestStateLabel ? `<p class="holder-status-value">${escapeHTML(requestStateLabel)}</p>` : ''}
             <button class="order-submit" type="button" id="request-drop-button" ${canRequestDrop ? '' : 'disabled'}>${requestLabel}</button>
           </article>
         </div>
@@ -593,7 +581,7 @@
 
       requestDropButton?.addEventListener('click', async () => {
         setActionBusyState(true);
-        status.textContent = 'Queueing next drop request...';
+        status.textContent = 'Queueing next fill request...';
         try {
           await submitContinuationAction('/continuation/request', {
             unit: unitID,
@@ -605,10 +593,10 @@
             kind: 'request_drop',
             requested_count_before: requestedCount
           });
-          status.textContent = 'Next drop queued. The holder record will update after the event is committed.';
+          status.textContent = 'Next fill queued. The collector record will update after the event is committed.';
           void loadUnit();
         } catch (error) {
-          status.textContent = error.message || 'Unable to request the next drop.';
+          status.textContent = error.message || 'Unable to request the next fill.';
         } finally {
           setActionBusyState(false);
         }
@@ -623,7 +611,7 @@
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">STATE: SEALED</p>
-            <p class="state-detail">This vessel remains sealed in the archive. Claim confirms possession and moves the unit into collected state.</p>
+            <p class="state-detail">This vessel remains sealed in the archive. Claiming it confirms possession and opens collector access.</p>
             <form class="claim-form" id="claim-form">
               <label class="order-field">
                 Claim Code
@@ -697,7 +685,7 @@
         statePanel.innerHTML = `
           <div class="state-block">
             <p class="state-label">STATE: COLLECTED</p>
-            <p class="state-detail">This vessel has passed from sealed issuance into collected state. Future drop requests will return through the same unit.</p>
+            <p class="state-detail">This vessel has been collected. Future fill requests are made through collector access.</p>
             ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;
@@ -752,10 +740,6 @@
             <div><span>Holder Events</span><br><span class="code">${escapeHTML(String(continuationEvents))}</span></div>
             <div><span>Current Public State</span><br><span class="code">${escapeHTML(getPublicStateLabel(record))}</span></div>
             ${record.claimed_at ? `<div><span>Claim Threshold</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>` : ''}
-            <p>
-              Each published change adds another mark to the line of record for this unit.
-              These counts reflect how many attested public and holder steps are currently preserved in that sequence.
-            </p>
           </div>
         </div>
       `;
@@ -764,33 +748,44 @@
     function renderContinuationHistory(record, continuationRecord = null) {
       const continuationHistory = document.getElementById('continuation-history');
       const continuationHistoryHead = document.getElementById('continuation-history-head');
-      const unitID = Number(record.id ?? record.unit);
-      const storedClaimCode = getStoredClaimCode(unitID);
-
-      if (!isHolderContinuationEligible(record) || storedClaimCode.length === 0) {
-        continuationHistoryHead.hidden = true;
-        continuationHistory.innerHTML = '';
-        return;
-      }
 
       continuationHistoryHead.hidden = false;
       const publicEvents = Array.isArray(continuationRecord?.events) ? continuationRecord.events : [];
-      const content = publicEvents.length > 0
-        ? publicEvents.map((event) => `
-            <div class="continuation-history-entry">
-              <div><span>Event</span><br><span class="code">${escapeHTML(String(event.type || '').replaceAll('_', ' ').toUpperCase())}</span></div>
-              <div><span>Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(event.recorded_at))}</span></div>
-              ${event.drop_id ? `<div><span>Drop</span><br><span class="code">${escapeHTML(event.drop_id)}</span></div>` : ''}
-              ${event.content_family ? `<div><span>Content Family</span><br><span class="code">${escapeHTML(event.content_family)}</span></div>` : ''}
-            </div>
-          `).join('')
+      const initialFillEntry = `
+        <div class="continuation-history-entry">
+          <div>
+            <span class="continuation-history-inline-line">
+              <span class="code">Sovereign Standard green tea blend</span>
+              <span class="continuation-history-inline-meta">initial fill</span>
+            </span>
+          </div>
+        </div>
+      `;
+      const eventContent = publicEvents.length > 0
+        ? publicEvents.map((event) => {
+            const eventType = String(event.type || '');
+            const recordedAt = formatTimestamp(event.recorded_at);
+            const showDrop = event.drop_id && isFulfilledDropEvent(eventType);
+
+            return `
+              <div class="continuation-history-entry">
+                <div>
+                  <span class="continuation-history-inline-line">
+                    <span class="code">${escapeHTML(formatContinuationEventLabel(eventType))}</span>
+                    <span class="continuation-history-inline-meta">${escapeHTML(recordedAt)}</span>
+                  </span>
+                </div>
+                ${showDrop ? `<div><span>Fill</span><br><span class="continuation-history-inline-line"><span class="code">${escapeHTML(formatDropLabel(event.drop_id))}</span><span class="continuation-history-inline-meta">${escapeHTML(recordedAt)}</span></span></div>` : ''}
+                ${event.content_family ? `<div><span>Content Family</span><br><span class="code">${escapeHTML(event.content_family)}</span></div>` : ''}
+              </div>
+            `;
+          }).join('')
         : (record.claimed_at
           ? `
               <div><span>Claim Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>
             `
-          : `
-              <p>No holder history has yet been recorded for this unit beyond issuance.</p>
-            `);
+          : '');
+      const content = `${initialFillEntry}${eventContent}`;
 
       continuationHistory.innerHTML = `
         <div class="verification-column">
