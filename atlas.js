@@ -159,9 +159,34 @@ function regionCenters(state) {
 function bindTargetButtons(state) {
   document.querySelectorAll('[data-unit-target]').forEach((element) => {
     element.addEventListener('click', () => {
-      focusUnit(state, Number(element.getAttribute('data-unit-target')));
+      focusUnit(state, Number(element.getAttribute('data-unit-target')), { revealModule: true });
     });
   });
+}
+
+function positionReadout(state) {
+  const unit = state.selectedUnit;
+  if (!unit) {
+    return;
+  }
+
+  const x = ((unit._x + (unit._size / 2)) / ATLAS_STAGE_WIDTH) * 100;
+  const y = ((unit._y + (unit._size / 2)) / ATLAS_STAGE_HEIGHT) * 100;
+  state.readout.style.setProperty('--atlas-readout-x', `${x}%`);
+  state.readout.style.setProperty('--atlas-readout-y', `${y}%`);
+  state.readout.style.setProperty('--atlas-readout-offset-x', x > 72 ? 'calc(-100% - 16px)' : '16px');
+  state.readout.style.setProperty('--atlas-readout-offset-y', y > 68 ? 'calc(-100% - 16px)' : '16px');
+}
+
+function setModuleVisibility(state, visible) {
+  state.moduleVisible = Boolean(visible && state.selectedUnit);
+  state.readout.hidden = !state.moduleVisible;
+  state.toggle.setAttribute('aria-pressed', state.moduleVisible ? 'true' : 'false');
+  state.toggle.textContent = state.moduleVisible ? 'Hide Active Vessel' : 'Active Vessel';
+
+  if (state.moduleVisible) {
+    positionReadout(state);
+  }
 }
 
 function updateHoverUnit(state, unit) {
@@ -372,7 +397,7 @@ function drawTopology(state) {
       label.textContent = String(unit.id);
 
       nodeGroup.append(hitbox, halo, circle, label);
-      nodeGroup.addEventListener('click', () => focusUnit(state, unit.id));
+      nodeGroup.addEventListener('click', () => focusUnit(state, unit.id, { revealModule: true }));
       hitbox.addEventListener('pointerenter', () => {
         updateHoverUnit(state, unit);
       });
@@ -382,7 +407,7 @@ function drawTopology(state) {
       nodeGroup.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          focusUnit(state, unit.id);
+          focusUnit(state, unit.id, { revealModule: true });
         }
       });
 
@@ -412,9 +437,13 @@ function drawTopology(state) {
     entry.label.setAttribute('y', String(-(unit._size + 8)));
     state.nodeLayer.append(entry.nodeGroup);
   }
+
+  if (state.moduleVisible) {
+    positionReadout(state);
+  }
 }
 
-function focusUnit(state, unitID) {
+function focusUnit(state, unitID, options = {}) {
   const unit = state.unitByID.get(Number(unitID));
   if (!unit) {
     return;
@@ -425,9 +454,10 @@ function focusUnit(state, unitID) {
   state.search.value = String(unit.id);
   const cluster = state.clusterByID.get(unit.atlas.position.cluster_id);
   const publicRecord = state.publicUnitByID?.get(unit.id);
-  document.getElementById('atlas-unit-profile').innerHTML = renderReadout(unit, cluster, publicRecord);
+  state.readout.innerHTML = renderReadout(unit, cluster, publicRecord);
   drawTopology(state);
   bindTargetButtons(state);
+  setModuleVisibility(state, options.revealModule ? true : state.moduleVisible);
 
   const params = new URLSearchParams(window.location.search);
   params.set('unit', String(unit.id));
@@ -468,8 +498,11 @@ async function loadAtlas() {
     publicUnitByID: new Map(publicUnits.map((unit) => [unit.id, unit])),
     svg: document.getElementById('atlas-topology'),
     search: document.getElementById('atlas-unit-search'),
+    readout: document.getElementById('atlas-unit-profile'),
+    toggle: document.getElementById('atlas-readout-toggle'),
     selectedUnit: null,
     hoverUnit: null,
+    moduleVisible: false,
     nodeElements: new Map(),
     topologyLayer: null,
     guideLayer: null,
@@ -482,13 +515,18 @@ async function loadAtlas() {
     updateHoverUnit(state, null);
   });
 
-  const totalUnits = payload.unit_count || units.length;
+  const unitIDs = units.map((unit) => Number(unit.id)).filter((unitID) => Number.isFinite(unitID));
+  const unitMin = unitIDs.length ? Math.min(...unitIDs) : 0;
+  const unitMax = unitIDs.length ? Math.max(...unitIDs) : Math.max((payload.unit_count || units.length) - 1, 0);
   const totalLabel = document.getElementById('atlas-unit-total');
   if (totalLabel) {
-    totalLabel.textContent = `/ ${totalUnits}`;
+    totalLabel.textContent = `/ ${unitMin}-${unitMax}`;
   }
 
   bindTargetButtons(state);
+  state.toggle.addEventListener('click', () => {
+    setModuleVisibility(state, !state.moduleVisible);
+  });
 
   state.search.addEventListener('input', () => {
     const value = Number(String(state.search.value || '').trim());
@@ -499,6 +537,7 @@ async function loadAtlas() {
 
   window.addEventListener('resize', () => {
     drawTopology(state);
+    positionReadout(state);
   });
 
   applyFieldLayout(state);

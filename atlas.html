@@ -65,20 +65,20 @@
     </header>
 
     <section class="atlas-field-shell">
-      <div class="atlas-field">
-        <svg id="atlas-topology" class="atlas-topology" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" aria-label="Atlas topology field"></svg>
-      </div>
-
       <div class="atlas-header-row atlas-readout-meta">
         <p id="atlas-expression-copy" class="page-intro atlas-intro" hidden></p>
+        <button id="atlas-readout-toggle" class="atlas-readout-toggle" type="button" aria-pressed="false">Active Vessel</button>
         <label class="atlas-search" for="atlas-unit-search">
           <input id="atlas-unit-search" name="atlas-unit-search" type="search" inputmode="numeric" placeholder="UNIT" autocomplete="off">
-          <span id="atlas-unit-total" class="atlas-search-total">/ 000</span>
+          <span id="atlas-unit-total" class="atlas-search-total">/ 0-135</span>
         </label>
       </div>
 
-      <div id="atlas-unit-profile" class="atlas-readout-dock">
-        <p class="muted">Select a unit to inspect its vessel state and archive position.</p>
+      <div class="atlas-field">
+        <svg id="atlas-topology" class="atlas-topology" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" aria-label="Atlas topology field"></svg>
+        <div id="atlas-unit-profile" class="atlas-readout-dock" hidden>
+          <p class="muted">Select a unit to inspect its vessel state and archive position.</p>
+        </div>
       </div>
     </section>
   </main>
