@@ -3,7 +3,7 @@ const ATLAS_STAGE_HEIGHT = 900;
 const ATLAS_GRID_STEP = 18;
 const ATLAS_GRID_MAJOR_STEP = ATLAS_GRID_STEP * 4;
 const ATLAS_FIELD = {
-  copy: 'Each unit occupies one deterministic coordinate within the attested structure.'
+  copy: ''
 };
 
 function escapeHTML(value) {
@@ -69,24 +69,12 @@ function getPublicStateLabel(record) {
     return 'UNAVAILABLE';
   }
 
-  if (record.state === 'claimable' && record.is_partner_reserved) {
-    return 'RESERVED';
-  }
-
   if (record.state === 'claimable') {
     return 'SEALED';
   }
 
-  if (record.state === 'claimed' && record.is_partner_reserved) {
-    return 'NODE';
-  }
-
   if (record.state === 'claimed') {
     return 'COLLECTED';
-  }
-
-  if (record.state === 'node') {
-    return 'NODE';
   }
 
   return record.display_state || record.state || 'UNAVAILABLE';
@@ -104,13 +92,12 @@ function renderReadout(unit, cluster, publicRecord) {
 
   const rows = [
     ['UNIT', unit.id],
-    ['STATE', String(getPublicStateLabel(publicRecord)).toUpperCase()],
-    ['STATE WEIGHT', formatMetric(unit.atlas.state_weight)],
+    ['VESSEL STATE', String(getPublicStateLabel(publicRecord)).toUpperCase()],
+    ['RECORD ACCESS', publicRecord?.state === 'claimed' ? 'UNLOCKED' : 'SEALED'],
     ['REGION', cluster?.name || cluster?.id || position.cluster_id],
     ['REGION ROLE', String(clusterProfile.dominant_role || 'interior').toUpperCase()],
     ['UNIT ROLE', String(unit.atlas.role?.primary || 'interior').toUpperCase()],
     ['SIGNATURE AXIS', String(clusterProfile.signature_axis || 'field').toUpperCase()],
-    ['REGION SIZE', cluster?.size || 0],
     ['SETTLED X', unit.atlas.coordinate?.x ?? 'UNAVAILABLE'],
     ['SETTLED Y', unit.atlas.coordinate?.y ?? 'UNAVAILABLE'],
     ['REGION COHESION', formatMetric(clusterProfile.cohesion_score)],
@@ -118,15 +105,13 @@ function renderReadout(unit, cluster, publicRecord) {
     ['BRIDGE SCORE', formatMetric(position.bridge_score)],
     ['FRONTIER SCORE', formatMetric(position.outlier_score)],
     ['STRUCTURAL DISTANCE', formatMetric(traits.canonical_distance)],
-    ['INVERSION COUNT', formatMetric(traits.initial_inversion_count)],
-    ['LEAD CHANGES', formatMetric(traits.lead_value_changes)],
     ['MEMORY RUNS', formatMetric(traits.memory_run_count)]
   ];
 
   return `
     <div class="atlas-readout-head">
       <div>
-        <p class="atlas-overlay-kicker">ACTIVE UNIT</p>
+        <p class="atlas-overlay-kicker">ACTIVE VESSEL</p>
         <h2 class="atlas-readout-title">UNIT ${escapeHTML(unit.id)}</h2>
         <p class="atlas-readout-subtitle">${escapeHTML(summarizeRegion(cluster))}</p>
       </div>
@@ -216,7 +201,9 @@ function applyFieldLayout(state) {
     );
   });
 
-  document.getElementById('atlas-expression-copy').textContent = ATLAS_FIELD.copy;
+  const expressionCopy = document.getElementById('atlas-expression-copy');
+  expressionCopy.textContent = ATLAS_FIELD.copy;
+  expressionCopy.hidden = !ATLAS_FIELD.copy;
 }
 
 function drawTopology(state) {
@@ -241,34 +228,14 @@ function drawTopology(state) {
   edges.innerHTML = '';
   regions.innerHTML = '';
 
-  for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
-    grid.append(createSvgNode('line', {
-      x1: x,
-      y1: 0,
-      x2: x,
-      y2: ATLAS_STAGE_HEIGHT,
-      class: 'atlas-grid-line'
-    }));
-  }
-
-  for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
-    grid.append(createSvgNode('line', {
-      x1: 0,
-      y1: y,
-      x2: ATLAS_STAGE_WIDTH,
-      y2: y,
-      class: 'atlas-grid-line'
-    }));
-  }
-
-  for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_STEP) {
-    for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_STEP) {
+  for (let x = 0; x <= ATLAS_STAGE_WIDTH; x += ATLAS_GRID_MAJOR_STEP) {
+    for (let y = 0; y <= ATLAS_STAGE_HEIGHT; y += ATLAS_GRID_MAJOR_STEP) {
       grid.append(createSvgNode('rect', {
         x: x - 0.5,
         y: y - 0.5,
         width: 1,
         height: 1,
-        class: 'atlas-grid-point atlas-grid-point-minor'
+        class: 'atlas-grid-point atlas-grid-point-major'
       }));
     }
   }

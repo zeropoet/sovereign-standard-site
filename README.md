@@ -38,21 +38,17 @@ The vessel persists. The contents pass through. The record remains.
 
 - `units.json` publishes the attested registry state for each unit.
 - Each public unit record belongs to the enduring vessel; contents may pass through that vessel over time.
-- Standard claims publish claim metadata including `claimed_at` and `holder_hash`.
-- Partner-reserved units `0...33` still claim through the partner activation flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned partner token in the public record.
-- The public site does not expose internal claim codes, partner claim codes, or partner tokens.
-- In the public UI, standard claimable units are presented as `SEALED`, standard claimed units are presented as `COLLECTED`, unclaimed partner-reserved units are presented as `RESERVED`, and claimed partner-reserved units are presented as `NODE`.
+- Claims publish claim metadata including `claimed_at` and `holder_hash`.
+- The public site does not expose internal claim codes or private collector information.
+- In the public UI, claimable units are presented as `SEALED` and claimed units are presented as `COLLECTED`.
 
 ## Naming
 
-- The public role name is `Partner Steward`.
-- Public UI should prefer `partner-reserved`, `partner activation`, and `partner token`.
 - Primary navigation should prefer `Archive`, `Atlas`, `Purchase`, and `Orders`.
-- The archive filters are labeled `All`, `Sealed`, `Collected`, and `Nodes`, and the unit registry state panel presents public states as `STATE: SEALED`, `STATE: COLLECTED`, `STATE: RESERVED`, or `STATE: NODE`.
+- The archive filters are labeled `All`, `Sealed`, and `Collected`, and the unit registry state panel presents public states as `STATE: SEALED` or `STATE: COLLECTED`.
 - Atlas uses `REGION`, `REGION ROLE`, and `UNIT ROLE`, with public role values `ANCHOR`, `BRIDGE`, `FRONTIER`, and `INTERIOR`.
-- Atlas currently renders as a black archive field with white relational instrumentation. Unit squares inherit archive state fills: `SEALED` = white, `COLLECTED` = light gray value, and `RESERVED` / `NODE` = black fill, all with a white `1px` stroke.
+- Atlas renders as a white vessel-first projection with sparse black relational instrumentation. Unit squares use black marks: `SEALED` = light black fill and `COLLECTED` = solid black fill.
 - Atlas highlighting should be governed only by explicit relation data, not by broad region-wide heuristics.
-- Internal compatibility names may still use `partner` behind the scenes.
 
 ## Source of truth
 
