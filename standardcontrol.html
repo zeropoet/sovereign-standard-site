@@ -406,7 +406,7 @@
       startClaimStatusUpdates(status, [
         'Claim accepted. Publishing to registry...',
         'Still working in the background. Registry updates can take a moment...',
-        'Almost there. Waiting for the public registry to refresh...'
+        'Almost there. Waiting for the public registry to publish the update...'
       ], 3000);
 
       try {
@@ -434,7 +434,7 @@
         }
 
         stopClaimStatusUpdates();
-        status.textContent = 'Claim request was sent. The registry is still catching up. Refresh this page in a moment.';
+        status.textContent = 'Claim request was sent. The registry is still catching up; this page will show the committed vessel record when it is available.';
       }
     }
 
@@ -565,7 +565,7 @@
           </article>
         </div>
         <p class="muted claim-note" id="holder-action-status">${pendingAction
-          ? `${pendingLabel}. Refresh after commit to read the updated collected record.`
+          ? `${pendingLabel}. Your request is in the relay and will appear in the vessel record after the committed archive updates.`
           : ''}</p>
       `;
 
@@ -581,7 +581,7 @@
 
       requestDropButton?.addEventListener('click', async () => {
         setActionBusyState(true);
-        status.textContent = 'Queueing next fill request...';
+        status.textContent = 'Sending next fill request...';
         try {
           await submitContinuationAction('/continuation/request', {
             unit: unitID,
@@ -593,7 +593,7 @@
             kind: 'request_drop',
             requested_count_before: requestedCount
           });
-          status.textContent = 'Next fill queued. The collector record will update after the event is committed.';
+          status.textContent = 'Next fill requested. Your request is in the relay and will appear in the vessel record after the committed archive updates.';
           void loadUnit();
         } catch (error) {
           status.textContent = error.message || 'Unable to request the next fill.';
