@@ -2182,6 +2182,10 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
   gap: var(--space-5);
 }
 
+#verification-list {
+  grid-template-columns: 1fr;
+}
+
 .verification-column {
   display: grid;
   align-content: start;
