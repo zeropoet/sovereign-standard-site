@@ -4,6 +4,12 @@ This directory shape is the deployable static site for [sovereignstandard.co](ht
 
 The public site is exported from the main `sovereign-standard` repository root and published as committed static files.
 
+Sovereign Standard is a vessel-first system of serialized units. Each vessel is engraved, issued into the archive, and claimable through the code carried by the object itself.
+
+The first inhabitant is the Sovereign Standard green tea blend. The enduring object is the vessel. The unit record and collector access unlocks after claim.
+
+The vessel persists. The contents pass through. The record remains.
+
 ## Core pages
 
 - `index.html` is the landing page.
@@ -31,6 +37,7 @@ The public site is exported from the main `sovereign-standard` repository root a
 ## Public claim state
 
 - `units.json` publishes the attested registry state for each unit.
+- Each public unit record belongs to the enduring vessel; contents may pass through that vessel over time.
 - Standard claims publish claim metadata including `claimed_at` and `holder_hash`.
 - Partner-reserved units `0...33` still claim through the partner activation flow, but once claimed they now also publish a registry `holder_hash` derived from that unit's standard claim code and expose their assigned partner token in the public record.
 - The public site does not expose internal claim codes, partner claim codes, or partner tokens.

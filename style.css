@@ -1980,6 +1980,10 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
   background: rgba(0, 0, 0, 0.1);
 }
 
+.artifact-card.state-claimed {
+  background: #000000;
+}
+
 .artifact-card.state-partner {
   background: #000000;
 }
@@ -1991,7 +1995,9 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
 
 .artifact-card.state-claimable:hover,
 .artifact-card.state-default:hover,
-.artifact-card.state-default:focus-within {
+.artifact-card.state-default:focus-within,
+.artifact-card.state-claimed:hover,
+.artifact-card.state-claimed:focus-within {
   opacity: 1;
 }
 
@@ -2020,6 +2026,11 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
 .artifact-card.state-default .artifact-link:hover,
 .artifact-card.state-default .artifact-link:focus-visible {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.artifact-card.state-claimed .artifact-link:hover,
+.artifact-card.state-claimed .artifact-link:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .artifact-link:hover img,
@@ -2057,6 +2068,12 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
   filter: none;
 }
 
+.artifact-card.state-claimed img {
+  opacity: 1;
+  transform: none;
+  filter: invert(1);
+}
+
 .artifact-card.state-partner img {
   opacity: 1;
   transform: none;
@@ -2083,10 +2100,12 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
 
 .artifact-card.state-claimable code,
 .artifact-card.state-default code,
+.artifact-card.state-claimed code,
 .artifact-card.state-partner code {
   color: var(--text);
 }
 
+.artifact-card.state-claimed code,
 .artifact-card.state-partner code {
   color: #ffffff;
 }
@@ -2110,6 +2129,7 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
   color: var(--text);
 }
 
+.artifact-card.state-claimed .artifact-card-meta span,
 .artifact-card.state-partner .artifact-card-meta span {
   color: #ffffff;
   letter-spacing: 0.18em;

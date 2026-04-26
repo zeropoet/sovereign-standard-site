@@ -153,7 +153,9 @@
 
         for (const record of filteredUnits) {
           const unitID = Number(record.id ?? record.unit);
-          const visualState = record.state === 'claimable' ? 'claimable' : 'default';
+          const visualState = record.state === 'claimable'
+            ? 'claimable'
+            : (record.state === 'claimed' ? 'claimed' : 'default');
           const labelText = record.state === 'claimable'
             ? 'SEALED'
             : (record.state === 'claimed'
