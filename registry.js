@@ -168,11 +168,11 @@
     const record = await loadUnitRecord(unit);
 
     if (!record) {
-      throw new Error('Unit not found');
+      throw new Error('Vessel not found');
     }
 
     if (record.state !== 'claimable') {
-      throw new Error('This unit is not claimable');
+      throw new Error('This vessel is not claimable');
     }
 
     const normalizedClaimCode = normalizeClaimCode(payload.claimCode);

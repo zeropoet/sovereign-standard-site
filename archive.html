@@ -64,19 +64,19 @@
         <div class="archive-guide-grid">
           <article class="archive-guide-item">
             <h3>Deterministic Origin</h3>
-            <p>Every unit begins from the same fixed instrument baseline, with its sigil, hash, and generated form tied to that origin.</p>
+            <p>Every vessel begins from the same fixed instrument baseline, with its sigil, hash, and generated form tied to that origin.</p>
           </article>
           <article class="archive-guide-item">
             <h3>Tea Substrate</h3>
-            <p>Each unit is issued with tea as its substrate, carrying a physical composition alongside its artifacts, issuance record, and public control page.</p>
+            <p>Each vessel is issued with tea as its first inhabitant, carrying a physical composition alongside its artifacts, issuance record, and public control page.</p>
           </article>
           <article class="archive-guide-item">
             <h3>Recorded State</h3>
-            <p>Each published change extends the standing record for that unit. What appears in the archive comes from that record.</p>
+            <p>Each published change extends the standing record for that vessel. What appears in the archive comes from that record.</p>
           </article>
           <article class="archive-guide-item">
             <h3>Collected State</h3>
-            <p>When a collector takes custody of a unit, that collected passage is added to the archive record and remains part of its visible history.</p>
+            <p>When a collector takes custody of a vessel, that collected passage is added to the archive record and remains part of its visible history.</p>
           </article>
         </div>
       </section>
@@ -90,7 +90,7 @@
         </div>
         <div class="archive-search-row">
           <label class="archive-search" for="unit-search">
-            <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a unit number" autocomplete="off">
+            <input id="unit-search" name="unit-search" type="search" inputmode="numeric" placeholder="Enter a vessel number" autocomplete="off">
           </label>
           <p class="archive-count" id="unit-count">/ 0-135</p>
         </div>
@@ -150,7 +150,7 @@
         gallery.innerHTML = '';
 
         if (!filteredUnits.length) {
-          gallery.innerHTML = '<p class="gallery-empty muted">No units match the active filters.</p>';
+          gallery.innerHTML = '<p class="gallery-empty muted">No vessels match the active filters.</p>';
           return;
         }
 
@@ -177,7 +177,7 @@
           img.width = 180;
           img.height = 180;
           img.src = `output/${unitID}/sigil.svg`;
-          img.alt = `Sigil for unit ${unitID}`;
+          img.alt = `Sigil for vessel ${unitID}`;
 
           const label = document.createElement('div');
           label.className = 'artifact-card-meta';

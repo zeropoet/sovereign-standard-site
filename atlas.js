@@ -91,12 +91,12 @@ function renderReadout(unit, cluster, publicRecord) {
   const clusterProfile = cluster?.profile || {};
 
   const rows = [
-    ['UNIT', unit.id],
+    ['VESSEL', unit.id],
     ['VESSEL STATE', String(getPublicStateLabel(publicRecord)).toUpperCase()],
     ['RECORD ACCESS', publicRecord?.state === 'claimed' ? 'UNLOCKED' : 'SEALED'],
     ['REGION', cluster?.name || cluster?.id || position.cluster_id],
     ['REGION ROLE', String(clusterProfile.dominant_role || 'interior').toUpperCase()],
-    ['UNIT ROLE', String(unit.atlas.role?.primary || 'interior').toUpperCase()],
+    ['VESSEL ROLE', String(unit.atlas.role?.primary || 'interior').toUpperCase()],
     ['SIGNATURE AXIS', String(clusterProfile.signature_axis || 'field').toUpperCase()],
     ['SETTLED X', unit.atlas.coordinate?.x ?? 'UNAVAILABLE'],
     ['SETTLED Y', unit.atlas.coordinate?.y ?? 'UNAVAILABLE'],
@@ -112,7 +112,7 @@ function renderReadout(unit, cluster, publicRecord) {
     <div class="atlas-readout-head">
       <div>
         <p class="atlas-overlay-kicker">ACTIVE VESSEL</p>
-        <h2 class="atlas-readout-title">UNIT ${escapeHTML(unit.id)}</h2>
+        <h2 class="atlas-readout-title">VESSEL ${escapeHTML(unit.id)}</h2>
         <p class="atlas-readout-subtitle">${escapeHTML(summarizeRegion(cluster))}</p>
       </div>
       <a class="atlas-readout-link" href="standardcontrol.html?unit=${encodeURIComponent(unit.id)}">CONTROL</a>
@@ -128,7 +128,7 @@ function renderReadout(unit, cluster, publicRecord) {
     <div class="atlas-readout-neighbors">
       ${(neighbors.slice(0, 4)).map((neighbor) => `
         <button type="button" class="atlas-inline-button" data-unit-target="${escapeHTML(neighbor.id)}">
-          <span>U${escapeHTML(neighbor.id)}</span>
+          <span>V${escapeHTML(neighbor.id)}</span>
           <strong>${escapeHTML(formatMetric(neighbor.distance))}</strong>
         </button>
       `).join('')}
@@ -369,7 +369,7 @@ function drawTopology(state) {
       const nodeGroup = createSvgNode('g', {
         tabindex: '0',
         role: 'button',
-        'aria-label': `Unit ${unit.id}`
+        'aria-label': `Vessel ${unit.id}`
       });
       nodeGroup.dataset.unitId = String(unit.id);
       const hitbox = createSvgNode('rect', {

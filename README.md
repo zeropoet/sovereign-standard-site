@@ -4,50 +4,50 @@ This directory shape is the deployable static site for [sovereignstandard.co](ht
 
 The public site is exported from the main `sovereign-standard` repository root and published as committed static files.
 
-Sovereign Standard is a vessel-first system of serialized units. Each vessel is engraved, issued into the archive, and claimable through the code carried by the object itself.
+Sovereign Standard is a vessel-first system of serialized vessels. Each vessel is engraved, issued into the archive, and claimable through the code carried by the object itself.
 
-The first inhabitant is the Sovereign Standard green tea blend. The enduring object is the vessel. The unit record and collector access unlocks after claim.
+The first inhabitant is the Sovereign Standard green tea blend. The enduring object is the vessel. The vessel record and collector access unlocks after claim.
 
 The vessel persists. The contents pass through. The record remains.
 
 ## Core pages
 
 - `index.html` is the landing page.
-- `archive.html` lists public unit state from `units.json`.
-- `atlas.html` reads `atlas.json` and presents archive-level unit relationships.
+- `archive.html` lists public vessel state from `units.json`.
+- `atlas.html` reads `atlas.json` and presents archive-level vessel relationships.
 - `purchase.html` is the checkout entry page and includes the embedded sigil sequence.
 - `order.html` is the post-checkout order lookup and status page.
 - `orders.html` lists committed public order state from `orders.json`.
-- `standardcontrol.html` renders unit detail and claim flows.
+- `standardcontrol.html` renders vessel detail and claim flows.
 - `sigil-sequence.html` is the standalone sigil sequence viewer.
 
 ## Site assets and data
 
 - `style.css` holds the shared site styles.
 - `site.js` handles general front-end behavior.
-- `atlas.js` handles atlas-oriented archive-field browsing and unit lookup.
-- `registry.js` handles claim-oriented unit interactions.
+- `atlas.js` handles atlas-oriented archive-field browsing and vessel lookup.
+- `registry.js` handles claim-oriented vessel interactions.
 - `sigil-sequence.js` drives both the standalone and embedded sigil sequence playback.
 - `atlas.json` is the generated public atlas manifest.
-- `units.json` is the generated public unit manifest.
+- `units.json` is the generated public vessel manifest.
 - `orders.json` is the generated public order manifest.
 - `output/<unit-id>/` contains published SVG artifacts used by the site.
 - `assets/` contains favicons and other shared static assets.
 
 ## Public claim state
 
-- `units.json` publishes the attested registry state for each unit.
-- Each public unit record belongs to the enduring vessel; contents may pass through that vessel over time.
+- `units.json` publishes the attested registry state for each vessel.
+- Each public vessel record belongs to the enduring vessel; contents may pass through that vessel over time.
 - Claims publish claim metadata including `claimed_at` and `holder_hash`.
 - The public site does not expose internal claim codes or private collector information.
-- In the public UI, claimable units are presented as `SEALED` and claimed units are presented as `COLLECTED`.
+- In the public UI, claimable vessels are presented as `SEALED` and claimed vessels are presented as `COLLECTED`.
 
 ## Naming
 
 - Primary navigation should prefer `Archive`, `Atlas`, `Purchase`, and `Orders`.
-- The archive filters are labeled `All`, `Sealed`, and `Collected`, and the unit registry state panel presents public states as `STATE: SEALED` or `STATE: COLLECTED`.
-- Atlas uses `REGION`, `REGION ROLE`, and `UNIT ROLE`, with public role values `ANCHOR`, `BRIDGE`, `FRONTIER`, and `INTERIOR`.
-- Atlas renders as a white vessel-first projection with sparse black relational instrumentation. Unit squares use black marks: `SEALED` = light black fill and `COLLECTED` = solid black fill.
+- The archive filters are labeled `All`, `Sealed`, and `Collected`, and the vessel registry state panel presents public states as `STATE: SEALED` or `STATE: COLLECTED`.
+- Atlas uses `REGION`, `REGION ROLE`, and `VESSEL ROLE`, with public role values `ANCHOR`, `BRIDGE`, `FRONTIER`, and `INTERIOR`.
+- Atlas renders as a white vessel-first projection with sparse black relational instrumentation. Vessel squares use black marks: `SEALED` = light black fill and `COLLECTED` = solid black fill.
 - Atlas highlighting should be governed only by explicit relation data, not by broad region-wide heuristics.
 
 ## Source of truth

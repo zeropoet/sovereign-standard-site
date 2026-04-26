@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Status | Sovereign Standard</title>
-  <meta name="description" content="Track your Sovereign Standard order and prepare to claim your unit once the vessel arrives.">
+  <meta name="description" content="Track your Sovereign Standard order and prepare to claim your vessel once it arrives.">
   <link rel="canonical" href="https://sovereignstandard.co/order.html">
   <meta name="theme-color" content="#000000">
   <meta name="sovereign-commerce-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
@@ -26,7 +26,7 @@
     <section class="artifact-section order-overview-layout">
       <section class="panel section-stack state-section">
         <div class="section-head">
-          <p>When your vessel arrives, enter through the unit page using its etched claim code. Claim activates collector access.</p>
+          <p>When your vessel arrives, enter through the vessel page using its etched claim code. Claim activates collector access.</p>
         </div>
         <div class="state-panel">
           <div class="state-block">
@@ -40,7 +40,7 @@
     <section class="panel section-stack artifact-section metadata-section">
       <div class="section-head">
         <h2>Order</h2>
-        <p>After delivery, open the vessel, locate the etched claim code, and enter through the unit page. Claim confirms possession and unlocks future collector access tied to that unit.</p>
+        <p>After delivery, open the vessel, locate the etched claim code, and enter through the vessel page. Claim confirms possession and unlocks future collector access tied to that vessel.</p>
       </div>
       <div class="invoice-list" id="order-meta"></div>
     </section>
@@ -123,7 +123,7 @@
         <div class="invoice-row"><span class="invoice-label">Email:</span><span class="code code-wrap">${escapeHTML(payload.customer_email || '')}</span></div>
         <div class="invoice-row"><span class="invoice-label">Created:</span><span class="code">${escapeHTML(formatTimestamp(payload.created_at))}</span></div>
         <div class="invoice-row"><span class="invoice-label">Paid:</span><span class="code">${escapeHTML(formatTimestamp(payload.paid_at))}</span></div>
-        <div class="invoice-row"><span class="invoice-label">Assigned Units:</span><span class="code code-wrap">${escapeHTML(units.length ? units.join(', ') : 'Pending')}</span></div>
+        <div class="invoice-row"><span class="invoice-label">Assigned Vessels:</span><span class="code code-wrap">${escapeHTML(units.length ? units.join(', ') : 'Pending')}</span></div>
       `;
 
       if (payload.status === 'checkout_pending') {
@@ -141,7 +141,7 @@
 
       if (payload.status === 'paid' && units.length === 0) {
         statusLabel.textContent = 'Assigning';
-        status.textContent = 'Payment received. Assigning units in the background...';
+        status.textContent = 'Payment received. Assigning vessels in the background...';
         window.setTimeout(() => window.location.reload(), 5000);
         return;
       }
@@ -149,14 +149,14 @@
       if (payload.status === 'complete' || payload.status === 'fulfilled') {
         statusLabel.textContent = units.length ? 'Complete' : 'Confirmed';
         status.textContent = units.length
-          ? 'Order is complete, units are assigned, and the next threshold is claim after delivery.'
+          ? 'Order is complete, vessels are assigned, and the next threshold is claim after delivery.'
           : 'Order is complete.';
         return;
       }
 
       statusLabel.textContent = units.length ? 'Confirmed' : 'Paid';
       status.textContent = units.length
-        ? 'Order is confirmed, units are assigned, and claim will open collector access once the vessel is in hand.'
+        ? 'Order is confirmed, vessels are assigned, and claim will open collector access once the vessel is in hand.'
         : 'Order is confirmed.';
     }
 

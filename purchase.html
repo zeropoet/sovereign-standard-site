@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acquire a Vessel | Sovereign Standard</title>
-  <meta name="description" content="Acquire a serialized Sovereign Standard vessel with its initial fill. Claim the unit after receipt and continue through future fills using the same vessel.">
+  <meta name="description" content="Acquire a serialized Sovereign Standard vessel with its initial fill. Claim the vessel after receipt and continue through future fills using the same vessel.">
   <link rel="canonical" href="https://sovereignstandard.co/purchase.html">
   <meta name="theme-color" content="#000000">
   <meta name="sovereign-commerce-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
@@ -26,8 +26,8 @@
     <section class="purchase-layout artifact-section">
       <section class="panel section-stack purchase-order-column">
         <div class="section-head">
-          <p class="purchase-note">Each acquisition includes an engraved matte black vessel, its assigned unit identity, the initial Sovereign Standard green tea fill, and the internal claim code etched into the vessel itself.</p>
-          <p class="purchase-note">After claim, the unit becomes your access point for future fills and recorded collector history.</p>
+          <p class="purchase-note">Each acquisition includes an engraved matte black vessel, its assigned vessel identity, the initial Sovereign Standard green tea fill, and the internal claim code etched into the vessel itself.</p>
+          <p class="purchase-note">After claim, the vessel becomes your access point for future fills and recorded collector history.</p>
         </div>
         <form id="purchase-form" class="order-panel">
           <label class="order-field">
@@ -38,7 +38,7 @@
             <h2>Order total</h2>
           </div>
           <div class="order-total">
-            <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 unit: $68</p>
+            <p id="order-pricing" class="muted order-helper-note">Standard pricing total for 1 vessel: $68</p>
           </div>
           <div class="order-actions">
             <button class="order-submit" type="submit">Continue to Checkout</button>
@@ -47,22 +47,22 @@
         </form>
       </section>
 
-      <section class="panel section-stack purchase-sequence-column" aria-label="Sovereign Standard unit reference">
+      <section class="panel section-stack purchase-sequence-column" aria-label="Sovereign Standard vessel reference">
         <div class="purchase-sequence-stage">
           <img
             src="assets/unit-image-ref-1.jpeg"
-            alt="Sovereign Standard unit container"
+            alt="Sovereign Standard vessel container"
             width="768"
             height="768"
           >
         </div>
       </section>
 
-      <section class="panel section-stack purchase-sequence-column" aria-label="Open Sovereign Standard unit reference">
+      <section class="panel section-stack purchase-sequence-column" aria-label="Open Sovereign Standard vessel reference">
         <div class="purchase-sequence-stage">
           <img
             src="assets/unit-image-ref-2.jpeg"
-            alt="Open Sovereign Standard unit showing leaf material"
+            alt="Open Sovereign Standard vessel showing leaf material"
             width="768"
             height="768"
           >
@@ -95,8 +95,8 @@
 
     function updatePricing() {
       const quantity = Math.max(1, Number(quantityInput.value) || 1);
-      const unitsLabel = `${quantity} unit${quantity === 1 ? '' : 's'}`;
-      pricing.textContent = `Standard acquisition total for ${unitsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
+      const vesselsLabel = `${quantity} vessel${quantity === 1 ? '' : 's'}`;
+      pricing.textContent = `Standard acquisition total for ${vesselsLabel}: ${formatDollars(quantity * STANDARD_UNIT_PRICE)}`;
     }
 
     if (new URLSearchParams(window.location.search).get('cancelled') === '1') {

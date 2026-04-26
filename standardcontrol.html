@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit | Sovereign Standard</title>
-  <meta name="description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
+  <title>Vessel | Sovereign Standard</title>
+  <meta name="description" content="State, provenance, attestation, and collector access for a Sovereign Standard vessel.">
   <link id="canonical-link" rel="canonical" href="https://sovereignstandard.co/standardcontrol.html">
   <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
@@ -16,13 +16,13 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sovereign Standard">
-  <meta id="og-title" property="og:title" content="Unit · Sovereign Standard">
-  <meta id="og-description" property="og:description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
+  <meta id="og-title" property="og:title" content="Vessel · Sovereign Standard">
+  <meta id="og-description" property="og:description" content="State, provenance, attestation, and collector access for a Sovereign Standard vessel.">
   <meta id="og-url" property="og:url" content="https://sovereignstandard.co/standardcontrol.html">
   <meta property="og:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta id="twitter-title" name="twitter:title" content="Unit · Sovereign Standard">
-  <meta id="twitter-description" name="twitter:description" content="State, provenance, attestation, and collector access for a Sovereign Standard unit.">
+  <meta id="twitter-title" name="twitter:title" content="Vessel · Sovereign Standard">
+  <meta id="twitter-description" name="twitter:description" content="State, provenance, attestation, and collector access for a Sovereign Standard vessel.">
   <meta name="twitter:image" content="https://sovereignstandard.co/assets/social-preview.svg">
   <meta name="sovereign-claim-endpoint" content="https://sovereign-standard-claim-relay.mancel.workers.dev">
   <meta name="theme-color" content="#000000">
@@ -60,7 +60,7 @@
       <a href="atlas.html" class="nav">Atlas</a>
     </nav>
     <header class="page-header artifact-header">
-      <h1 class="page-title" id="unit-title">Unit</h1>
+      <h1 class="page-title" id="unit-title">Vessel</h1>
     </header>
 
     <section class="panel section-stack artifact-section unit-identity-section">
@@ -87,7 +87,7 @@
       <section class="panel section-stack verification-section">
         <div class="section-head">
           <h2>Provenance</h2>
-          <p>These records describe the unit at origin and through its attested public and collected record. Each published change adds another mark to the line of record for this unit. These counts reflect how many attested steps are currently preserved in that sequence.</p>
+          <p>These records describe the vessel at origin and through its attested public and collected record. Each published change adds another mark to the line of record for this vessel. These counts reflect how many attested steps are currently preserved in that sequence.</p>
         </div>
         <div id="verification-list" class="verification-list"></div>
       </section>
@@ -96,7 +96,7 @@
     <section class="panel section-stack artifact-section standard-unit-section">
       <div class="section-head">
         <h2>Initial Fill</h2>
-        <p>The first inhabitant of this vessel is the Sovereign Standard green tea blend. This profile describes the opening composition, not the full life of the unit.</p>
+        <p>The first inhabitant of this vessel is the Sovereign Standard green tea blend. This profile describes the opening composition, not the full life of the vessel.</p>
       </div>
       <section id="artifact-grid" class="artifact-grid">
         <article class="panel artifact-figure">
@@ -140,7 +140,7 @@
       </div>
     </section>
 
-    <nav class="unit-pagination artifact-section" aria-label="Unit navigation">
+    <nav class="unit-pagination artifact-section" aria-label="Vessel navigation">
       <a id="unit-prev" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Previous</a>
       <a id="unit-next" class="unit-pagination-link" href="archive.html" data-nav-kind="focus-unit">Next</a>
     </nav>
@@ -194,11 +194,11 @@
 
     function updateMeta(unitID) {
       const unitURL = `https://sovereignstandard.co/standardcontrol.html?unit=${unitID}`;
-      const unitTitle = `Unit ${unitID} · Sovereign Standard`;
-      const unitDescription = `State, provenance, attestation, and collector access for Sovereign Standard unit ${unitID}.`;
+      const unitTitle = `Vessel ${unitID} · Sovereign Standard`;
+      const unitDescription = `State, provenance, attestation, and collector access for Sovereign Standard vessel ${unitID}.`;
 
       document.title = unitTitle;
-      document.getElementById('unit-title').textContent = `Unit ${unitID}`;
+      document.getElementById('unit-title').textContent = `Vessel ${unitID}`;
       document.getElementById('canonical-link').href = unitURL;
       document.querySelector('meta[name="description"]').content = unitDescription;
       document.getElementById('og-title').content = unitTitle;
@@ -448,7 +448,7 @@
 
       unitSummaryGrid.innerHTML = `
         <article class="unit-summary-card">
-          <p class="unit-summary-label">Unit</p>
+          <p class="unit-summary-label">Vessel</p>
           <p class="unit-summary-value">${escapeHTML(unitID)}</p>
         </article>
         <article class="unit-summary-card">
@@ -497,7 +497,7 @@
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" required>
               </label>
               <div class="claim-actions claim-actions-inline">
-                <button class="order-submit" type="submit">Access Unit</button>
+                <button class="order-submit" type="submit">Access Vessel</button>
               </div>
             </form>
           </div>
@@ -520,7 +520,7 @@
 
       entryPanel.innerHTML = `
         <div class="entry-panel-copy">
-          <p>This unit can be inspected here as part of the public archive record.</p>
+          <p>This vessel can be inspected here as part of the public archive record.</p>
         </div>
       `;
     }
@@ -618,7 +618,7 @@
                 <input type="text" name="claim_code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter etched code" required>
               </label>
               <div class="claim-actions">
-                <button class="order-submit" type="submit">Claim Unit</button>
+                <button class="order-submit" type="submit">Claim Vessel</button>
                 <p class="muted claim-note" id="claim-status"></p>
               </div>
             </form>
@@ -673,7 +673,7 @@
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
             await new Promise((resolve) => window.setTimeout(resolve, remaining));
             stopClaimStatusUpdates();
-            status.textContent = error.message || 'Unable to claim this unit.';
+            status.textContent = error.message || 'Unable to claim this vessel.';
             submitButton.disabled = false;
           }
         });
@@ -686,7 +686,7 @@
           <div class="state-block">
             <p class="state-label">STATE: COLLECTED</p>
             <p class="state-detail">This vessel has been collected. Future fill requests are made through collector access.</p>
-            ${record.pending ? '<p class="muted claim-note" id="claim-status">Unit claimed. Awaiting registry publish...</p>' : ''}
+            ${record.pending ? '<p class="muted claim-note" id="claim-status">Vessel claimed. Awaiting registry publish...</p>' : ''}
           </div>
         `;
 
@@ -801,13 +801,13 @@
       const rawUnitID = params.get('unit') || params.get('id');
 
       if (!rawUnitID) {
-        throw new Error('Missing unit id');
+        throw new Error('Missing vessel id');
       }
 
       const unitID = Number(rawUnitID);
 
       if (Number.isNaN(unitID)) {
-        throw new Error('Invalid unit id');
+        throw new Error('Invalid vessel id');
       }
 
       updateMeta(unitID);
@@ -817,7 +817,7 @@
       const continuationRecord = await window.SovereignRegistry.loadUnitContinuation(unitID);
 
       if (!record) {
-        throw new Error(`Unit ${unitID} is not available`);
+        throw new Error(`Vessel ${unitID} is not available`);
       }
 
       const unitList = registry.units
@@ -881,7 +881,7 @@
     }
 
     loadUnit().catch((error) => {
-      document.getElementById('state-panel').innerHTML = `<p>${escapeHTML(error.message || 'Unable to load unit record.')}</p>`;
+      document.getElementById('state-panel').innerHTML = `<p>${escapeHTML(error.message || 'Unable to load vessel record.')}</p>`;
     });
   </script>
 </body>

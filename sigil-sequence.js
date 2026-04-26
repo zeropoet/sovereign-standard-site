@@ -10,7 +10,7 @@
     const manifest = await response.json();
 
     if (!Array.isArray(manifest.units) || manifest.units.length === 0) {
-      throw new Error('No units available');
+      throw new Error('No vessels available');
     }
 
     const units = manifest.units
@@ -25,7 +25,7 @@
       .filter((unitID) => unitID !== null);
 
     if (units.length === 0) {
-      throw new Error('No sequence units available');
+      throw new Error('No sequence vessels available');
     }
 
     return units;
@@ -72,14 +72,14 @@
     const updateFrame = () => {
       const unit = units[frameIndex];
       image.src = `output/${unit}/sigil.svg`;
-      image.alt = `Sigil for unit ${unit}`;
+      image.alt = `Sigil for vessel ${unit}`;
 
       if (frameControl) {
         frameControl.value = String(frameIndex);
       }
 
       if (frameLabel) {
-        frameLabel.textContent = `Unit ${unit} / ${units.length}`;
+        frameLabel.textContent = `Vessel ${unit} / ${units.length}`;
       }
     };
 
@@ -187,7 +187,7 @@
       const frameLabel = root.querySelector('[data-sequence-label]');
 
       if (frameLabel) {
-        frameLabel.textContent = 'Unable to load units.';
+        frameLabel.textContent = 'Unable to load vessels.';
       }
     });
   });

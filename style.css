@@ -2259,11 +2259,15 @@ body[data-page="unit"] #artifact-grid .artifact-figure {
 }
 
 .continuation-history-inline-line .code {
+  display: inline-block;
+  flex: 1 1 12rem;
   font-size: var(--step-1);
   line-height: 1.6;
+  max-width: 100%;
+  min-width: 0;
   white-space: normal;
   overflow-wrap: anywhere;
-  min-width: 0;
+  word-break: normal;
 }
 
 .code {
