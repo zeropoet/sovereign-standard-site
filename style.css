@@ -691,6 +691,7 @@ h3 {
 
 .archive-search {
   display: grid;
+  width: min(100%, 12rem);
   max-width: 320px;
 }
 
