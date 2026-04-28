@@ -1129,16 +1129,37 @@ body[data-page="unit"] .standard-unit-section {
 
 .purchase-sequence-stage {
   width: 100%;
-  aspect-ratio: 1 / 1;
   overflow: hidden;
   flex: 0 0 auto;
 }
 
+.purchase-polaroid {
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+  padding: 0.72rem 0.72rem 1.05rem;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 18px 42px rgba(17, 17, 17, 0.07);
+}
+
 .purchase-sequence-stage img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
   object-fit: cover;
   display: block;
+}
+
+.purchase-polaroid figcaption {
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-family: var(--mono-sans);
+  font-size: var(--step--1);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .order-form {
