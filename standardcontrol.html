@@ -59,18 +59,27 @@
       <a href="orders.html" class="nav">Orders</a>
       <a href="atlas.html" class="nav">Atlas</a>
     </nav>
-    <header class="page-header artifact-header">
+    <header class="page-header artifact-header unit-control-header">
+      <p class="page-kicker">Standard Control</p>
       <h1 class="page-title" id="unit-title">Vessel</h1>
     </header>
 
     <section class="panel section-stack artifact-section unit-identity-section">
       <div class="unit-identity-grid">
+        <figure class="unit-control-visual" aria-label="Vessel sigil">
+          <img id="unit-hero-sigil" alt="Vessel sigil">
+          <figcaption id="unit-hero-caption">Attested vessel mark</figcaption>
+        </figure>
         <div id="state-panel" class="state-panel unit-threshold-panel"></div>
         <div id="unit-summary-grid" class="unit-summary-grid"></div>
       </div>
     </section>
 
     <div class="artifact-section unit-detail-row">
+      <section id="collector-access-placeholder" class="panel unit-access-placeholder" aria-label="Collector Access pending">
+        <h2>Collector Access</h2>
+      </section>
+
       <section class="panel section-stack unit-entry-section">
         <div class="section-head">
           <h2>COLLECTOR ACCESS</h2>
@@ -198,7 +207,7 @@
       const unitDescription = `State, provenance, attestation, and collector access for Sovereign Standard vessel ${unitID}.`;
 
       document.title = unitTitle;
-      document.getElementById('unit-title').textContent = `Vessel ${unitID}`;
+      document.getElementById('unit-title').textContent = `Vessel ${String(unitID).padStart(3, '0')}`;
       document.getElementById('canonical-link').href = unitURL;
       document.querySelector('meta[name="description"]').content = unitDescription;
       document.getElementById('og-title').content = unitTitle;
@@ -864,12 +873,18 @@
         }
       });
 
+      const sigilSource = record.sigil || `output/${unitID}/sigil.svg`;
       document.getElementById('material').src = `output/${unitID}/material.svg`;
       document.getElementById('logo').src = `output/${unitID}/logo.svg`;
-      document.getElementById('sigil').src = record.sigil || `output/${unitID}/sigil.svg`;
+      document.getElementById('sigil').src = sigilSource;
+      document.getElementById('unit-hero-sigil').src = sigilSource;
+      document.getElementById('unit-hero-caption').textContent = `${getPublicStateLabel(record)} / ${String(unitID).padStart(3, '0')}`;
 
       const collectorAccessSection = document.querySelector('.unit-entry-section');
-      collectorAccessSection.hidden = record.state === 'claimable';
+      const collectorAccessPlaceholder = document.getElementById('collector-access-placeholder');
+      const holderEligible = isHolderContinuationEligible(record);
+      collectorAccessSection.hidden = !holderEligible;
+      collectorAccessPlaceholder.hidden = holderEligible || record.state !== 'claimable';
 
       renderArtifactState(record);
       renderStatePanel(record);
