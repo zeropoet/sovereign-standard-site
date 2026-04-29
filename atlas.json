@@ -602,7 +602,7 @@
       4
     ]
   },
-  "generated_at" : "2026-04-26T21:14:49Z",
+  "generated_at" : "2026-04-29T11:50:15Z",
   "metrics" : {
     "cluster_schema" : "atlas_regions_v2",
     "distance_metric" : "atlas_distance_v2",
@@ -715,7 +715,7 @@
           ],
           "primary" : "bridge"
         },
-        "state_weight" : 1,
+        "state_weight" : 1.26,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -737,7 +737,7 @@
       },
       "convergence_hash" : "67693a38c1b5946a2670af7c769a7c18ed80d01356266c687f5a19b7be235572",
       "id" : 1,
-      "state" : "claimable"
+      "state" : "claimed"
     },
     {
       "atlas" : {
@@ -2967,7 +2967,7 @@
           ],
           "primary" : "interior"
         },
-        "state_weight" : 1,
+        "state_weight" : 1.26,
         "traits" : {
           "canonical_distance" : 14,
           "direction_changes" : 0,
@@ -2989,7 +2989,7 @@
       },
       "convergence_hash" : "279aaf935d68b26e9328c35f53f15ebc89271833e4cee8df0bb800fb2da3f0db",
       "id" : 36,
-      "state" : "claimable"
+      "state" : "claimed"
     },
     {
       "atlas" : {
