@@ -410,13 +410,17 @@
       }, intervalMs);
     }
 
-    async function pollForCommittedClaim(unitID, pendingRecord, status) {
+    async function pollForCommittedClaim(unitID, pendingRecord, status = null, options = {}) {
       const pollToken = ++activePollToken;
-      startClaimStatusUpdates(status, [
-        'Claim accepted. Publishing to registry...',
-        'Still working in the background. Registry updates can take a moment...',
-        'Almost there. Waiting for the public registry to publish the update...'
-      ], 3000);
+      const showProgress = Boolean(options.showProgress);
+
+      if (showProgress && status) {
+        startClaimStatusUpdates(status, [
+          'Claim accepted. Publishing to registry...',
+          'Still working in the background. Registry updates can take a moment...',
+          'Almost there. Waiting for the public registry to publish the update...'
+        ], 3000);
+      }
 
       try {
         const committedRecord = await window.SovereignRegistry.waitForUnitRecord(
@@ -430,6 +434,7 @@
         }
 
         stopClaimStatusUpdates();
+        renderCollectorAccessVisibility(committedRecord);
         renderArtifactState(committedRecord);
         renderStatePanel(committedRecord);
         renderUnitSummary(committedRecord);
@@ -443,7 +448,9 @@
         }
 
         stopClaimStatusUpdates();
-        status.textContent = 'Claim request was sent. The registry is still catching up; this page will show the committed vessel record when it is available.';
+        if (status) {
+          status.textContent = 'Claim request was sent. The registry is still catching up; this page will show the committed vessel record when it is available.';
+        }
       }
     }
 
@@ -499,6 +506,19 @@
       }
 
       if (isHolderContinuationEligible(record)) {
+        if (hasStoredAccess) {
+          entryPanel.innerHTML = `
+            <div class="entry-access-shell">
+              <article class="entry-access-status">
+                <p class="entry-access-label">Access</p>
+                <p class="entry-access-value">Open</p>
+                <p class="entry-access-note">Collector access is active for this vessel.</p>
+              </article>
+            </div>
+          `;
+          return;
+        }
+
         entryPanel.innerHTML = `
           <div class="entry-access-shell">
             <form class="claim-form" id="holder-entry-form">
@@ -645,6 +665,7 @@
           }
 
           const data = new FormData(form);
+          const claimCode = String(data.get('claim_code') || '').trim();
           const submitButton = form.querySelector('button[type="submit"]');
           form.reset();
           submitButton.disabled = true;
@@ -658,14 +679,16 @@
 
           try {
             const claimedRecord = await window.SovereignRegistry.claimUnit(unitID, {
-              claimCode: String(data.get('claim_code') || '').trim()
+              claimCode
             });
 
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
             await new Promise((resolve) => window.setTimeout(resolve, remaining));
             stopClaimStatusUpdates();
+            setStoredClaimCode(unitID, claimCode);
             status.textContent = 'Claim accepted. Awaiting registry publish...';
+            renderCollectorAccessVisibility(claimedRecord);
             renderArtifactState(claimedRecord);
             renderStatePanel(claimedRecord);
             renderUnitSummary(claimedRecord);
@@ -673,10 +696,6 @@
             renderHolderPanel(claimedRecord);
             renderVerification(claimedRecord);
             renderContinuationHistory(claimedRecord);
-            const nextStatus = document.getElementById('claim-status');
-            if (nextStatus) {
-              void pollForCommittedClaim(unitID, claimedRecord, nextStatus);
-            }
           } catch (error) {
             const delay = 500 + Math.floor(Math.random() * 701);
             const remaining = Math.max(0, delay - (Date.now() - startedAt));
@@ -701,9 +720,7 @@
 
         if (record.pending) {
           const pendingStatus = document.getElementById('claim-status');
-          if (pendingStatus) {
-            void pollForCommittedClaim(unitID, record, pendingStatus);
-          }
+          void pollForCommittedClaim(unitID, record, pendingStatus);
         }
         return;
       }
@@ -722,6 +739,20 @@
       }
 
       grid.style.display = 'grid';
+    }
+
+    function renderCollectorAccessVisibility(record) {
+      const collectorAccessSection = document.querySelector('.unit-entry-section');
+      const collectorAccessPlaceholder = document.getElementById('collector-access-placeholder');
+      const holderEligible = isHolderContinuationEligible(record);
+
+      if (collectorAccessSection) {
+        collectorAccessSection.hidden = !holderEligible;
+      }
+
+      if (collectorAccessPlaceholder) {
+        collectorAccessPlaceholder.hidden = holderEligible || record.state !== 'claimable';
+      }
     }
 
     function getPublicStateLabel(record) {
@@ -880,11 +911,7 @@
       document.getElementById('unit-hero-sigil').src = sigilSource;
       document.getElementById('unit-hero-caption').textContent = `${getPublicStateLabel(record)} / ${String(unitID).padStart(3, '0')}`;
 
-      const collectorAccessSection = document.querySelector('.unit-entry-section');
-      const collectorAccessPlaceholder = document.getElementById('collector-access-placeholder');
-      const holderEligible = isHolderContinuationEligible(record);
-      collectorAccessSection.hidden = !holderEligible;
-      collectorAccessPlaceholder.hidden = holderEligible || record.state !== 'claimable';
+      renderCollectorAccessVisibility(record);
 
       renderArtifactState(record);
       renderStatePanel(record);
