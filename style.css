@@ -2405,6 +2405,7 @@ body[data-page="unit"] #artifact-grid .artifact-figure img {
   height: 100%;
   padding: 0;
   background: transparent;
+  position: relative;
   transition: background-color 120ms ease;
 }
 
@@ -2442,11 +2443,11 @@ body[data-page="unit"] #artifact-grid .artifact-figure img {
 
 .artifact-card img {
   display: block;
-  width: 100%;
+  width: 82%;
   aspect-ratio: 1 / 1;
   height: auto;
   object-fit: contain;
-  margin: 0 auto 12px;
+  margin: 0 auto;
   border: 0;
   background: transparent;
   transition: filter 160ms ease, opacity 160ms ease, transform 180ms ease;
@@ -2512,10 +2513,17 @@ body[data-page="unit"] #artifact-grid .artifact-figure img {
 }
 
 .artifact-card-meta {
-  display: grid;
-  gap: var(--space-1);
-  justify-items: center;
-  padding-bottom: var(--space-3);
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  left: var(--space-2);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-width: 0;
+  pointer-events: none;
 }
 
 .artifact-card-meta span {
