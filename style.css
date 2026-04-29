@@ -531,24 +531,25 @@ body[data-page="index-alt"]::before {
 }
 
 .soft-hero-copy {
-  width: min(100%, 70ch);
+  width: min(calc(100% - 48px), 1080px);
   justify-self: center;
-  text-align: justify;
-  text-align-last: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5.5rem);
   color: #4f4d48;
-  line-height: 1.76;
-}
-
-.soft-hero-copy > p:first-child {
-  color: #141412;
-}
-
-.soft-hero-copy > p {
+  font-size: var(--step-0);
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+  margin-top: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
-.soft-hero-copy > p:last-child {
-  margin-bottom: 0;
+.soft-hero-copy article:first-child {
+  color: #141412;
+}
+
+.soft-hero-copy p {
+  margin: 0;
 }
 
 .soft-hero-actions {
@@ -2839,8 +2840,10 @@ body[data-page="unit"] #artifact-grid .artifact-figure img {
   }
 
   .soft-hero-copy {
+    width: min(calc(100% - 48px), 1080px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 4vw, 2.25rem);
     text-align: left;
-    text-align-last: left;
   }
 
   .entry-access-shell,
@@ -2917,6 +2920,12 @@ body[data-page="unit"] #artifact-grid .artifact-figure img {
 
   .soft-object-lockup {
     width: min(100%, 420px);
+  }
+
+  .soft-hero-copy {
+    width: min(calc(100% - 32px), 620px);
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
 
   .soft-object-readout {
