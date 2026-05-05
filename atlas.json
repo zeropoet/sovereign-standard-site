@@ -602,7 +602,7 @@
       4
     ]
   },
-  "generated_at" : "2026-05-05T16:48:07Z",
+  "generated_at" : "2026-05-05T17:15:25Z",
   "metrics" : {
     "cluster_schema" : "atlas_regions_v2",
     "distance_metric" : "atlas_distance_v2",
@@ -1231,7 +1231,7 @@
           ],
           "primary" : "bridge"
         },
-        "state_weight" : 1,
+        "state_weight" : 1.26,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1253,7 +1253,7 @@
       },
       "convergence_hash" : "bbc6612e0a0adb64ce0d2d019ac83633f13179247ac78a9f81c3b1bc84088b6d",
       "id" : 9,
-      "state" : "claimable"
+      "state" : "claimed"
     },
     {
       "atlas" : {
