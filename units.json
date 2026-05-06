@@ -1,9 +1,9 @@
 {
-  "generated_at" : "2026-05-05T17:15:23Z",
+  "generated_at" : "2026-05-06T15:31:01Z",
   "units" : [
     {
-      "attested_event_count" : 8,
-      "attested_event_hash" : "43efcb879838a96a200d3ca7d77a3f368f2b1ae15974791857e33f45049879bf",
+      "attested_event_count" : 6,
+      "attested_event_hash" : "486eba01b68566cab4ce690d03f9a0e9ef8be1e37581a78c0cb780b1c25e3702",
       "claimed_at" : "2026-04-10T16:31:27Z",
       "continuation_eligible" : true,
       "continuation_event_count" : 1,
@@ -22,8 +22,8 @@
       "state" : "claimed"
     },
     {
-      "attested_event_count" : 7,
-      "attested_event_hash" : "e4f4c88727ec8b032a485bc933e6413a3756ccb98c18a9c95c9bbf3660742c13",
+      "attested_event_count" : 6,
+      "attested_event_hash" : "e295d95695a6a9060b71590ce9b7bd1f216ea831d24ea2f6589625bcd510882f",
       "claimed_at" : "2026-04-29T11:49:27.587Z",
       "continuation_eligible" : true,
       "continuation_event_count" : 0,
@@ -40,8 +40,8 @@
       "state" : "claimed"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "799c0564de330b149208c598ddeb7576b9af447005bab5642c4cab6c75cfa018",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3759a8bcfb8b69583861975591bb88dc61eebcdee4dafbc07cc7e291f33dd67b",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "0195c3ac182040b994fa88b373866428116566cd9498596012ac143250712cd5",
@@ -56,8 +56,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "e643d6dd73ab25e3096ea66dcee46633e7586b57e7015a4d0e5f5c5d3fd428f4",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "492ffe248f1aa4ee92bc1d25a4758b9c09e57beb352ff6d0f39df96759068148",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "a1780977b51c4c13732486bda61130d9d4329667f7d444560ac2805380771d7c",
@@ -72,8 +72,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "2b239feb9bca8de6c053312b77fb6e93fe3682f7c7c395fd884a3ec684816b93",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "04365ca717054f6ce98d3adc50144e7bc8dd79fd67bd0a6db10338c4d280cd57",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "742fb915d9a1d261e7dd36a5c8f86829e780d22ea6f62c0cb62ed72c022a2bce",
@@ -88,8 +88,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "1261eca916e0b444ebc564cc63d4c4ec92e4a406af41168968d4d02d91cf0eb1",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "6ce1609466ec642ea7a0d682ba4a13423cdbb7fd14954dc8e5feaf79498c2ff6",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "b5a645b0a8e51b47871194ec91f341c576fedb1097f4a880d1fed6febc323e2e",
@@ -104,44 +104,40 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 8,
-      "attested_event_hash" : "31baa6671df60437bf8beac20e67959ddf33cb1be78a6e7a55de6acf3a16be66",
-      "claimed_at" : "2026-04-13T17:19:10.141Z",
-      "continuation_eligible" : true,
+      "attested_event_count" : 4,
+      "attested_event_hash" : "7622930f219a863492cf42f572cb7838702eaea8ddbbd061d516a06db1b651d1",
+      "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "96fea7aefdb02a961b19525afd7d7e4deca34211621cde0e17c50e519ea18063",
       "created_at" : "2026-04-10T16:31:32Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "CLAIMABLE",
       "fulfilled_drop_count" : 0,
-      "holder_hash" : "9c187b1df3037f5ad6d8b6b187ee47a20f49228bda79436f99d0a892bf756b25",
       "id" : 6,
       "next_drop_status" : "out",
       "pending_drop_count" : 0,
       "requested_drop_count" : 0,
       "sigil" : "output\/6\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
-      "attested_event_count" : 8,
-      "attested_event_hash" : "f9be7dd18f006d3bfe50a05ad885c336a633be132aa8fa593a6886e1eb16ab37",
-      "claimed_at" : "2026-04-13T15:42:05.971Z",
-      "continuation_eligible" : true,
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3d414360ad813a8c8927d5142f8a138aec9d84ff19911c1ec8ba259bb8a2cf73",
+      "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
       "created_at" : "2026-04-10T16:31:32Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "CLAIMABLE",
       "fulfilled_drop_count" : 0,
-      "holder_hash" : "ab2e0a825816109e4ebbaf4a2b08f97faad7173f2ad88f7367351bca086619e0",
       "id" : 7,
       "next_drop_status" : "out",
       "pending_drop_count" : 0,
       "requested_drop_count" : 0,
       "sigil" : "output\/7\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "29b050792f6bbeb8e311101528366e3032986f1ea0b272693e3d8fd6f988ac82",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e6d0a3e4d788d86b1d1845a64ed51ffcadfaa907b67182e6a6547d78acba55ef",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "6053eb82ef38f3c63f79a3207082d22e46bb95efa043c90d7f4db832917669b0",
@@ -156,26 +152,24 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 7,
-      "attested_event_hash" : "c24bf269df5e30a49055b2a7fd385a85546d4cd3feb931d735dc52dc94876e3e",
-      "claimed_at" : "2026-05-05T17:14:45.743Z",
-      "continuation_eligible" : true,
+      "attested_event_count" : 4,
+      "attested_event_hash" : "31ca38e91570e80e627608298e19b24f8ebfda575ee4c181c9bb296b8b858757",
+      "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "bbc6612e0a0adb64ce0d2d019ac83633f13179247ac78a9f81c3b1bc84088b6d",
       "created_at" : "2026-04-10T16:31:34Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "CLAIMABLE",
       "fulfilled_drop_count" : 0,
-      "holder_hash" : "526b1076bfdcc1482a6948df1c81c7b0dfb6dd4c8f3ac14de44dca33ade7ed85",
       "id" : 9,
       "next_drop_status" : "out",
       "pending_drop_count" : 0,
       "requested_drop_count" : 0,
       "sigil" : "output\/9\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "5b930d8c3c3cc1fe3aff96370775dd3c90704ae26f79e3021a6be04775fec5ff",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "dc94ab9f9c24afa5312928de162c5fd1372e82d6d962e40252e0a465b5aaca8a",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "b72544d06e8c5448606c786cc7d7bb2219a5a9b0d9015340d6fb054f6cefbc0c",
@@ -190,44 +184,40 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 8,
-      "attested_event_hash" : "b65e8f29bd1a588a002baf490b268c09d6c7ee4c22da9b285c91436476f0684d",
-      "claimed_at" : "2026-04-13T18:26:32.945Z",
-      "continuation_eligible" : true,
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3b705872f1f61c4d47ad4cb70982c41b35d43cccb346a267537b91286523c1b1",
+      "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "5a6a32343ef4866c49c422e849237ee6dba26c0caf7c7f21c5801c6684b2e2b1",
       "created_at" : "2026-04-10T16:31:35Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "CLAIMABLE",
       "fulfilled_drop_count" : 0,
-      "holder_hash" : "7cb8da65560981312af7b014481df5c19bb08ab6888eff8a6beb0a0a290f1076",
       "id" : 11,
       "next_drop_status" : "out",
       "pending_drop_count" : 0,
       "requested_drop_count" : 0,
       "sigil" : "output\/11\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
-      "attested_event_count" : 8,
-      "attested_event_hash" : "76fbbe35ffff5f1fdf3a2babbcc4acf1dd9ea01a5fc89da96ba8015056efc7d1",
-      "claimed_at" : "2026-04-13T18:41:39.847Z",
-      "continuation_eligible" : true,
+      "attested_event_count" : 4,
+      "attested_event_hash" : "cd796b86da40ddcc732b35f45ee1665cb1289d4c8d787756f3d56aa63971d86f",
+      "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "004ea877f49a2056adc9716d4e5eaea4f66b0b10b984de160a1c72bf0530c822",
       "created_at" : "2026-04-10T16:31:36Z",
-      "display_state" : "CLAIMED",
+      "display_state" : "CLAIMABLE",
       "fulfilled_drop_count" : 0,
-      "holder_hash" : "8a05c8d1504ff9177ffefb72b6aa3de112765a8455b01b6852c3b6c669ad071e",
       "id" : 12,
       "next_drop_status" : "out",
       "pending_drop_count" : 0,
       "requested_drop_count" : 0,
       "sigil" : "output\/12\/sigil.svg",
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "57e91463c84e673baeca08409bf2225930218d09ede6ed6b5de36344b8ee0414",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "15f79c91f0418fef5e3f33445cdf6e4d454a6aa1944700ff9aa900fc4cb339cc",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "5a371917db18a2e1ee310133dacbf5cd03d16ded039215db5eacd23bd20e0c11",
@@ -242,8 +232,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "76ddf11addc0ddbb1d5ed2af71dcd93887a74bb36a591e2f189ad62b8098f4c6",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "bd96bd90a1ea07d138090f978540d82d93cabf8069266542ccbdea4f59c9d60e",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "863f6d13033993ba3c1d5d6a4b452b21bcce5edb8646091d9720ddd558db6c26",
@@ -258,8 +248,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "fc349f114753d3fcb4af48836e47d9a5aa1efa0d6018b14f4325cba801677c33",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "2887df630169b75849bc4f773ce76271d93fbd61c5fc436567725e1795ecf386",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "1c46d9bd2237f8d23dabef7ced3cb03d70fc7d0688d14c22b1b1d96c50d17f06",
@@ -274,8 +264,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "b959472d378b1a460519b74dd0e45926a7d2de48ecf1da978a10f908bd37724c",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "dc154ba89b9a811a74fc4d9b6e5f347aec249c4374762c160a18aac7f2aafcc3",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "ed3ac2b0e7e60e32acb86bc520ebe8ccbdf3eae5801448e832b2aca579934c76",
@@ -290,8 +280,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "9f7d6b252134acb17a1c21619e6bac059f059a709f18da18956dfd601d6095d3",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "df3d2c04e15979108c7fee5fba6b9d967701d3a9d4a47bb266873807a3fe2b4d",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "949f35353249fa9f0be29fcc87ffd69b9d7e2e501a6d170b435d8118fe1bb12d",
@@ -306,8 +296,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "b9824cd253cad84dc55f4ff62f281500a6c8c975ec2367f08d278669eca01766",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "4d6d14214215269d0bfdc56ee4fb07b2d785194ed09b3aefd3d0afaebf41241c",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "9ec7aec0f42c6472a9d058a049fba7fef2509a87e711504de90df28046d46849",
@@ -322,8 +312,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "4fa1dd6d67184b084f76bf89c808021c3ab71d279623115d3d0824fa5cc7487b",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "2a7756e7e264bdec2e89d40de87316abeb4dee9ebf92616d90c1adfade3eeac0",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "f8fa6f4cc7c61558e1967f90dbe14f1a0d77dd33519aef632a00de0068a49e11",
@@ -338,8 +328,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "2f8c137a92208cd7a65bbb78143ea98a1b942986c92c8c11dd6b2ba34fb74d2f",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e6865e11180a178f7ff725e3e4cb7e531d7065153fb8cd8b34b91688b6db00c7",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "0a85756800c72061c2aa598cd9f4cb0cdc813cfbb62cd2f93a6c7f094690f381",
@@ -354,8 +344,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "c4d2280c1a8da1479d03c92732ba326ca943b096ebe496b2b54e17d6de170959",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "5f2e71c60b1f19c3c9b7edf95c916b52518f882af0f9540c39634516f73da449",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "09f16f2b701efc958a7895e4f03d8649c95347e4a08bef507d973f1208d34e15",
@@ -370,8 +360,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "5fd9e278398e8cc6d80ea7d2dff1d883bc95c5516c94e6285997a36579bcf828",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "6b948ed074a3df8cbcf1ab023a834fdd79a16038e1d2a1de464afe12bc9b8e56",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "0814cffec595480e6a37b0b387edf8615942498177dd6fd53d47aa29b832d9ef",
@@ -386,8 +376,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "23553516f5810e681edd261537ee4d2fe9eb892186520d93eb1d60aebdd0599e",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "73b6cbb8a4ad332417ab152d43cafd190814125230095a08158e681f44c0bc44",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "3d41287d83727516819f8dc8252d678fc9999755fcf55800c520dce0b8af01a9",
@@ -402,8 +392,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "347f56e7e4b1ef5c38f11aedb75853f9c5b8f4334a63c8bb4ff5475f1a940688",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "acf0e531ad019713f860681c53a8ec098a8fb0a33bff99ca45e1488aead7cd9b",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "442ecf262e9d6035351a2f4d43f1ced5f502e33e9d854886803eb3624cee35f6",
@@ -418,8 +408,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "7119b2f7fb20b601d585f34cf84dceaba94cf9b92fa247c2e1c20955ef0fee53",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "94d4f5a70dea01f25cbbe77d1de6b7ecb4447c3b2291398688581097cfa8493d",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "88608c320cc0e03c50f9dec3411dd4d5b125fb00193d0a70e01e06fbbf14becc",
@@ -434,8 +424,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "c3215f88374380cbfa30d35cca39f7f1f815424a1caf2e531d1dc1ed86e2f1ed",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3da6c8174431d5626957bc76f0c00c27209645e0f1109d760cfa302280d155d2",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "ab8f60be9dbec94954307258ff94af4a757607938eb8a4d054a201a1200c69b1",
@@ -450,8 +440,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "672176fda8f089b454fc5aed006c34765caea81c49ff840f4d385f0a0897a4e9",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "3e277a54320892dcd31170a6967168a117dfaf98b7ea04feaf7869bbc925218e",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "dc2d2aae7cc7ee0d9d8ba544e1133df0d56d5e515a67eefec67f6d1d1c465131",
@@ -466,8 +456,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "d6cac598103bc487717c1269576487f348b91238d6129d5ba94b1bbe24bd0fa5",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "ad5c1061299ca281ab2c1e5b790bac621f5dff3dbb97438e0186c96cd6a150fb",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "7eb02c3a40d968181b489f7a8d4a75fda2c321a17adec4ee2f83d149a0b7aeab",
@@ -482,8 +472,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "5176e6bd8bb057a2fd4d844699bf60111e6a828ed90516196fc0285efa3b0333",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "c78f68b0e65779e137d89ebfb05eba45c7c446337629385180d70a3489b2ffdf",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "1b102037d4cfe1d16d8cf8bb4a3c259f983eec1fd1cb816d2ee6a16291e2db0d",
@@ -498,8 +488,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "57a06d58aa41f4b538c526ce980622068cc439457dca6e3ba61a67f00be05fed",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "7e24a6a70771d8a94c37b86fe25a54009bb14661594372c49529c4ed7373d37c",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "45ab29e6a8042628542caf95a5a095b5571a7199d4d9ee1869ef4fcd19f6320a",
@@ -514,8 +504,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "d7557ac3e33a31de30912b5ece2dede38211a50cb2d8825e46ed36d07c05eac8",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "746a58c0cde68faec4cb4daebc5c56d231476f12ea207b1b735976a14befff8c",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "63fb535b56cd71db33f382c160b2128456bda36225fe1971f6a835972356ecd5",
@@ -530,8 +520,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "87d6f3c76f5ee62c6ae0157563c4d2a26f819660bc3477ea2bdc60b34897f10c",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "8d8be4e82bb74b014b3fc845768f827da9f8b22bed98a233f05876459058c44a",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "257f48d3b41680b4fe6938eff627f6ed0bccec7450c17d6ecbb5998949ae2205",
@@ -546,8 +536,8 @@
       "state" : "claimable"
     },
     {
-      "attested_event_count" : 5,
-      "attested_event_hash" : "4185125427984ea4e6e48491f85eede56e058abd6dc91fdc24c9cfbf7cdb5639",
+      "attested_event_count" : 4,
+      "attested_event_hash" : "e0cbfd2efa900a7d5907407d05f8bec6aab0c3cde6f1d05f6e358738602c97b5",
       "continuation_eligible" : false,
       "continuation_event_count" : 0,
       "convergence_hash" : "80829e2f210cbf3633d025ae0359ad691ca5ffcc33509a7ad499fbd31fa2580c",

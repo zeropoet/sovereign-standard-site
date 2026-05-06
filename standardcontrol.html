@@ -801,6 +801,13 @@
           </div>
         </div>
       `;
+      const claimRecordedEntry = record.claimed_at
+        ? `
+            <div class="continuation-history-entry">
+              <div><span>Claim Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>
+            </div>
+          `
+        : '';
       const eventContent = publicEvents.length > 0
         ? publicEvents.map((event) => {
             const eventType = String(event.type || '');
@@ -820,12 +827,8 @@
               </div>
             `;
           }).join('')
-        : (record.claimed_at
-          ? `
-              <div><span>Claim Recorded</span><br><span class="code">${escapeHTML(formatTimestamp(record.claimed_at))}</span></div>
-            `
-          : '');
-      const content = `${initialFillEntry}${eventContent}`;
+        : '';
+      const content = `${initialFillEntry}${claimRecordedEntry}${eventContent}`;
 
       continuationHistory.innerHTML = `
         <div class="verification-column">

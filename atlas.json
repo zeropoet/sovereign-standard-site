@@ -602,7 +602,7 @@
       4
     ]
   },
-  "generated_at" : "2026-05-05T16:48:07Z",
+  "generated_at" : "2026-05-06T15:31:02Z",
   "metrics" : {
     "cluster_schema" : "atlas_regions_v2",
     "distance_metric" : "atlas_distance_v2",
@@ -1038,7 +1038,7 @@
           ],
           "primary" : "interior"
         },
-        "state_weight" : 1.26,
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 11,
           "direction_changes" : 0,
@@ -1060,7 +1060,7 @@
       },
       "convergence_hash" : "96fea7aefdb02a961b19525afd7d7e4deca34211621cde0e17c50e519ea18063",
       "id" : 6,
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
       "atlas" : {
@@ -1103,7 +1103,7 @@
           ],
           "primary" : "anchor"
         },
-        "state_weight" : 1.26,
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1125,7 +1125,7 @@
       },
       "convergence_hash" : "310c28c6efe6162a4b405aa36d5595fbb034121f86f1e846079e8bbd0a72b223",
       "id" : 7,
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
       "atlas" : {
@@ -1361,7 +1361,7 @@
           ],
           "primary" : "bridge"
         },
-        "state_weight" : 1.26,
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 12,
           "direction_changes" : 0,
@@ -1383,7 +1383,7 @@
       },
       "convergence_hash" : "5a6a32343ef4866c49c422e849237ee6dba26c0caf7c7f21c5801c6684b2e2b1",
       "id" : 11,
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
       "atlas" : {
@@ -1427,7 +1427,7 @@
           ],
           "primary" : "bridge"
         },
-        "state_weight" : 1.26,
+        "state_weight" : 1,
         "traits" : {
           "canonical_distance" : 13,
           "direction_changes" : 0,
@@ -1449,7 +1449,7 @@
       },
       "convergence_hash" : "004ea877f49a2056adc9716d4e5eaea4f66b0b10b984de160a1c72bf0530c822",
       "id" : 12,
-      "state" : "claimed"
+      "state" : "claimable"
     },
     {
       "atlas" : {
